@@ -1,0 +1,127 @@
+/* ============================================================
+   Tomo School OS — design tokens + global styles
+   Three persona themes accent-shift on [data-persona].
+   ============================================================ */
+
+:root {
+  /* Neutrals */
+  --bg: #f6f7fb;
+  --bg-elev: #ffffff;
+  --bg-sunken: #eef1f7;
+  --ink: #10151f;
+  --ink-2: #3d475a;
+  --ink-3: #6b7688;
+  --line: #e3e7ef;
+  --line-strong: #ccd3e0;
+
+  /* Brand + persona accents */
+  --tomo: #6d5cf5;          /* Tomo violet — house brand */
+  --tomo-ink: #4a3ad4;
+  --tomo-soft: #efeaff;
+
+  --accent: var(--tomo);
+  --accent-ink: var(--tomo-ink);
+  --accent-soft: var(--tomo-soft);
+
+  /* Mastery state palette (state-machine-true) */
+  --st-locked: #9aa3b2;
+  --st-ready: #2f80ed;
+  --st-progress: #f2a63b;
+  --st-provisional: #8b6df2;
+  --st-confirmed: #23a26d;
+  --st-refresh: #e2574c;
+
+  /* Semantic */
+  --good: #23a26d;
+  --good-soft: #e2f5ec;
+  --warn: #e08a1e;
+  --warn-soft: #fdf0dc;
+  --bad: #e2574c;
+  --bad-soft: #fce8e6;
+  --coin: #f5b301;
+
+  /* Radius + shadow + type */
+  --r-sm: 8px;
+  --r: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --shadow-1: 0 1px 2px rgba(16, 21, 31, 0.06), 0 1px 3px rgba(16, 21, 31, 0.08);
+  --shadow-2: 0 4px 12px rgba(16, 21, 31, 0.08), 0 2px 4px rgba(16, 21, 31, 0.06);
+  --shadow-3: 0 12px 32px rgba(16, 21, 31, 0.14);
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-num: "SF Mono", ui-monospace, "Roboto Mono", monospace;
+
+  --maxw: 1180px;
+}
+
+/* Persona accenting */
+[data-persona="student"] { --accent: #6d5cf5; --accent-ink: #4a3ad4; --accent-soft: #efeaff; }
+[data-persona="teacher"] { --accent: #0f7a6b; --accent-ink: #0a5a4e; --accent-soft: #e2f4f0; }
+[data-persona="map"]     { --accent: #b4531f; --accent-ink: #8f3f16; --accent-soft: #fbeadd; }
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.45;
+}
+
+h1, h2, h3, h4 { margin: 0; line-height: 1.2; letter-spacing: -0.01em; }
+p { margin: 0; }
+button { font-family: inherit; }
+a { color: var(--accent-ink); }
+
+/* ---------- Reusable atoms ---------- */
+.card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-1);
+}
+.card-pad { padding: 18px; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  border: 1px solid transparent; border-radius: 999px;
+  padding: 10px 18px; font-size: 14px; font-weight: 650; cursor: pointer;
+  transition: transform .06s ease, background .15s ease, box-shadow .15s ease;
+  background: var(--accent); color: #fff;
+}
+.btn:hover { box-shadow: var(--shadow-2); }
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+.btn.secondary { background: var(--bg-elev); color: var(--ink); border-color: var(--line-strong); }
+.btn.ghost { background: transparent; color: var(--ink-2); }
+.btn.lg { padding: 14px 26px; font-size: 15px; }
+.btn.sm { padding: 7px 13px; font-size: 13px; }
+
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;
+  background: var(--bg-sunken); color: var(--ink-2); border: 1px solid var(--line);
+  white-space: nowrap;
+}
+.chip.code { font-family: var(--font-num); font-weight: 600; letter-spacing: .02em; }
+
+.muted { color: var(--ink-3); }
+.small { font-size: 12.5px; }
+.mono { font-family: var(--font-num); }
+.row { display: flex; align-items: center; }
+.gap-4 { gap: 4px; } .gap-8 { gap: 8px; } .gap-12 { gap: 12px; } .gap-16 { gap: 16px; }
+.wrap { flex-wrap: wrap; }
+.grow { flex: 1; }
+.stack { display: flex; flex-direction: column; }
+
+/* Scrollbars, focus */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 8px; border: 2px solid var(--bg); }
+
+@keyframes pop { 0% { transform: scale(.85); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+@keyframes floatUp { 0% { transform: translateY(6px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+.animate-in { animation: floatUp .25s ease both; }

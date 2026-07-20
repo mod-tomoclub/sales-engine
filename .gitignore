@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Local env / editor
+.env
+.env.local
+.DS_Store
+.claude/settings.local.json
+
+# Test / coverage
+coverage/
