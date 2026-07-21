@@ -29,11 +29,13 @@ never blocked while retention is still being verified.
 
 | Layer | What runs today |
 |---|---|
-| **Curriculum graph** | Real importer parses `seed/concept_block.xlsx` → **576 units, 995 prerequisite edges, 7 subjects** (`src/data/curriculum.json`). |
-| **Engines** (pure TS) | Mastery/retention state machine + 1-3-7 scheduler, session planner (60-min SOP), motivation ledger/streaks/goals, baseline seeding, Tomoe tutor + item bank. |
-| **Student App** | The Tomoe mastery loop end-to-end: instruction → guided practice (with hints, never answers) → AI-free summation → retention checks. Coins, streaks, daily goals, PATH-time credits, live mastery strip. |
+| **Curriculum graph** | Real importer parses `seed/concept_block.xlsx` → **576 units, 2,858 concept blocks, 995 prerequisite edges, 7 subjects, 12 grades, 7,950 design hours**. The delivery-code legend and provenance notes are read from the workbook's own README, and the grade × subject coverage matrix reproduces its Dashboard exactly. |
+| **Engines** (pure TS) | Mastery/retention state machine + 1-3-7 scheduler, session planner (60-min SOP), motivation ledger/streaks/goals, baseline seeding, Tomoe tutor + curriculum-grounded item bank. |
+| **Student App** | The Tomoe mastery loop end-to-end: instruction → guided practice (with hints, never answers) → AI-free summation → retention checks. Instruction shows the unit's real concept blocks in sequence with its Practice / Mastery-proof / Scholar-depth / board-ref specs. Coins, streaks, goals, PATH-time credits, mastery strip. |
 | **Teacher Console** | Live Concept Block: "who to support next" insight feed, misconception clusters, block distribution, intervention log with closure. |
 | **Learning Map** | Class mastery heatmap, leadership KPIs (mastery velocity, retention pass rate), action list, per-student subject strips. |
+| **Curriculum Explorer** | The unit library: subject → grade → unit → concept blocks, every spec column shown verbatim, walkable prerequisite/unlock edges, cross-subject search, and an optional per-student mastery overlay. |
+| **School AI Studio** | Campus backbone: coverage by grade × subject (units + hours), content-approval pipeline ("zero unreviewed content reaches a child"), delivery policy by band, campus-wide mastery, and curriculum provenance/sourcing. |
 
 Advance the **simulated day clock** ("Next day →") to watch the 1-3-7 retention
 pipeline come due and confirm mastery over time.
@@ -74,7 +76,7 @@ src/
   store/         # CampusStore port + localStorage adapter (Postgres swaps in here)
   data/          # generated curriculum.json + demo campus
   state/         # AppContext composition root
-  ui/            # student · teacher · map surfaces + design system
+  ui/            # student · teacher · map · curriculum · school surfaces + design system
 tests/           # vitest — state machine, retention, motivation, full-loop integration
 docs/            # architecture spec + (future) engine specs / ADRs
 ```

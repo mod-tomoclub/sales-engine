@@ -32,6 +32,8 @@ export class CurriculumGraph {
   get meta() { return this.data.meta; }
   get subjects(): Subject[] { return this.data.subjects; }
   get allUnits(): Unit[] { return this.data.units; }
+  /** Units + estimated teaching hours by grade × subject (workbook Dashboard). */
+  get coverage() { return this.data.coverage; }
 
   subject(key: string): Subject | undefined { return this.data.subjects.find((s) => s.key === key); }
   unit(id: string): Unit | undefined { return this.unitById.get(id); }

@@ -12,15 +12,19 @@ single source of truth.** When extending, cite the section you are implementing
 ## What is built (this milestone)
 
 - **Curriculum importer** (`scripts/import-curriculum.mjs`) → `src/data/curriculum.json`
-  (576 units, 995 prerequisite edges, 7 subjects). Build task #1 (§14.1).
+  (576 units, 2 858 concept blocks, 995 prerequisite edges, 7 subjects, 12 grades,
+  7 950 design hours). Build task #1 (§14.1). It also parses the workbook README for
+  the **authoritative delivery-code legend** and provenance notes, and computes the
+  grade × subject **coverage matrix** (matches the workbook Dashboard exactly).
 - **Domain** (`src/domain/`) — entities (§4), the 90% / 1-3-7 **mastery state machine**
   (§7), zod schemas for persisted state.
 - **Engines** (`src/engines/`) — mastery/retention orchestrator, retention scheduler
   (1-3-7 + longitudinal), **session planner** mapped to the 60-min SOP (§8),
   **motivation** ledger/streaks/goals (§12), **baseline** seeding (§6), and **Tomoe**
-  the rule-based Socratic tutor + item bank (§9).
+  the rule-based Socratic tutor + curriculum-grounded item bank (§9).
 - **Store** (`src/store/`) — `CampusStore` port + `LocalCampusStore` (localStorage).
-- **UI** (`src/ui/`) — Student / Teacher / Learning Map surfaces + shared design system.
+- **UI** (`src/ui/`) — five surfaces + shared design system:
+  Student · Teacher Console · Learning Map · **Curriculum Explorer** · **School AI Studio**.
 
 ## Architecture → code map
 
@@ -34,6 +38,8 @@ single source of truth.** When extending, cite the section you are implementing
 | §9 Tomoe | `src/engines/tutor/tomoe.ts` (+ `items.ts`) |
 | §12 Motivation | `src/domain/motivation.ts`, `src/engines/motivation/ledger.ts` |
 | §13 Learning Map | `src/ui/map/LearningMap.tsx`, `src/ui/selectors.ts` |
+| §14.1 Unit library / curriculum map | `src/ui/curriculum/CurriculumExplorer.tsx` |
+| §14.2 Content pipeline + approvals | `src/ui/school/SchoolStudio.tsx` |
 | §14.5 Teacher insight | `src/ui/teacher/TeacherConsole.tsx` |
 | §15 AI Gateway | **port only** — `TutorProvider` in `tomoe.ts`, `ItemProvider` in `items.ts` |
 
@@ -52,6 +58,15 @@ single source of truth.** When extending, cite the section you are implementing
 6. **"Learning styles" is banned vocabulary.** Use "doorways" (§9). Do not reintroduce it.
 7. **Human-in-the-loop.** All child-facing content is pipeline-pending until approved
    (§2, §14.2). The demo labels content as illustrative; do not present it as approved.
+8. **Items never cross subjects.** Distractors come from the *same subject*, near
+   grades (`GraphItemBank.distractors`). A Mathematics item offering a Social Studies
+   option is a bug — `tests/items.test.ts` guards this. Correct answers must be real
+   concept blocks / specs taken verbatim from the workbook row.
+9. **The legend comes from the workbook, not from us.** `meta.codeLegend` is parsed
+   from the README ("Delivery codes" row). Never hardcode a guessed legend in the UI —
+   read `graph.meta.codeLegend`. (T=teacher-first, A=AI-doorway-first, M=manipulatives,
+   R=adaptive practice ladder, L=lab, N=nature/outdoor, P=project, O=oral,
+   U=unplugged, C=computer lab.)
 
 ## Swap-in points (keep these seams clean)
 

@@ -25,6 +25,8 @@ export interface TutorProvider {
   /** Hint ladder for an item — strategy only, never the answer. Level 1..3. */
   hint(unitTitle: string, level: number, ctx: TutorContext): string;
   encourage(correct: boolean, ctx: TutorContext): string;
+  /** Plain-language rendering of the unit's delivery codes for the child. */
+  howThisRuns(unit: Unit): string;
 }
 
 const STYLE_INTRO: Record<AiInteractionStyle, string> = {
@@ -39,6 +41,20 @@ const STYLE_TEACH: Record<AiInteractionStyle, (node: string) => string> = {
   "experiment-simulation": (n) => `For ${n}, picture the setup. What do you predict will happen, and why?`,
   "story-narrative": (n) => `Think of ${n} as a scene in a bigger story. Who are the characters, what changes?`,
   "conversational-phonics-reading": (n) => `Let's sound out ${n} together. Say it, then tell me what you hear.`,
+};
+
+/** How each delivery code is actually run in the room (workbook README legend). */
+const DELIVERY_LINE: Record<string, string> = {
+  T: "your teacher leads this in the room",
+  A: "I introduce it through something you like, then your teacher teaches the real thing",
+  M: "you'll use hands-on materials",
+  R: "you'll climb an adaptive practice ladder",
+  L: "there's a lab/experiment for this",
+  N: "part of this happens outdoors",
+  P: "this one runs as a project",
+  O: "you'll talk it through out loud",
+  U: "we do this unplugged — no screens",
+  C: "this one uses the computer lab",
 };
 
 const HINTS = [
@@ -61,12 +77,20 @@ export class RuleBasedTomoe implements TutorProvider {
 
   teach(unit: Unit, node: ConceptNode, ctx: TutorContext): string {
     const base = STYLE_TEACH[ctx.style](node.title);
+    // AI-doorway-first is only permitted from Grade 4-5 (workbook design rule).
     if (ctx.aiDoorwayAllowed && ctx.interests.length) {
       const rng = makeRng(hashSeed(`${unit.id}:${node.id}`));
       const doorway = pick(rng, ctx.interests);
       return `${base}  (Doorway: imagine this through ${doorway}, then we'll use the standard way.)`;
     }
     return base;
+  }
+
+  howThisRuns(unit: Unit): string {
+    const parts = unit.deliveryCodes.map((c) => DELIVERY_LINE[c]).filter(Boolean);
+    if (!parts.length) return "";
+    const joined = parts.length === 1 ? parts[0] : `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}`;
+    return `For this unit, ${joined}.`;
   }
 
   hint(unitTitle: string, level: number, _ctx: TutorContext): string {

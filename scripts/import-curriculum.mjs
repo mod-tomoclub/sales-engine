@@ -44,11 +44,60 @@ const STREAMS = [
   { code: "BIO", re: /^biology\b/i, hint: /\b(bio|biology)\b/i },
 ];
 
-const CODE_LEGEND = {
-  T: "Teacher-led", A: "AI / adaptive app", M: "Manipulatives", R: "Reading & reasoning",
-  L: "Lab / experiment", N: "Narrative / story", P: "Print / paper", O: "Oral",
-  U: "Unplugged", C: "Collaborative / coding",
+/**
+ * Fallback legend. The authoritative one is parsed from the workbook README
+ * ("Delivery codes" row) so the app always reflects the curriculum team's own
+ * definitions rather than our guesses.
+ */
+const FALLBACK_LEGEND = {
+  T: "teacher-first",
+  A: "AI-doorway-first",
+  M: "manipulatives/physical",
+  R: "adaptive practice ladder",
+  L: "lab/experiment",
+  N: "nature/outdoor",
+  P: "project",
+  O: "oral/discussion/performance",
+  U: "unplugged (computer science without screens)",
+  C: "computer lab",
 };
+
+/** Parse "T = teacher-first · A = AI-doorway-first (…) · M = …" into a legend map. */
+function parseLegend(readmeRows) {
+  const line = readmeRows
+    .map((r) => (Array.isArray(r) ? r.filter(Boolean).join(" ") : ""))
+    .find((t) => /(^|\s)T\s*=\s*teacher/i.test(t));
+  if (!line) return { legend: { ...FALLBACK_LEGEND }, raw: "" };
+  const legend = {};
+  for (const part of line.split("·")) {
+    const m = part.match(/^\s*([A-Z])\s*=\s*(.+?)\s*$/);
+    if (m) legend[m[1]] = m[2];
+  }
+  return { legend: Object.keys(legend).length ? legend : { ...FALLBACK_LEGEND }, raw: line };
+}
+
+/** Pull the narrative notes the curriculum team wrote, for provenance display. */
+function parseNotes(readmeRows) {
+  const text = (i) => (Array.isArray(readmeRows[i]) ? readmeRows[i].filter(Boolean).join(" ").trim() : "");
+  const find = (re) => {
+    for (const r of readmeRows) {
+      const t = Array.isArray(r) ? r.filter(Boolean).join(" ").trim() : "";
+      if (re.test(t)) return t;
+    }
+    return "";
+  };
+  return {
+    title: text(0),
+    purpose: find(/^Every subject, Grades 1-12/i),
+    howToRead: find(/^One row = one unit/i),
+    designRule: find(/^Design rule:/i),
+    sourcing: find(/^Grades 9-10: unit names follow/i),
+    version: find(/^Version:/i),
+    scopeDecisions: readmeRows
+      .map((r) => (Array.isArray(r) ? r.filter(Boolean).join(" ").trim() : ""))
+      .filter((t) => /^\d+\.\s/.test(t)),
+  };
+}
 
 const clean = (v) => (v === undefined || v === null ? "" : String(v).trim());
 const slug = (s) => clean(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -65,11 +114,11 @@ function unitId(subjectKey, grade, stream, unitNo) {
 }
 
 /** Parse "M+T+O, low-screen; counters" -> { codes:["M","T","O"], note:"low-screen; counters" } */
-function parseDelivery(raw) {
+function parseDelivery(raw, legend) {
   const s = clean(raw);
   if (!s) return { codes: [], note: "" };
   const firstSeg = s.split(/[,;]/)[0].trim();
-  const codes = firstSeg.split("+").map((c) => c.trim().toUpperCase()).filter((c) => CODE_LEGEND[c]);
+  const codes = firstSeg.split("+").map((c) => c.trim().toUpperCase()).filter((c) => legend[c]);
   const note = s.slice(firstSeg.length).replace(/^[,;\s]+/, "").trim();
   return { codes: [...new Set(codes)], note };
 }
@@ -98,6 +147,15 @@ function parseRefs(raw) {
 
 function main() {
   const wb = XLSX.readFile(SRC);
+
+  // Authoritative delivery-code legend + provenance notes come from the workbook.
+  const readmeRows = wb.Sheets["README"]
+    ? XLSX.utils.sheet_to_json(wb.Sheets["README"], { header: 1, defval: "" })
+    : [];
+  const { legend: CODE_LEGEND, raw: legendRaw } = parseLegend(readmeRows);
+  const notes = parseNotes(readmeRows);
+  console.log(`  legend: ${Object.keys(CODE_LEGEND).sort().join("")} (${legendRaw ? "from README" : "fallback"})`);
+
   const subjects = [];
   const units = [];
   const edges = [];
@@ -134,7 +192,7 @@ function main() {
       const stream = streamOf(title);
       const id = unitId(subj.key, grade, stream, unitNo);
 
-      const delivery = parseDelivery(r[c.delivery]);
+      const delivery = parseDelivery(r[c.delivery], CODE_LEGEND);
       delivery.codes.forEach((cd) => codeSet.add(cd));
 
       const conceptNodes = clean(r[c.blocks])
@@ -222,14 +280,42 @@ function main() {
   }
   for (const u of units) u.prereqUnitIds = [...(prereqOf.get(u.id) || [])];
 
+  // ---- Coverage matrix: units + estimated teaching hours by grade x subject ----
+  const grades = [...new Set(units.map((u) => u.grade))].sort((a, b) => a - b);
+  const coverage = grades.map((grade) => {
+    const bySubject = {};
+    for (const s of subjects) {
+      const rows = units.filter((u) => u.grade === grade && u.subjectKey === s.key);
+      bySubject[s.key] = {
+        units: rows.length,
+        hours: rows.reduce((sum, u) => sum + (u.estHours ?? 0), 0),
+      };
+    }
+    const totalUnits = Object.values(bySubject).reduce((a, b) => a + b.units, 0);
+    const totalHours = Object.values(bySubject).reduce((a, b) => a + b.hours, 0);
+    return { grade, bySubject, totalUnits, totalHours };
+  });
+
+  const totalHours = units.reduce((sum, u) => sum + (u.estHours ?? 0), 0);
+
   const out = {
     meta: {
       source: "seed/concept_block.xlsx",
-      title: "Tomo ICSE Concept-Block Map v1",
+      title: notes.title || "Tomo ICSE Concept-Block Map v1",
       generatedBy: "scripts/import-curriculum.mjs",
       codeLegend: CODE_LEGEND,
-      counts: { subjects: subjects.length, units: units.length, edges: edges.length },
+      legendRaw,
+      notes,
+      counts: {
+        subjects: subjects.length,
+        units: units.length,
+        edges: edges.length,
+        conceptNodes: units.reduce((a, u) => a + u.conceptNodes.length, 0),
+        hours: totalHours,
+        grades: grades.length,
+      },
     },
+    coverage,
     subjects,
     units,
     edges,

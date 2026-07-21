@@ -1,26 +1,466 @@
 {
   "meta": {
     "source": "seed/concept_block.xlsx",
-    "title": "Tomo ICSE Concept-Block Map v1",
+    "title": "Tomo ICSE Concept-Block Map — v1 (working draft)",
     "generatedBy": "scripts/import-curriculum.mjs",
     "codeLegend": {
-      "T": "Teacher-led",
-      "A": "AI / adaptive app",
-      "M": "Manipulatives",
-      "R": "Reading & reasoning",
-      "L": "Lab / experiment",
-      "N": "Narrative / story",
-      "P": "Print / paper",
-      "O": "Oral",
-      "U": "Unplugged",
-      "C": "Collaborative / coding"
+      "T": "teacher-first",
+      "A": "AI-doorway-first (AI introduces the concept through the child's interest doorway, then teacher teaches the actual room)",
+      "M": "manipulatives/physical",
+      "R": "adaptive practice ladder",
+      "L": "lab/experiment",
+      "N": "nature/outdoor",
+      "P": "project",
+      "O": "oral/discussion/performance",
+      "U": "unplugged (computer science without screens)",
+      "C": "computer lab"
+    },
+    "legendRaw": "T = teacher-first · A = AI-doorway-first (AI introduces the concept through the child's interest doorway, then teacher teaches the actual room) · M = manipulatives/physical · R = adaptive practice ladder · L = lab/experiment · N = nature/outdoor · P = project · O = oral/discussion/performance · U = unplugged (computer science without screens) · C = computer lab",
+    "notes": {
+      "title": "Tomo ICSE Concept-Block Map — v1 (working draft)",
+      "purpose": "Every subject, Grades 1-12, broken into units and concept blocks with delivery mode, mastery proof, progression logic and path-lock criteria. This sheet is the 'track' on which per-subject student progression runs (see project doc: Doc 3 — Scholar Path & Subject-Level Progression). It is the India-native equivalent of Alpha School's mastery knowledge graph (Doc 1).",
+      "howToRead": "One row = one unit. Concept_Blocks lists the granular nodes a child masters one by one inside that unit. A child's 'working level' in a subject = the furthest unit proven via the Mastery_Proof column (always AI-free). Unlocks shows what passing opens; Path_Lock shows what holds progression; Scholar_Depth is the extension lane for advanced students (depth gates velocity — see Doc 3 §3.4).",
+      "designRule": "Design rule: Grades 1-3 are M/T/O-heavy (low-screen policy per Blueprint §17.1). AI-doorway-first delivery begins Grade 4-5 and is standard from middle school.",
+      "sourcing": "Grades 9-10: unit names follow the official ICSE syllabus (verified against CISCE syllabus documents, 2026-27 exam-year where available; re-verify against the current CISCE PDF each year — prescribed literature texts rotate). Grades 11-12: ISC Science-stream syllabus (Physics, Chemistry, Biology, Mathematics, Computer Science, English). Grades 1-8: CISCE prescribes a curriculum framework but pacing/pedagogy below Class 9 is a school decision in practice — these rows are school-defined, NCF-aligned, and deliberately sequenced to land exactly at the ICSE Class 9 entry points.",
+      "version": "Version: v1 — July 15, 2026 · Built by Founders Office · Companion docs: Doc 1 (Alpha deep-dive), Doc 3 (Scholar path / progression)",
+      "scopeDecisions": [
+        "1. ISC (11-12) mapped for the Science stream only; Commerce/Humanities to be added once the school's stream offering is decided.",
+        "2. Second language = Hindi (Grades 1-10). A regional-language tab (per first city) is a known gap.",
+        "3. Est_Hours are design estimates for planning, not commitments; they have not been reconciled to the PlayBook workbook (blob not readable in project — pending).",
+        "4. AI-literacy content appears inside Computer (Grades 6-8) as school-defined blocks; SEL and path curricula live in Path Blocks, out of scope for this academic map."
+      ]
     },
     "counts": {
       "subjects": 7,
       "units": 576,
-      "edges": 995
+      "edges": 995,
+      "conceptNodes": 2858,
+      "hours": 7950,
+      "grades": 12
     }
   },
+  "coverage": [
+    {
+      "grade": 1,
+      "bySubject": {
+        "math": {
+          "units": 6,
+          "hours": 120
+        },
+        "english": {
+          "units": 6,
+          "hours": 135
+        },
+        "hindi": {
+          "units": 6,
+          "hours": 100
+        },
+        "science": {
+          "units": 6,
+          "hours": 51
+        },
+        "pcb": {
+          "units": 0,
+          "hours": 0
+        },
+        "social": {
+          "units": 5,
+          "hours": 50
+        },
+        "computer": {
+          "units": 5,
+          "hours": 54
+        }
+      },
+      "totalUnits": 34,
+      "totalHours": 510
+    },
+    {
+      "grade": 2,
+      "bySubject": {
+        "math": {
+          "units": 6,
+          "hours": 122
+        },
+        "english": {
+          "units": 6,
+          "hours": 138
+        },
+        "hindi": {
+          "units": 6,
+          "hours": 100
+        },
+        "science": {
+          "units": 6,
+          "hours": 57
+        },
+        "pcb": {
+          "units": 0,
+          "hours": 0
+        },
+        "social": {
+          "units": 6,
+          "hours": 58
+        },
+        "computer": {
+          "units": 5,
+          "hours": 56
+        }
+      },
+      "totalUnits": 35,
+      "totalHours": 531
+    },
+    {
+      "grade": 3,
+      "bySubject": {
+        "math": {
+          "units": 7,
+          "hours": 130
+        },
+        "english": {
+          "units": 7,
+          "hours": 142
+        },
+        "hindi": {
+          "units": 6,
+          "hours": 100
+        },
+        "science": {
+          "units": 8,
+          "hours": 85
+        },
+        "pcb": {
+          "units": 0,
+          "hours": 0
+        },
+        "social": {
+          "units": 7,
+          "hours": 75
+        },
+        "computer": {
+          "units": 6,
+          "hours": 60
+        }
+      },
+      "totalUnits": 41,
+      "totalHours": 592
+    },
+    {
+      "grade": 4,
+      "bySubject": {
+        "math": {
+          "units": 8,
+          "hours": 126
+        },
+        "english": {
+          "units": 7,
+          "hours": 142
+        },
+        "hindi": {
+          "units": 6,
+          "hours": 100
+        },
+        "science": {
+          "units": 9,
+          "hours": 88
+        },
+        "pcb": {
+          "units": 0,
+          "hours": 0
+        },
+        "social": {
+          "units": 7,
+          "hours": 77
+        },
+        "computer": {
+          "units": 6,
+          "hours": 62
+        }
+      },
+      "totalUnits": 43,
+      "totalHours": 595
+    },
+    {
+      "grade": 5,
+      "bySubject": {
+        "math": {
+          "units": 8,
+          "hours": 132
+        },
+        "english": {
+          "units": 8,
+          "hours": 146
+        },
+        "hindi": {
+          "units": 6,
+          "hours": 100
+        },
+        "science": {
+          "units": 9,
+          "hours": 90
+        },
+        "pcb": {
+          "units": 0,
+          "hours": 0
+        },
+        "social": {
+          "units": 7,
+          "hours": 81
+        },
+        "computer": {
+          "units": 6,
+          "hours": 64
+        }
+      },
+      "totalUnits": 44,
+      "totalHours": 613
+    },
+    {
+      "grade": 6,
+      "bySubject": {
+        "math": {
+          "units": 9,
+          "hours": 138
+        },
+        "english": {
+          "units": 8,
+          "hours": 146
+        },
+        "hindi": {
+          "units": 7,
+          "hours": 100
+        },
+        "science": {
+          "units": 8,
+          "hours": 90
+        },
+        "pcb": {
+          "units": 0,
+          "hours": 0
+        },
+        "social": {
+          "units": 9,
+          "hours": 85
+        },
+        "computer": {
+          "units": 6,
+          "hours": 76
+        }
+      },
+      "totalUnits": 47,
+      "totalHours": 635
+    },
+    {
+      "grade": 7,
+      "bySubject": {
+        "math": {
+          "units": 9,
+          "hours": 134
+        },
+        "english": {
+          "units": 8,
+          "hours": 148
+        },
+        "hindi": {
+          "units": 7,
+          "hours": 100
+        },
+        "science": {
+          "units": 8,
+          "hours": 92
+        },
+        "pcb": {
+          "units": 0,
+          "hours": 0
+        },
+        "social": {
+          "units": 9,
+          "hours": 84
+        },
+        "computer": {
+          "units": 6,
+          "hours": 78
+        }
+      },
+      "totalUnits": 47,
+      "totalHours": 636
+    },
+    {
+      "grade": 8,
+      "bySubject": {
+        "math": {
+          "units": 10,
+          "hours": 138
+        },
+        "english": {
+          "units": 8,
+          "hours": 150
+        },
+        "hindi": {
+          "units": 7,
+          "hours": 100
+        },
+        "science": {
+          "units": 9,
+          "hours": 99
+        },
+        "pcb": {
+          "units": 0,
+          "hours": 0
+        },
+        "social": {
+          "units": 10,
+          "hours": 88
+        },
+        "computer": {
+          "units": 6,
+          "hours": 80
+        }
+      },
+      "totalUnits": 50,
+      "totalHours": 655
+    },
+    {
+      "grade": 9,
+      "bySubject": {
+        "math": {
+          "units": 10,
+          "hours": 144
+        },
+        "english": {
+          "units": 9,
+          "hours": 152
+        },
+        "hindi": {
+          "units": 6,
+          "hours": 105
+        },
+        "science": {
+          "units": 0,
+          "hours": 0
+        },
+        "pcb": {
+          "units": 24,
+          "hours": 310
+        },
+        "social": {
+          "units": 10,
+          "hours": 89
+        },
+        "computer": {
+          "units": 6,
+          "hours": 82
+        }
+      },
+      "totalUnits": 65,
+      "totalHours": 882
+    },
+    {
+      "grade": 10,
+      "bySubject": {
+        "math": {
+          "units": 10,
+          "hours": 144
+        },
+        "english": {
+          "units": 9,
+          "hours": 154
+        },
+        "hindi": {
+          "units": 6,
+          "hours": 105
+        },
+        "science": {
+          "units": 0,
+          "hours": 0
+        },
+        "pcb": {
+          "units": 25,
+          "hours": 312
+        },
+        "social": {
+          "units": 10,
+          "hours": 90
+        },
+        "computer": {
+          "units": 8,
+          "hours": 86
+        }
+      },
+      "totalUnits": 68,
+      "totalHours": 891
+    },
+    {
+      "grade": 11,
+      "bySubject": {
+        "math": {
+          "units": 10,
+          "hours": 144
+        },
+        "english": {
+          "units": 8,
+          "hours": 148
+        },
+        "hindi": {
+          "units": 0,
+          "hours": 0
+        },
+        "science": {
+          "units": 0,
+          "hours": 0
+        },
+        "pcb": {
+          "units": 26,
+          "hours": 322
+        },
+        "social": {
+          "units": 0,
+          "hours": 0
+        },
+        "computer": {
+          "units": 7,
+          "hours": 86
+        }
+      },
+      "totalUnits": 51,
+      "totalHours": 700
+    },
+    {
+      "grade": 12,
+      "bySubject": {
+        "math": {
+          "units": 10,
+          "hours": 146
+        },
+        "english": {
+          "units": 8,
+          "hours": 152
+        },
+        "hindi": {
+          "units": 0,
+          "hours": 0
+        },
+        "science": {
+          "units": 0,
+          "hours": 0
+        },
+        "pcb": {
+          "units": 26,
+          "hours": 324
+        },
+        "social": {
+          "units": 0,
+          "hours": 0
+        },
+        "computer": {
+          "units": 7,
+          "hours": 88
+        }
+      },
+      "totalUnits": 51,
+      "totalHours": 710
+    }
+  ],
   "subjects": [
     {
       "key": "math",

@@ -8,11 +8,6 @@ import { coins, coinsEarnedToday, dueRetention, laneSummaries, masteryStrip, upN
 import { Avatar, Bar, MasteryPill, Ring, SectionTitle, StateDot } from "../components";
 import { LoopRunner, RetentionRunner } from "./Loop";
 
-const CODE_LEGEND: Record<string, string> = {
-  T: "Teacher-led", A: "AI / adaptive", M: "Manipulatives", R: "Reading & reasoning", L: "Lab",
-  N: "Narrative", P: "Print / paper", O: "Oral", U: "Unplugged", C: "Collaborative / coding",
-};
-
 export function StudentApp() {
   const app = useApp();
   const student = useActiveStudent();
@@ -96,7 +91,7 @@ export function StudentApp() {
                 <div className="row gap-8 wrap" style={{ marginTop: 4 }}>
                   <MasteryPill state={next.rec.state} />
                   {next.unit.deliveryCodes.map((c) => (
-                    <span key={c} className="chip code" title={CODE_LEGEND[c]}>{c}</span>
+                    <span key={c} className="chip code" title={app.graph.meta.codeLegend[c]}>{c}</span>
                   ))}
                 </div>
               </div>

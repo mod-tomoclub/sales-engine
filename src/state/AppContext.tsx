@@ -16,7 +16,7 @@ import { buildInitialCampusState, DEMO_STUDENTS, INTEREST_PROFILES, COACH } from
 import * as P from "../engines/progression";
 import type { CampusState, StepResult, Toast } from "../engines/progression";
 
-export type Persona = "student" | "teacher" | "map";
+export type Persona = "student" | "teacher" | "map" | "curriculum" | "school";
 
 interface ToastItem extends Toast {
   id: number;

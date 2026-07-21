@@ -3,11 +3,15 @@ import { SegmentedControl } from "./ui/components";
 import { StudentApp } from "./ui/student/StudentApp";
 import { TeacherConsole } from "./ui/teacher/TeacherConsole";
 import { LearningMap } from "./ui/map/LearningMap";
+import { CurriculumExplorer } from "./ui/curriculum/CurriculumExplorer";
+import { SchoolStudio } from "./ui/school/SchoolStudio";
 
 const PERSONA_OPTS: { value: Persona; label: string }[] = [
   { value: "student", label: "🎒 Student" },
   { value: "teacher", label: "🧑‍🏫 Teacher" },
-  { value: "map", label: "🗺️ Learning Map" },
+  { value: "map", label: "🗺️ Map" },
+  { value: "curriculum", label: "📚 Curriculum" },
+  { value: "school", label: "🏫 School" },
 ];
 
 export function App() {
@@ -59,6 +63,8 @@ export function App() {
         {persona === "student" && <StudentApp />}
         {persona === "teacher" && <TeacherConsole />}
         {persona === "map" && <LearningMap />}
+        {persona === "curriculum" && <CurriculumExplorer />}
+        {persona === "school" && <SchoolStudio />}
       </main>
 
       {/* Toast layer */}

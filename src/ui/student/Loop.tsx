@@ -72,23 +72,32 @@ function QuestionCard({ item, unitTitle, aiFree, onResolve }: { item: Item; unit
       )}
 
       {revealed && (
-        <div className="row" style={{ justifyContent: "space-between" }}>
-          <div className={`small`} style={{ color: selected === item.correctIndex ? "var(--good)" : "var(--bad)", fontWeight: 650 }}>
-            {item.aiFree ? "" : app.tomoe.encourage(selected === item.correctIndex, { style: "intro-questions-responses", interests: [], band: "Elem", aiDoorwayAllowed: true })}
+        <>
+          {/* Why the answer is right, in curriculum terms. */}
+          <div className="card card-pad" style={{ background: "var(--bg-sunken)", padding: 12 }}>
+            <div className="small" style={{ fontWeight: 650, marginBottom: 3 }}>
+              {selected === item.correctIndex ? "✓ Correct" : "✕ Not quite"}
+            </div>
+            <div className="small muted">{item.rationale}</div>
           </div>
-          <button
-            className="btn"
-            onClick={() =>
-              onResolve({
-                correct: selected === item.correctIndex,
-                firstTry: hintLevel === 0,
-                hintToTerminal: hintLevel >= 2,
-              })
-            }
-          >
-            Continue →
-          </button>
-        </div>
+          <div className="row" style={{ justifyContent: "space-between" }}>
+            <div className={`small`} style={{ color: selected === item.correctIndex ? "var(--good)" : "var(--bad)", fontWeight: 650 }}>
+              {item.aiFree ? "" : app.tomoe.encourage(selected === item.correctIndex, { style: "intro-questions-responses", interests: [], band: "Elem", aiDoorwayAllowed: true })}
+            </div>
+            <button
+              className="btn"
+              onClick={() =>
+                onResolve({
+                  correct: selected === item.correctIndex,
+                  firstTry: hintLevel === 0,
+                  hintToTerminal: hintLevel >= 2,
+                })
+              }
+            >
+              Continue →
+            </button>
+          </div>
+        </>
       )}
     </div>
   );
@@ -138,19 +147,52 @@ function InstructionPhase({ unit }: { unit: Unit }) {
   const ctx = tutorCtx(app, unit);
   const item = useMemo(() => app.itemBank.build(unit, "check", 1, `n${nodeIdx}`)[0], [app, unit, nodeIdx]);
 
+  const legend = app.graph.meta.codeLegend;
+
   return (
     <div className="stack gap-16">
       <div className="row" style={{ justifyContent: "space-between" }}>
-        <span className="badge-soft">Concept {nodeIdx + 1} / {unit.conceptNodes.length}</span>
+        <span className="badge-soft">Concept block {nodeIdx + 1} / {unit.conceptNodes.length}</span>
         <span className="small muted">{ctx.style.replaceAll("-", " ")}</span>
       </div>
+
+      {/* The concept blocks for this unit, straight from the curriculum map. */}
+      <div className="card card-pad" style={{ background: "var(--bg-sunken)", padding: 14 }}>
+        <div className="small muted" style={{ marginBottom: 8 }}>Concept blocks in this unit</div>
+        <div className="stack gap-4">
+          {unit.conceptNodes.map((n, i) => (
+            <div key={n.id} className="row gap-8" style={{ opacity: i < rec.nodesExposed ? 1 : i === nodeIdx ? 1 : 0.45 }}>
+              <span className="chip code" style={{ minWidth: 26, justifyContent: "center", background: i < rec.nodesExposed ? "var(--good-soft)" : i === nodeIdx ? "var(--accent-soft)" : undefined, borderColor: i === nodeIdx ? "var(--accent)" : undefined }}>
+                {i < rec.nodesExposed ? "✓" : i + 1}
+              </span>
+              <span className="small" style={{ fontWeight: i === nodeIdx ? 700 : 500 }}>{n.title}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="tomoe">
         <div className="tomoe-face">とも</div>
         <div className="stack gap-4">
           <strong style={{ fontSize: 15 }}>{node.title}</strong>
           <span className="small">{app.tomoe.teach(unit, node, ctx)}</span>
+          {app.tomoe.howThisRuns(unit) && <span className="small muted">{app.tomoe.howThisRuns(unit)}</span>}
         </div>
       </div>
+
+      {/* Delivery / practice / proof, verbatim from the workbook row. */}
+      <div className="row wrap gap-8">
+        {unit.deliveryCodes.map((c) => (
+          <span key={c} className="chip code" title={legend[c]}>{c} · {legend[c]?.split(" (")[0]}</span>
+        ))}
+      </div>
+      <div className="stack gap-8">
+        {unit.practiceSpec && <div className="small"><strong>Practice:</strong> <span className="muted">{unit.practiceSpec}</span></div>}
+        {unit.masteryProofSpec && <div className="small"><strong>Mastery proof (AI-free):</strong> <span className="muted">{unit.masteryProofSpec}</span></div>}
+        {unit.scholarDepthSpec && <div className="small"><strong>Scholar depth:</strong> <span className="muted">{unit.scholarDepthSpec}</span></div>}
+        {unit.boardRef && <div className="small muted">📘 {unit.boardRef}</div>}
+      </div>
+
       <QuestionCard
         key={item.id}
         item={item}

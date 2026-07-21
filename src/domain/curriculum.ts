@@ -60,14 +60,44 @@ export interface PrereqEdge {
   type: PrereqEdgeType;
 }
 
+/** Provenance notes written by the curriculum team (workbook README). */
+export interface CurriculumNotes {
+  title: string;
+  purpose: string;
+  howToRead: string;
+  designRule: string;
+  sourcing: string;
+  version: string;
+  scopeDecisions: string[];
+}
+
+/** Units + estimated teaching hours per subject, for one grade. */
+export interface GradeCoverage {
+  grade: number;
+  bySubject: Record<string, { units: number; hours: number }>;
+  totalUnits: number;
+  totalHours: number;
+}
+
 export interface CurriculumGraphData {
   meta: {
     source: string;
     title: string;
     generatedBy: string;
+    /** Authoritative delivery-code legend, parsed from the workbook README. */
     codeLegend: Record<string, string>;
-    counts: { subjects: number; units: number; edges: number };
+    legendRaw: string;
+    notes: CurriculumNotes;
+    counts: {
+      subjects: number;
+      units: number;
+      edges: number;
+      conceptNodes: number;
+      hours: number;
+      grades: number;
+    };
   };
+  coverage: GradeCoverage[];
   subjects: Subject[];
   units: Unit[];
   edges: PrereqEdge[];
