@@ -55,14 +55,40 @@ Regenerate the curriculum graph from the workbook after editing `seed/`:
 npm run import:curriculum
 ```
 
-## Deploying (Cloudflare Pages)
+## Sharing it
+
+No environment variables or database are needed — the graph is compiled into the
+bundle and per-session state lives in the browser via the `CampusStore` port. That
+makes every hosting route trivial.
+
+### Cloudflare Pages (permanent link, redeploys on every push)
+
+In the Pages project settings:
 
 - **Build command:** `npm run build`
 - **Output directory:** `dist`
-- SPA routing fallback lives in `public/_redirects`.
+- **Framework preset:** none / Vite
 
-No environment variables or database are needed — the graph ships as JSON and
-per-session state is stored in the browser via the `CampusStore` port.
+> ⚠️ This project originally deployed as plain static files from `public/`. If those
+> old settings are still in place (no build command), the deploy will serve nothing —
+> update them to the two values above.
+
+SPA routing fallback lives in `public/_redirects`.
+
+### Single-file build (no hosting at all)
+
+```bash
+npm run build:standalone     # -> dist/standalone.html (~870 KB, fully self-contained)
+```
+
+One HTML file with CSS and JS inlined and zero external requests. Email it, put it on
+a USB stick, or drop it into any static host / intranet. Opens straight from disk.
+
+### Other static hosts
+
+Any of these work with build command `npm run build` and output `dist`:
+Netlify, Vercel, GitHub Pages (set Vite's `base` if serving from a subpath),
+S3 + CloudFront, or `npx serve dist` on a laptop.
 
 ## Project structure
 
