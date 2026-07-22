@@ -1,0 +1,42 @@
+/**
+ * Overrides for the embedded/standalone Math Lab build.
+ *
+ * global.css assumes it owns the document (it sets html/body height and the page
+ * background). When this build is embedded in a host page, it must not: the
+ * wrapper carries its own ground instead.
+ */
+
+html, body, #root {
+  height: auto;
+  min-height: 100%;
+}
+
+/* The app commits to a light visual world. Pin it so a host page's dark theme
+   cannot half-apply and leave unreadable text on an inherited background. */
+.tomo-standalone {
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font);
+  line-height: 1.45;
+  color-scheme: light;
+}
+
+.tomo-standalone .app-main {
+  flex: 1;
+}
+
+/* The shell drops the persona switcher, so the header is two columns not three. */
+.tomo-standalone .app-header-inner > :last-child {
+  justify-self: end;
+}
+
+@media (max-width: 900px) {
+  .tomo-standalone .grid.two-col,
+  .tomo-standalone .grid.three-col,
+  .tomo-standalone .grid.four-col {
+    grid-template-columns: 1fr;
+  }
+}
