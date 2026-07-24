@@ -228,7 +228,91 @@ tr:last-child td{border-bottom:0}
 .kpi{padding:14px 16px}
 .kpi .v{font-size:24px;font-weight:700;font-family:var(--serif)}
 .kpi .l{font-size:12px;color:var(--ink3);font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+
+/* ===== Student AI (Tomo brand) ===== */
+:root{--brand:#A93B25;--brand-ink:#8C2F1D;--brand-soft:#F6E7E2}
+@media (prefers-color-scheme: dark){:root{--brand:#D96A50;--brand-ink:#E28D77;--brand-soft:#3A211B}}
+:root[data-theme="light"]{--brand:#A93B25;--brand-ink:#8C2F1D;--brand-soft:#F6E7E2}
+:root[data-theme="dark"]{--brand:#D96A50;--brand-ink:#E28D77;--brand-soft:#3A211B}
+.btn.brand{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.brand:hover{filter:brightness(1.08)}
+.pill.p-brand{background:var(--brand-soft);color:var(--brand-ink)}
+.sa-logo{display:flex;align-items:center;gap:9px;padding:2px 8px 12px}
+.sa-logo img{height:30px;border-radius:7px;display:block}
+.sa-logo .prod{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);font-weight:700}
+.navgrp{margin-top:10px}
+.navgrp>button.grp{display:flex;align-items:center;width:100%;text-align:left;padding:8px 10px;border-radius:8px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);font-weight:700}
+.navgrp>button.grp:hover{background:var(--panel2)}
+.navgrp .chev{margin-left:auto;transition:transform .15s;font-size:12px}
+.navgrp.open .chev{transform:rotate(90deg)}
+.navgrp .items{display:none}
+.navgrp.open .items{display:block}
+.navbtn.sub{padding:7px 10px 7px 20px;font-size:13.5px}
+.navbtn .mini{margin-left:auto;font-size:10.5px;font-weight:700;color:var(--ink3)}
+.navbtn[aria-current="true"].brandy{background:var(--brand-soft);color:var(--brand-ink)}
+/* level ribbon */
+.lvl{display:flex;gap:3px;align-items:center}
+.lvl i{width:22px;height:8px;border-radius:3px;background:var(--panel2);position:relative}
+.lvl i.exp{outline:2px solid var(--line2);outline-offset:1px}
+.lvl i.on{background:var(--blue)}
+.lvl i.ahead{background:var(--violet)}
+.lvl i.gap{background:var(--amber)}
+.lvl .cap{font-size:11px;color:var(--ink3);font-weight:600;margin-left:4px}
+/* timetable */
+.tt{display:grid;grid-template-columns:64px repeat(5,1fr);gap:5px;min-width:640px}
+.tt .hd{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);text-align:center;padding:5px 2px}
+.tt .hd.today{color:var(--brand-ink)}
+.tt .tm{font-size:11px;color:var(--ink3);font-weight:600;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-variant-numeric:tabular-nums}
+.ttc{border-radius:8px;padding:7px 9px;font-size:12.5px;font-weight:600;background:var(--panel2);color:var(--ink2);border:1px solid transparent;min-height:44px;display:flex;flex-direction:column;justify-content:center;gap:1px;text-align:left;width:100%}
+.ttc small{font-weight:500;font-size:11px;color:var(--ink3)}
+.ttc.cb{background:var(--brand-soft);color:var(--brand-ink)}
+.ttc.path-scholar{background:var(--blue-soft);color:var(--blue)}
+.ttc.path-builder{background:var(--amber-soft);color:var(--amber)}
+.ttc.path-explorer{background:var(--green-soft);color:var(--green)}
+.ttc.path-communicator{background:var(--violet-soft);color:var(--violet)}
+.ttc.path-artist{background:var(--red-soft);color:var(--red)}
+.ttc.path-athlete{background:var(--accent-soft);color:var(--accent-ink)}
+.ttc.click{cursor:pointer;border-color:currentColor;border-style:solid}
+.ttc.click:hover{filter:brightness(.96)}
+.ttc.now{outline:2px solid var(--brand);outline-offset:1px}
+/* match & order tasks */
+.matchgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.mcol{display:flex;flex-direction:column;gap:8px}
+.mitem{padding:10px 12px;border:1px solid var(--line2);border-radius:8px;text-align:left;background:var(--panel);font-size:14px}
+.mitem.sel{border-color:var(--brand);background:var(--brand-soft)}
+.mitem.paired{border-color:var(--green);background:var(--green-soft);cursor:default}
+.mitem.mispair{border-color:var(--red);background:var(--red-soft)}
+.orderlist{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.oitem{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line2);border-radius:8px;background:var(--panel);font-size:14px}
+.oitem .num2{width:22px;height:22px;border-radius:50%;background:var(--panel2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--ink3);flex-shrink:0}
+.oitem.ok .num2{background:var(--green);color:#fff}
+.oitem.bad .num2{background:var(--red);color:#fff}
+.oitem .mv{margin-left:auto;display:flex;gap:4px}
+.oitem .mv button{padding:2px 8px;border:1px solid var(--line2);border-radius:6px;font-size:12px}
+/* format chips */
+.fmt{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:5px 11px;border-radius:7px;background:var(--panel2);color:var(--ink2);border:1px dashed var(--line2)}
+.fmt.on{background:var(--brand-soft);color:var(--brand-ink);border-style:solid;border-color:transparent}
+/* message thread */
+.msg{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
+.msg:last-child{border-bottom:0}
+.msg .who{width:34px;height:34px;border-radius:50%;background:var(--brand-soft);color:var(--brand-ink);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12.5px;flex-shrink:0}
+.msg .who.me{background:var(--panel2);color:var(--ink2)}
+.msg .ctx{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;color:var(--ink3);background:var(--panel2);padding:2px 8px;border-radius:5px;margin-bottom:4px}
+/* diag steps */
+.diagsteps{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.dstep{font-size:12px;font-weight:600;padding:4px 11px;border-radius:99px;background:var(--panel2);color:var(--ink3)}
+.dstep.cur{background:var(--brand);color:#fff}
+.dstep.done{background:var(--brand-soft);color:var(--brand-ink)}
+/* map subject row */
+.mrow{padding:16px 0;border-bottom:1px solid var(--line)}
+.mrow:last-child{border-bottom:0}
+.pathcard{border-radius:var(--r);border:1px solid var(--line);padding:14px 16px;background:var(--panel)}
+.stagechips{display:flex;gap:5px}
+.stagechips span{font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px;background:var(--panel2);color:var(--ink3)}
+.stagechips span.cur{background:var(--brand);color:#fff}
+@media(max-width:860px){.sa-logo img{height:24px}.tt{min-width:600px}}
 </style>
+<script>window.TOMO_LOGO="data:image/png;base64,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";</script>
 <div id="app"></div>
 <div id="toasts"></div>
 <script>
@@ -392,10 +476,11 @@ const LIVE_SCRIPT={
 const LIVE_MAX=25;
 
 /* ============================= STATE ============================= */
-const LS_KEY="tomo-k12-light-v1";
+const LS_KEY="tomo-k12-light-v2";
 function defaultState(){
  return {
-  role:"teacher", teacherView:"home", schedView:"day", drawer:null,
+  role:"sa", sa:saDefault(),
+  teacherView:"home", schedView:"day", drawer:null,
   studentView:"home", activeStudent:"s4",
   day:9, /* day of the 15-day topic window */
   live:{running:false,tick:0,events:[],per:{
@@ -1069,22 +1154,838 @@ function sMCRun(){
   </div>`;
 }
 
+/* ============================= STUDENT AI · DATA ============================= */
+const SA_STUDENT={name:"Kabir Shah",init:"KS",grade:5};
+const SA_LEVELS={min:3,max:7};
+const SA_SUBJECTS=[
+ {id:"english",name:"English",level:3,interp:"Foundational support required",
+  strength:"Oral storytelling; enjoys being read to.",gap:"Reading comprehension and paragraph writing sit at Grade 3.",
+  support:"Daily foundation track + Wednesday session with Ms. Iyer.",
+  next:"Finish the Grade 3 comprehension repair, then rejoin Grade 5 Unit 1 with supports.",
+  evidence:"Diagnostic · 4 foundation activities · teacher observation",
+  recent:"Foundation activity on finding the main idea completed — one of three repair steps done.",
+  topics:[["Comprehension III: summary & inference depth","repair"],["Literature: first novel study","not_started"],["Poetry: figurative language I","not_started"],["Writing: multi-paragraph composition & informal letters","repair"],["Creative writing: story craft","not_started"],["Grammar IV: tenses in depth & direct speech","not_started"],["Vocabulary & spelling mastery","not_started"],["Oral: group discussion & recitation","in_progress"]],
+  foundation:[["G3 U1 · Fluent independent reading","completed"],["G3 U3 · Comprehension strategies I","in_progress"],["G3 U2 · Paragraph writing","not_started"]]},
+ {id:"math",name:"Mathematics",level:4,interp:"Selected prerequisites need revision",
+  strength:"Mental arithmetic; spots patterns quickly.",gap:"Grade 4 Fractions (equivalence, number line) needs revision before Grade 5 fraction operations.",
+  support:"Grade 4 Fractions refresher woven into the current unit.",
+  next:"Pass the Fractions: Operations check, then continue to Decimals.",
+  evidence:"Diagnostic · Concept Block checks · practice history",
+  recent:"Check on comparing unlike fractions passed — prerequisite flag on G4 Fractions cleared for two blocks.",
+  topics:[["Numbers to Crores","completed"],["Operations and Order (BODMAS)","completed"],["Factors, Multiples, HCF and LCM","completed"],["Fractions: Operations","in_progress"],["Decimals","not_started"],["Geometry: Angles, Triangles and Circles","not_started"],["Perimeter, Area and Volume","not_started"],["Data Handling and Averages","not_started"]],
+  foundation:[["G4 U5 · Fractions (equivalence & number line)","in_progress"]]},
+ {id:"science",name:"Science",level:6,interp:"Ready for accelerated learning",
+  strength:"Investigation design; explains reasoning clearly.",gap:"None open — working above grade level.",
+  support:"Accelerated track: Grade 6 preview unlocks after the Grade 5 Mastery Check.",
+  next:"Finish Light: Reflection and Refraction, then sit the Grade 5 Mastery Check.",
+  evidence:"Diagnostic · 6 completed units · Mastery Checks",
+  recent:"Plane and curved mirrors completed at 84% — Mastery Map updated.",
+  topics:[["Plant Reproduction","completed"],["Animal Life Processes","completed"],["Human Body Systems","completed"],["Health and Disease","completed"],["Matter: Solutions and Mixtures","completed"],["Force, Motion and Energy","completed"],["Light: Reflection and Refraction","in_progress"],["The Solar System and Earth","not_started"],["Natural Resources and Conservation","not_started"]]},
+ {id:"hindi",name:"Hindi",level:5,interp:"On grade level",
+  strength:"Shruti-lekh (dictation) accuracy; expressive reading.",gap:"None open.",
+  support:"Standard track.",next:"Continue Muhavare aur Lokoktiyan.",
+  evidence:"Diagnostic · Concept Block checks",
+  recent:"Apathit Gadyansh unit completed.",
+  topics:[["Apathit Gadyansh: Building Independence","completed"],["Vyakaran Vistaar: Sangya Bhed aur Kriya-Visheshan","completed"],["Muhavare aur Lokoktiyan","in_progress"],["Patra Lekhan: Informal Letters","not_started"],["Sahitya: Kahani aur Kavita Analysis","not_started"],["Vachan Kaushal: Speaking and Listening","not_started"]]},
+ {id:"socsci",name:"Social Science",level:5,interp:"On grade level — strong map skills",
+  strength:"Map work and atlas skills run ahead of grade.",gap:"None open.",
+  support:"Standard track with stretch atlas tasks.",next:"Continue Environments of the World.",
+  evidence:"Diagnostic · Concept Block checks · project work",
+  recent:"Continents and Oceans completed.",
+  topics:[["The Globe: Latitudes and Longitudes","completed"],["Continents and Oceans","completed"],["Environments of the World","in_progress"],["Great Civilizations of the World","not_started"],["India's Freedom Story","not_started"],["Our Government: Local to National","not_started"],["Rights, Duties and the Citizen","not_started"]]},
+ {id:"computer",name:"Computer",level:5,interp:"On grade level",
+  strength:"Debugging patience in Scratch.",gap:"None open.",
+  support:"Standard track.",next:"Continue Variables and Score-Keeping.",
+  evidence:"Concept Block checks · project artefacts",
+  recent:"Scratch Stories and Games completed.",
+  topics:[["Scratch Stories and Games","completed"],["Variables and Score-Keeping","in_progress"],["Presenting Ideas with Slides","not_started"],["Spreadsheet Toolbox","not_started"],["How the Internet Works (Story Version)","not_started"],["Passwords and Digital Footprints","not_started"]]}
+];
+function saSubject(id){return SA_SUBJECTS.find(s=>s.id===id)}
+/* Science demo strand — real workbook rows (Science 1-8) */
+const SA_SCI={
+ topic:"Light: Reflection and Refraction",unit:"Grade 5 · Unit 7",
+ prereq:{title:"Grade 4 · U7 Light and Sound",note:"Secure at diagnostic."},
+ subs:[
+  {id:"L1",n:1,title:"Light travels straight & the reflection law",mins:20},
+  {id:"L2",n:2,title:"Plane and curved mirrors",mins:20},
+  {id:"L3",n:3,title:"Refraction: bending in water",mins:20},
+  {id:"L4",n:4,title:"Colours and the spectrum",mins:20},
+  {id:"L5",n:5,title:"Shadows and eclipses",mins:20}],
+ g6:{title:"Grade 6 · U2 Physics: Light — reflection basics",
+  blocks:["Luminous and non-luminous bodies","Rectilinear propagation of light","Reflection at a plane surface","Laws of reflection (intro)","Real vs virtual image (intro)"]},
+ g7:{title:"Grade 7 · U7 Physics: Light — reflection and mirrors",note:"Unlocks after the Grade 6 strand."}
+};
+const SA_LESSON={
+ L3:{core:"Put a pencil in a glass of water and look from the side — it seems to bend at the surface. The pencil is fine; the <b>light</b> changed. When light passes from water into air it changes speed, and that makes it change direction at the surface. This bending is called <b>refraction</b>.",
+  fmt:"Interactive explanation + short simulation",
+  why:"Your Science diagnostic shows you're ready to move quickly, so this lesson is compact and leads with a try-it-yourself demo instead of a long reading. The objective is the standard Grade 5 one."},
+ L4:{core:"White light is a mixture. A glass <b>prism</b> splits it into a band of colours — the <b>spectrum</b> — because each colour bends by a slightly different amount. A rainbow is the sky doing the same trick with raindrops.",
+  fmt:"Video + diagram",why:"Compact track: one demonstration video and a labelled diagram, then straight to application."},
+ L5:{core:"A <b>shadow</b> forms when an opaque object blocks light: source, object, screen. An <b>eclipse</b> is a shadow at astronomical scale — in a solar eclipse the Moon blocks sunlight from reaching part of Earth.",
+  fmt:"Illustrated story + diagram",why:"Compact track with an extension question on eclipse geometry."}
+};
+const SA_QB={
+ rev:{L3:{q:"(Revision · Mirrors) The image in a plane mirror is…",opts:["upside-down","left-right reversed and upright","always smaller","colourless"],a:1,fb:"Plane mirrors keep the image upright but swap left and right."},
+      L4:{q:"(Revision · Refraction) A pencil in water looks bent because light…",opts:["stops at the surface","changes direction at the water surface","is reflected back","becomes coloured"],a:1,fb:"Light changes speed and direction at the surface — refraction."},
+      L5:{q:"(Revision · Spectrum) A prism turns white light into…",opts:["darkness","a band of colours","one brighter beam","heat only"],a:1,fb:"White light splits into the spectrum because each colour bends differently."}},
+ core:{
+  L3:[
+   {type:"mcq",q:"Why does a coin at the bottom of a bowl of water look raised?",opts:["The coin floats slightly","Light from the coin bends at the water surface","Water magnifies everything","The coin reflects more light"],a:1,fb:"Refraction bends the light from the coin, so your brain places it higher than it is."},
+   {type:"order",q:"Arrange the steps to explain why the pencil looks bent:",items:["Light from the pencil travels up through the water","The light changes direction at the water surface","The bent rays reach your eyes","Your brain assumes the light travelled straight"],fb:"Light bends at the surface — the brain's straight-line assumption makes the pencil look broken."},
+   {type:"match",q:"Match each idea to its meaning:",pairs:[["Reflection","Light bounces off a surface"],["Refraction","Light bends when it changes medium"],["Spectrum","White light split into colours"],["Shadow","Light blocked by an opaque object"]],fb:"These four ideas are the whole Light unit in miniature."}],
+  L4:[
+   {type:"mcq",q:"A rainbow needs…",opts:["sunlight and raindrops","only rain","a mirror in the sky","hot air"],a:0,fb:"Raindrops refract and reflect sunlight, splitting it into the spectrum."},
+   {type:"mcq",q:"The prism splits white light because each colour…",opts:["has a different speed in glass, so it bends differently","weighs a different amount","is reflected a different number of times","is absorbed by the glass"],a:0,fb:"Each colour bends by a slightly different amount — that fans them out."}],
+  L5:[
+   {type:"mcq",q:"Which three things are needed to form a shadow?",opts:["Source, opaque object, screen","Mirror, lens, screen","Source, transparent object, wall","Two sources and a mirror"],a:0,fb:"A shadow needs a light source, an opaque object to block it, and a surface."},
+   {type:"mcq",q:"In a solar eclipse…",opts:["Earth blocks moonlight","the Moon blocks sunlight from part of Earth","the Sun switches off briefly","clouds cover the Sun"],a:1,fb:"The Moon's shadow falls on Earth — an eclipse is a shadow at astronomical scale."}]},
+ cfu:{
+  L3:[{q:"Refraction happens because light…",opts:["changes speed when it changes medium","gets tired","is absorbed by water","always curves"],a:0,fb:"The speed change at the boundary causes the direction change."},
+      {q:"Where does the bending happen?",opts:["Everywhere in the water","Exactly at the surface between water and air","Only at the bottom","Inside your eye"],a:1,fb:"The direction changes at the boundary between the two materials."}],
+  L4:[{q:"The order of the spectrum is fixed because…",opts:["each colour bends a fixed, slightly different amount","the prism paints the light","red is heaviest","we name them that way"],a:0,fb:"Violet bends most, red least — every prism gives the same order."},
+      {q:"Which everyday sight is refraction + reflection together?",opts:["A rainbow","A shadow","An echo","A sunset"],a:0,fb:"Raindrops refract, reflect internally, and refract again."}],
+  L5:[{q:"A shadow never shows the object's…",opts:["outline","size","colour and surface detail","position"],a:2,fb:"Blocked light gives outline only — no colour or detail."},
+      {q:"A lunar eclipse happens when…",opts:["Earth's shadow falls on the Moon","the Moon blocks the Sun","the Moon turns off","stars align"],a:0,fb:"Earth sits between Sun and Moon, so Earth's shadow crosses the Moon."}]}
+};
+const SA_MC=[
+ {bloom:"Remember",q:"Which list contains ONLY luminous objects?",opts:["Sun, lit bulb, flame","Moon, mirror, Sun","Candle, book, wall","Star, Moon, glass"],a:0},
+ {bloom:"Understand",q:"A shadow forms when…",opts:["light passes through an object","an opaque object blocks light from reaching a surface","a mirror reflects light","an object is luminous"],a:1},
+ {bloom:"Apply",q:"You move a toy closer to the lamp. Its shadow on the wall…",opts:["gets bigger","gets smaller","disappears","turns grey"],a:0},
+ {bloom:"Analyse",q:"A coin under water looks raised, but a coin under glass sheet doesn't move. The difference is that…",opts:["water refracts the light from the coin","glass is opaque","water magnifies","the coin floats"],a:0},
+ {bloom:"Evaluate",q:"Which setup is a FAIR test that light travels in straight lines?",opts:["Three cards with aligned holes and a candle — then misalign one","A torch shone at a mirror","Reading in dim light","A prism in sunlight"],a:0},
+ {bloom:"Create",q:"To see over a wall without a ladder, the best design uses…",opts:["a brighter torch","two mirrors at 45° (a periscope)","a bigger pinhole","a glass of water"],a:1}
+];
+/* English foundation + Math check micro-activities */
+const SA_ENG={
+ title:"Foundation · Finding the main idea",unit:"Grade 3 · U3 Comprehension strategies I",
+ passage:"Ravi's grandmother keeps a small garden on her roof. Every morning she waters the tomato plants, checks the chilli pots, and talks to the tulsi plant. On Sundays, Ravi helps her pick whatever is ripe.",
+ items:[{q:"What is this passage mainly about?",opts:["Ravi's school","Grandmother's rooftop garden","How to cook tomatoes","Sunday breakfast"],a:1,fb:"Every sentence points to the garden — that's the main idea."},
+        {q:"Choose the word that completes it: On Sundays, Ravi helps pick whatever is ____.",opts:["ripe","asleep","broken","loud"],a:0,fb:"'Ripe' — ready to be picked. New word for your journal."}],
+ why:"Your reading level is being rebuilt from Grade 3 so Grade 5 texts feel possible, not impossible. Short passages, big wins — the goal doesn't change, the route does."
+};
+const SA_MATH={
+ title:"Check · Fractions: Operations",unit:"Grade 5 · U4 (with a Grade 4 refresher woven in)",
+ items:[{q:"(Refresher · Grade 4) Which fraction is equivalent to 1/2?",opts:["2/4","1/4","2/3","3/5"],a:0,fb:"Multiply top and bottom by the same number: 1/2 = 2/4."},
+        {q:"1/2 + 1/4 = ?",opts:["3/4","2/6","1/6","2/4"],a:0,fb:"Make the denominators match: 2/4 + 1/4 = 3/4."},
+        {q:"2/5 of 20 = ?",opts:["8","4","10","15"],a:0,fb:"One fifth of 20 is 4, so two fifths is 8."}],
+ why:"The diagnostic found a Grade 4 gap in fraction equivalence, so every Grade 5 fraction check starts with one refresher item."
+};
+/* PATH areas — from the PATH Blocks workbook */
+const SA_PATH_STAGES=["Sample","Specialise","Master"];
+const SA_PATHS=[
+ {id:"scholar",name:"Scholar",q:"Can I understand, prove, verify or create knowledge?",proof:"Reasoning, proof, advanced problem work",
+  stage:0,domain:"Number puzzles & proof games",coach:"Mr. Dutta",cur:"Weekly puzzle ladder — currently on 'always, sometimes, never' number claims",recent:"Explained why an odd + odd is always even, to the group",next:"Deepen",nextWhy:"Stay in the same domain and raise the standard of reasoning."},
+ {id:"builder",name:"Builder",q:"Can I make, repair or ship something useful?",proof:"A functional object, system, service or venture",
+  stage:1,domain:"Rapid prototyping (repair & redesign)",coach:"Ms. Fernandes",cur:"12-week cycle · week 5: repair-and-improve a classroom bookstand",recent:"Prototype v2 survived the 20-book load test",next:"Connect",nextWhy:"Add the workshop coach's review without changing the peer group."},
+ {id:"explorer",name:"Explorer",q:"Can I discover and explain something real?",proof:"Field evidence, investigation, map, catalogue",
+  stage:0,domain:"Campus field study",coach:"Ms. Iyer",cur:"Mapping where puddles form after rain, and why",recent:"First field map with three observations",next:"Broaden",nextWhy:"Try an adjacent domain — the weather station — within Explorer."},
+ {id:"communicator",name:"Communicator",q:"Can I create understanding, trust or agreement?",proof:"Conversation, explanation, debate, public output",
+  stage:0,domain:"Storytelling circle",coach:"Ms. Nair",cur:"Preparing a 2-minute retell of a folk tale for Grade 2 buddies",recent:"Practised opening lines with a partner",next:"Deepen",nextWhy:"Same domain, bigger audience next cycle."},
+ {id:"artist",name:"Artist",q:"Can I create work with craft, intention and taste?",proof:"Portfolio, exhibition, performance",
+  stage:0,domain:"Watercolour journal",coach:"Mr. Sen",cur:"A five-page colour study of the school garden",recent:"Page 3: monsoon greens",next:"Deepen",nextWhy:"Refine wet-on-wet technique before broadening."},
+ {id:"athlete",name:"Athlete",q:"Can I develop physical capability and perform?",proof:"Measured performance and healthy training habits",
+  stage:0,domain:"Multi-sport (football + athletics)",coach:"Coach Vikram",cur:"Multi-sport by design — up to Grade 5 no single-sport identity",recent:"Improved 400 m time by 6 seconds this term",next:"Broaden",nextWhy:"Sampling stays broad at this age; the age gate protects against early specialisation."}
+];
+function saPath(id){return SA_PATHS.find(p=>p.id===id)}
+const SA_BUILDER_BLOCK={
+ challenge:"Repair-and-improve: the classroom bookstand wobbles and tips when full. Make it stable, keep it light, hand it back better than you found it.",
+ standard:"Evidence standard: a prototype that survives repeated tests and improves after failure (with version photos and a challenge log).",
+ milestones:[["Weeks 1–2 · Understand: interview users, measure the wobble","completed"],["Weeks 3–4 · Prototype v1: cardboard + dowel test rig","completed"],["Weeks 5–6 · Prototype v2: wider base, load testing","in_progress"],["Weeks 7–9 · Build the real repair with the workshop coach","not_started"],["Weeks 10–12 · Hand-over, user feedback, reflection","not_started"]]
+};
+/* Weekly timetable — elementary rhythm: 2 Concept Blocks + 6 PATH Blocks daily */
+const SA_DAYS=["Mon","Tue","Wed","Thu","Fri"];
+const SA_TODAY=2; /* Wednesday */
+const SA_CB_WEEK=[["English","Mathematics"],["Mathematics","Hindi"],["Science","English"],["English","Social Science"],["Mathematics","Computer"]];
+const SA_TIMES=["08:30","09:15","10:15","11:00","11:45","13:00","13:45","14:30"];
+const SA_PATH_ORDER=["scholar","builder","explorer","communicator","artist","athlete"];
+
+/* ============================= STUDENT AI · STATE ============================= */
+function saDefault(){
+ return {
+  view:"home",param:null,grp:{subj:true,path:false},
+  diag:{status:"done",step:0,right:0,answered:null},
+  sci:{sub:{L1:{done:true,score:88},L2:{done:true,score:84},L3:{done:false},L4:{done:false},L5:{done:false}},
+       mastery:{status:"locked"},unlocked:false},
+  player:null,mcRun:null,
+  eng:{done:false,run:null},
+  math:{done:false,run:null},
+  builder:{logged:false},
+  assigns:{a1:{status:"not_started"},a2:{status:"revision"},a3:{status:"in_progress"}},
+  extraMsgs:[],
+  events:[
+   {day:"Yesterday",txt:"Science · Plane and curved mirrors completed at 84% — Mastery Map updated."},
+   {day:"Monday",txt:"English · Foundation reading session with Ms. Iyer recorded — support log updated."},
+   {day:"Last Friday",txt:"Builder · Prototype v2 passed the 20-book load test — evidence added to your challenge log."}
+  ]
+ };
+}
+function saEvent(txt){state.sa.events.unshift({day:"Today",txt})}
+function saSciDone(){return SA_SCI.subs.filter(s=>state.sa.sci.sub[s.id].done).length}
+const SA_ASSIGNS=[
+ {id:"a1",area:"Science · Light",title:"Shadow and eclipse observation sheet",due:"Friday",fmt:"Printed sheet — complete on paper, then scan & upload",
+  instr:"Use the torch-and-globe kit at home or in the studio. Record three shadow observations and one eclipse diagram. Neat labels matter more than fancy drawing.",link:"topic"},
+ {id:"a2",area:"English",title:"Paragraph: My favourite place",due:"Tuesday (submitted)",fmt:"Written — typed or photographed notebook page",
+  instr:"One paragraph: topic sentence, three supporting details, concluding sentence.",
+  feedback:"Lovely details, Kabir! Now group them — one part for what you see, one for what you hear. Use your topic-sentence starter and send it back to me.",link:"english"},
+ {id:"a3",area:"PATH · Builder",title:"Photograph prototype v2 with a one-line caption",due:"Thursday",fmt:"Photo upload to your challenge log",
+  instr:"One clear photo of the wider base, plus a caption saying what changed from v1 and why.",link:"builder"}
+];
+const SA_MSGS=[
+ {from:"Ms. Iyer",init:"MI",ctx:"English · Foundation",day:"Yesterday",
+  text:"Great focus in our reading session, Kabir. You found the main idea twice without a prompt. Tomorrow we try a longer passage — same trick: 'What is every sentence pointing at?'"},
+ {from:"Mr. Rao",init:"MR",ctx:"Science · Light",day:"Monday",
+  text:"Your mirrors check was strong. When you reach refraction, try the pencil-in-water demo at the sink before the lesson — you'll enjoy having seen it first."},
+ {from:"Tomo School",init:"T",ctx:"Announcement",day:"Last Friday",
+  text:"PATH showcase is in three weeks. Builders: bring your challenge logs — versions and failures welcome. That's the point."}
+];
+const SA_DIAG_RESULTS=[
+ ["English","Grade 5","Grade 3","Foundational support required"],
+ ["Mathematics","Grade 5","Grade 4","Selected prerequisites need revision"],
+ ["Science","Grade 5","Grade 6","Ready for accelerated learning"],
+ ["Hindi","Grade 5","Grade 5","On grade level"],
+ ["Social Science","Grade 5","Grade 5","On grade level — strong map skills"]
+];
+const SA_DIAG_ITEMS=[
+ {sub:"English",q:"Read: 'The market was loud, bright and full of smells.' Which word tells you about sound?",opts:["bright","loud","full","market"],a:1},
+ {sub:"Mathematics",q:"Which is bigger?",opts:["2/3","3/5","They are equal","Cannot tell"],a:0},
+ {sub:"Science",q:"You see lightning before you hear thunder because…",opts:["light travels faster than sound","thunder happens later","your eyes are quicker than your ears","clouds block sound first"],a:0}
+];
+
+/* ============================= STUDENT AI · ACTIONS ============================= */
+function saGo(view,param){mutate(s=>{s.sa.view=view;s.sa.param=param||null})}
+function saPlayerState(){
+ if(!state.sa.player){
+  const cur=SA_SCI.subs.find(x=>!state.sa.sci.sub[x.id].done);
+  state.sa.player={st:cur?cur.id:"L5",stage:"revision",answered:null,pIdx:0,cIdx:0,cRight:0,
+   order:null,orderDone:false,match:{sel:null,pairs:{},wrong:null}};
+ }
+ return state.sa.player;
+}
+function saShuffleFixed(arr,off){return arr.map((_,i)=>arr[(i+off)%arr.length])}
+function saPracticeItems(st){return[{type:"mcq",rev:true,...SA_QB.rev[st]},...SA_QB.core[st]]}
+function saAdvancePractice(s){
+ const P=s.sa.player;P.pIdx++;P.answered=null;P.order=null;P.orderDone=false;P.match={sel:null,pairs:{},wrong:null};
+ if(P.pIdx>=saPracticeItems(P.st).length){P.stage="cfu";toast("Practice complete — on to the Check for Understanding.")}
+}
+function saFinishCFU(s){
+ const P=s.sa.player;const score=Math.round(100*P.cRight/(SA_QB.cfu[P.st].length+1));
+ s.sa.sci.sub[P.st]={done:true,score};
+ const sub=SA_SCI.subs.find(x=>x.id===P.st);
+ P.stage="done";P.score=score;
+ saEvent(`Science · ${sub.title} completed at ${score}% — Mastery Map updated.`);
+ if(SA_SCI.subs.every(x=>s.sa.sci.sub[x.id].done)&&s.sa.sci.mastery.status==="locked"){
+  s.sa.sci.mastery={status:"window",opened:"today",deadline:"in 8 school days"};
+  saEvent("Science · all Light subtopics complete — Grade 5 Mastery Check unlocked (8-day window).");
+  toast("All subtopics complete — your Grade 5 Mastery Check is unlocked.");
+ }
+}
+function saStartMC(){mutate(s=>{s.sa.mcRun={idx:0,correct:0,answered:null};s.sa.view="mcrun"})}
+function saNextMC(){
+ mutate(s=>{const R=s.sa.mcRun;if(R.answered===SA_MC[R.idx].a)R.correct++;R.idx++;R.answered=null;
+  if(R.idx>=SA_MC.length){
+   const score=Math.round(100*R.correct/SA_MC.length);R.score=score;R.pass=score>=80;
+   if(R.pass){s.sa.sci.mastery={status:"passed",score};s.sa.sci.unlocked=true;
+    saEvent(`Science · Grade 5 Mastery Check passed at ${score}% — Grade 6 “Physics: Light — reflection basics” unlocked.`);
+   }else{saEvent(`Science · Mastery Check attempt at ${score}% — revision plan added; the window stays open.`)}
+  }});
+}
+function saEngRun(){mutate(s=>{s.sa.eng.run={idx:0,answered:null,right:0};s.sa.view="engact"})}
+function saMathRun(){mutate(s=>{s.sa.math.run={idx:0,answered:null,right:0};s.sa.view="mathact"})}
+function saMicroNext(kind){
+ mutate(s=>{const run=s.sa[kind].run;const bank=kind==="eng"?SA_ENG.items:SA_MATH.items;
+  if(run.answered===bank[run.idx].a)run.right++;
+  run.idx++;run.answered=null;
+  if(run.idx>=bank.length){
+   run.doneScore=Math.round(100*run.right/bank.length);
+   if(!s.sa[kind].done){s.sa[kind].done=true;
+    if(kind==="eng"){saSubject("english").foundation[1][1]="completed";saSubject("english").foundation[2][1]="in_progress";
+     saEvent("English · Foundation step complete: finding the main idea — Grade 3 comprehension gap narrowed (2 of 3 repair steps done).");}
+    else{saSubject("math").foundation[0][1]="completed";
+     saEvent("Mathematics · Fractions check passed with the Grade 4 refresher — prerequisite flag cleared for this block.");}
+   }
+  }});
+}
+function saLogBuilder(){
+ mutate(s=>{if(!s.sa.builder.logged){s.sa.builder.logged=true;
+  SA_BUILDER_BLOCK.milestones[2][1]="completed";
+  saEvent("Builder · Week 5 evidence logged: v2 load-test photos — Specialise-stage challenge log updated.");}});
+ toast("Evidence added to your Builder challenge log. Learning Map updated.");
+}
+function saSubmit(id){
+ mutate(s=>{s.sa.assigns[id].status="submitted";
+  const A=SA_ASSIGNS.find(a=>a.id===id);
+  saEvent(`${A.area} · Assignment submitted: “${A.title}” — awaiting teacher review.`);
+  s.sa.extraMsgs.push({from:"Student AI",init:"T",ctx:A.area,day:"Today",
+   text:`Your submission “${A.title}” has been sent to your teacher. You'll see feedback here and on the assignment.`});
+ });
+ toast("Submitted. Your teacher has been notified.");
+}
+function saAsk(ctx){
+ mutate(s=>{s.sa.extraMsgs.push({from:"Kabir",init:"KS",me:true,ctx:ctx||"General",day:"Today",
+  text:"Could you help me with this, please? I've tried it once and I'm not sure about my answer."});
+  s.sa.extraMsgs.push({from:"Ms. Iyer",init:"MI",ctx:ctx||"General",day:"Today",
+  text:"Of course — bring it to our next session, or tap 'Ask Tomoé' for a hint in the meantime. I can see where you are, so we'll start from there."});});
+ toast("Message sent to your teacher.");
+}
+function saDiagAction(a){
+ mutate(s=>{const D=s.sa.diag;
+  if(a==="walk"){D.status="not_started";D.step=0;D.right=0;D.answered=null;s.sa.view="diag"}
+  else if(a==="start")D.status="in_progress";
+  else if(a==="next"){if(D.answered===SA_DIAG_ITEMS[D.step].a)D.right++;D.step++;D.answered=null;
+   if(D.step>=SA_DIAG_ITEMS.length){D.status="analyzing"}}
+  else if(a==="results"){D.status="done";saEvent("Diagnostic reviewed — Learning Map levels confirmed for all five subjects.")}
+ });
+}
+
+/* ============================= STUDENT AI · VIEWS ============================= */
+function saLvl(sub){
+ const cells=[];
+ for(let g=SA_LEVELS.min;g<=SA_LEVELS.max;g++){
+  let cls="";
+  if(g<=sub.level)cls=sub.level<5?"gap":sub.level>5?"ahead":"on";
+  if(g===5)cls+=" exp";
+  cells.push(`<i class="${cls}" title="Grade ${g}${g===5?" — enrolled grade":""}"></i>`);
+ }
+ return `<span class="lvl">${cells.join("")}<span class="cap num">working at G${sub.level} · enrolled G5</span></span>`;
+}
+function saTopicPill(st){
+ const m={completed:["Completed","p-done"],in_progress:["In progress","p-prog"],not_started:["Not started","p-idle"],
+  repair:["Prerequisite revision","p-supp"],locked:["Locked","p-idle"]}[st]||["—","p-idle"];
+ return `<span class="pill plain ${m[1]}">${m[0]}</span>`;
+}
+function saSidebar(){
+ const v=state.sa.view,p=state.sa.param;
+ const item=(view,label,param)=>`<button class="navbtn brandy" data-action="sa-go" data-v="${view}" ${param?`data-p="${param}"`:""} aria-current="${v===view&&(!param||p===param)}">${label}</button>`;
+ return `<nav class="rail">
+  <div class="sa-logo"><img src="${window.TOMO_LOGO}" alt="Tomo"><span class="prod">Student AI</span></div>
+  ${item("home","Home")}
+  ${item("sched","Schedule")}
+  ${item("map","Learning Map")}
+  <div class="navgrp ${state.sa.grp.subj?"open":""}">
+   <button class="grp" data-action="sa-grp" data-g="subj">Concept Blocks<span class="chev">›</span></button>
+   <div class="items">${SA_SUBJECTS.map(s=>`<button class="navbtn sub brandy" data-action="sa-go" data-v="subject" data-p="${s.id}" aria-current="${v==="subject"&&p===s.id}">${s.name}<span class="mini num">G${s.level}</span></button>`).join("")}</div>
+  </div>
+  <div class="navgrp ${state.sa.grp.path?"open":""}">
+   <button class="grp" data-action="sa-grp" data-g="path">PATH Blocks<span class="chev">›</span></button>
+   <div class="items">${SA_PATHS.map(pth=>`<button class="navbtn sub brandy" data-action="sa-go" data-v="path" data-p="${pth.id}" aria-current="${v==="path"&&p===pth.id}">${pth.name}<span class="mini">${SA_PATH_STAGES[pth.stage]}</span></button>`).join("")}</div>
+  </div>
+  ${item("assigns","Assignments")}
+  ${item("msgs","Teacher messages")}
+  <div style="margin-top:auto" class="tiny">Kabir Shah · Grade 5<br>Wednesday · Week 5 of term</div>
+ </nav>`;
+}
+function saHome(){
+ const sci=state.sa.sci,doneCt=saSciDone();
+ const cbToday=SA_CB_WEEK[SA_TODAY];
+ const pend=SA_ASSIGNS.filter(a=>["not_started","in_progress","revision"].includes(state.sa.assigns[a.id].status));
+ const lastEvt=state.sa.events[0];
+ const msgs=[...SA_MSGS,...state.sa.extraMsgs];
+ return `
+  <div class="eyebrow">Wednesday · Good morning</div>
+  <h1>Hi Kabir 👋</h1>
+  <div class="card" style="margin-top:14px">
+   <div class="spread"><h3>Today</h3><span class="tiny">2 Concept Blocks · 6 PATH Blocks</span></div>
+   <div class="vstack" style="margin-top:8px">
+    <div class="spread"><span><b>08:30</b> · ${cbToday[0]} Concept Block — Light: refraction</span>
+     <button class="btn brand sm" data-action="sa-go" data-v="cb">${sci.sub.L3.done?"Review":"Continue"} →</button></div>
+    <div class="spread"><span><b>09:15</b> · ${cbToday[1]} Concept Block — foundation reading</span>
+     <button class="btn sm" data-action="sa-eng">${state.sa.eng.done?"Review":"Open"} →</button></div>
+    <div class="spread"><span><b>10:15 onwards</b> · PATH studios — Builder is your 12-week commitment (week 5)</span>
+     <button class="btn sm" data-action="sa-go" data-v="builder">Open Builder →</button></div>
+   </div>
+   <hr><button class="linkbtn" data-action="sa-go" data-v="sched">Full schedule →</button>
+  </div>
+  <div class="grid2">
+   <div class="card">
+    <div class="spread"><h3>Continue learning</h3>${saTopicPill(sci.mastery.status==="passed"?"completed":"in_progress")}</div>
+    <p class="small" style="margin:8px 0">Science · <b>Light: Reflection and Refraction</b> — subtopic ${Math.min(doneCt+1,5)} of 5${state.sa.player?", saved where you stopped":""}.</p>
+    <div class="hstack">${progressBar(doneCt*20,doneCt===5?"green":"")}<span class="small num">${doneCt}/5</span></div>
+    <div class="hstack" style="margin-top:10px">
+     <button class="btn brand sm" data-action="sa-go" data-v="cb">${doneCt===5?"Topic done":"Resume"}</button>
+     <button class="btn sm" data-action="sa-go" data-v="topic">Mastery Map</button>
+    </div>
+   </div>
+   <div class="card">
+    <h3>Diagnostic</h3>
+    <p class="small" style="margin:8px 0">Completed — your working levels: <b>English G3 · Maths G4 · Science G6</b> · Hindi G5 · Social Science G5. These update as you learn.</p>
+    <div class="hstack">
+     <button class="btn sm" data-action="sa-go" data-v="diag">See results</button>
+     <button class="btn sm subtle" data-action="sa-diag" data-a="walk">How the diagnostic works</button>
+    </div>
+   </div>
+  </div>
+  ${sci.mastery.status==="window"?`<div class="card" style="border-color:var(--brand)">
+   <div class="spread"><h3>Mastery Check unlocked</h3><span class="pill p-brand plain">Ready</span></div>
+   <p class="small">Science · Light (Grade 5) — attempt within your window (${sci.mastery.deadline}), in class with your teacher.</p>
+   <button class="btn brand sm" data-action="sa-go" data-v="topic">Prepare & attempt →</button></div>`:""}
+  ${sci.unlocked?`<div class="card unlockcard"><h3>★ New learning unlocked</h3>
+   <p class="small">You mastered Light at Grade 5 — <b>${SA_SCI.g6.title}</b> is now open on your Mastery Map.</p>
+   <button class="btn sm" data-action="sa-go" data-v="topic">See what's new →</button></div>`:""}
+  <div class="grid2">
+   <div class="card">
+    <div class="spread"><h3>Assignments</h3><button class="linkbtn" data-action="sa-go" data-v="assigns">All →</button></div>
+    ${pend.slice(0,2).map(a=>`<div class="spread" style="margin-top:8px"><span class="small"><b>${a.title}</b><br><span class="tiny">${a.area} · due ${a.due}</span></span>${saAssignPill(state.sa.assigns[a.id].status)}</div>`).join("")||'<p class="small">Nothing due. 🎉</p>'}
+   </div>
+   <div class="card">
+    <div class="spread"><h3>From your teachers</h3><button class="linkbtn" data-action="sa-go" data-v="msgs">All →</button></div>
+    <p class="small" style="margin-top:8px"><b>${msgs[msgs.length-1].from}</b> · <span class="tiny">${msgs[msgs.length-1].ctx}</span><br>${esc(msgs[msgs.length-1].text.slice(0,120))}…</p>
+   </div>
+  </div>
+  <div class="card">
+   <div class="spread"><h3>Your Learning Map just changed</h3><button class="linkbtn" data-action="sa-go" data-v="map">Open map →</button></div>
+   <p class="small" style="margin-top:6px">${esc(lastEvt.txt)} <span class="tiny">(${lastEvt.day})</span></p>
+  </div>`;
+}
+function saAssignPill(st){
+ const m={not_started:["Not started","p-idle"],in_progress:["In progress","p-prog"],submitted:["Submitted","p-ready"],
+  feedback:["Feedback received","p-accel"],revision:["Revision requested","p-supp"],completed:["Completed","p-done"]}[st];
+ return `<span class="pill plain ${m[1]}">${m[0]}</span>`;
+}
+function saDiag(){
+ const D=state.sa.diag;
+ const steps=["Not started","In progress","Completed","Results","Map updated"];
+ const stepIdx=D.status==="not_started"?0:D.status==="in_progress"?1:D.status==="analyzing"?2:4;
+ let body="";
+ if(D.status==="not_started")body=`
+   <p class="small" style="max-width:60ch">The diagnostic is a calm, no-marks conversation with Student AI — short tasks in each subject that find your <b>starting point</b>, not a score. It usually runs over your first week, a little each day.</p>
+   <button class="btn brand" data-action="sa-diag" data-a="start" style="margin-top:12px">Start the diagnostic</button>`;
+ else if(D.status==="in_progress"){
+  const it=SA_DIAG_ITEMS[D.step];
+  body=`<div class="tiny num" style="margin-bottom:4px">Sample task ${D.step+1} of ${SA_DIAG_ITEMS.length} · ${it.sub}</div>
+   <h2>${esc(it.q)}</h2>
+   ${it.opts.map((o,i)=>`<button class="qopt ${i===D.answered?"sel":""}" data-action="sa-diag-ans" data-i="${i}">${esc(o)}</button>`).join("")}
+   ${D.answered!=null?`<div style="margin-top:12px"><button class="btn brand" data-action="sa-diag" data-a="next">${D.step+1>=SA_DIAG_ITEMS.length?"Finish":"Next"} →</button></div>`:""}
+   <p class="tiny" style="margin-top:10px">No right-or-wrong feedback here — the diagnostic just listens. Questions adapt to your answers.</p>`;
+ }else if(D.status==="analyzing")body=`
+   <p class="small">Done! Student AI combines your answers with teacher observations to estimate a working level per subject.</p>
+   <button class="btn brand" data-action="sa-diag" data-a="results" style="margin-top:12px">See my results</button>`;
+ else body=`
+   <div class="tablewrap"><table>
+    <thead><tr><th>Subject</th><th>Enrolled grade</th><th>Current working level</th><th>What it means</th></tr></thead>
+    <tbody>${SA_DIAG_RESULTS.map(r=>`<tr><td><b>${r[0]}</b></td><td class="num">${r[1]}</td><td class="num"><b>${r[2]}</b></td><td class="small">${r[3]}</td></tr>`).join("")}</tbody>
+   </table></div>
+   <div class="card flat" style="background:var(--brand-soft);border-color:transparent;margin-top:12px">
+    <p class="small">These are <b>starting estimates, not labels</b>. Every Concept Block, check, assignment and PATH Block adds evidence, and your levels move with you. Your map, materials, practice difficulty and teacher alerts all follow from here.</p>
+   </div>
+   <div class="hstack" style="margin-top:12px">
+    <button class="btn sm" data-action="sa-go" data-v="map">See it on my Learning Map</button>
+    <button class="btn sm subtle" data-action="sa-diag" data-a="walk">Replay the walkthrough</button>
+   </div>`;
+ return `
+  <div class="eyebrow">Initial Diagnostic</div>
+  <h1>Where you're starting from</h1>
+  <div class="diagsteps">${steps.map((s,i)=>`<span class="dstep ${i===stepIdx?"cur":i<stepIdx?"done":""}">${s}</span>`).join("")}</div>
+  <div class="card">${body}</div>`;
+}
+function saSched(){
+ const tab=state.sa.schedTab||"week";
+ let body="";
+ if(tab==="week"){
+  const rows=SA_TIMES.map((t,ri)=>{
+   const cells=SA_DAYS.map((d,di)=>{
+    if(ri<2){const subj=SA_CB_WEEK[di][ri];
+     const click=(di===SA_TODAY&&ri===0)||(di===0);
+     const act=di===SA_TODAY&&ri===0?`data-action="sa-go" data-v="cb"`:di===SA_TODAY&&ri===1?`data-action="sa-eng"`:di===0&&ri===0?`data-action="sa-eng"`:di===0&&ri===1?`data-action="sa-math"`:`data-action="sa-go" data-v="subject" data-p="${({English:"english",Mathematics:"math",Science:"science",Hindi:"hindi","Social Science":"socsci",Computer:"computer"})[subj]}"`;
+     return `<button class="ttc cb click ${di===SA_TODAY&&ri===0?"now":""}" ${act}>${subj}<small>Concept Block</small></button>`;}
+    const pid=SA_PATH_ORDER[(ri-2+di)%6];const P=saPath(pid);
+    const act=pid==="builder"?`data-action="sa-go" data-v="builder"`:`data-action="sa-go" data-v="path" data-p="${pid}"`;
+    return `<button class="ttc path-${pid} click" ${act}>${P.name}<small>${pid==="athlete"?"Movement & sport":"PATH studio"}</small></button>`;
+   });
+   return `<div class="tm num">${t}</div>${cells.join("")}`;
+  });
+  body=`<div class="tablewrap"><div class="tt">
+   <div></div>${SA_DAYS.map((d,i)=>`<div class="hd ${i===SA_TODAY?"today":""}">${d}${i===SA_TODAY?" · today":""}</div>`).join("")}
+   ${rows.join("")}
+  </div></div>
+  <p class="tiny" style="margin-top:10px">Elementary rhythm: <b>2 Concept Blocks + 6 PATH Blocks</b> a day (middle school 3+3, high school 4+2). Wednesday 15:15 · extra English session with Ms. Iyer.</p>`;
+ }else if(tab==="month"){
+  body=`<div class="card flat">${[
+   ["Week 1–2","Science: Force, Motion and Energy completed · Builder cycle weeks 1–2 (user interviews)","completed"],
+   ["Week 3–4","Science: Light begins · English foundation track daily · Builder v1 prototype","completed"],
+   ["Week 5 (now)","Light subtopics 3–5 · Builder v2 load tests · Shadow observation sheet due Friday","in_progress"],
+   ["Week 6","Grade 5 Science Mastery Check window · Builder midpoint review · PATH showcase prep","not_started"]
+  ].map(r=>`<div class="slot"><span class="time">${r[0]}</span><div style="flex:1" class="small">${r[1]}</div>${saTopicPill(r[2])}</div>`).join("")}</div>`;
+ }else{
+  body=`<div class="card flat">${[
+   ["Term 1","English foundations begin · Maths: Numbers to Operations · Science: Living World units · PATH sampling across all six",100,"green"],
+   ["Term 2 (now)","Maths: Fractions & Decimals · Science: Matter, Force, Light + Mastery Check · Builder 12-week cycle · Holidays: Diwali week",45,"blue"],
+   ["Term 3","English rejoin Grade 5 track · Science: Solar System & Conservation · PATH showcase & portfolio review · Annual learning celebration",0,""]
+  ].map(r=>`<div class="slot"><span class="time">${r[0]}</span><div style="flex:1"><div class="small">${r[1]}</div><div style="max-width:260px;margin-top:6px">${progressBar(r[2],r[3])}</div></div><span class="tiny num">${r[2]}%</span></div>`).join("")}</div>
+  <p class="tiny" style="margin-top:8px">The year is phases, not a grid: what's done, what's live now, and where Mastery Checks and PATH milestones land.</p>`;
+ }
+ return `
+  <div class="spread"><div><div class="eyebrow">Schedule</div><h1>Your week</h1></div>
+  <div class="schtabs">${["week","month","year"].map(t=>`<button class="schtab" data-action="sa-sched" data-t="${t}" aria-current="${tab===t}">${t[0].toUpperCase()+t.slice(1)}</button>`).join("")}</div></div>
+  <div style="height:14px"></div>${body}`;
+}
+function saMap(){
+ return `
+  <div class="eyebrow">Learning Map · the whole picture</div>
+  <h1>Kabir's Learning Map</h1>
+  <p class="small" style="max-width:62ch;margin-top:6px">Built from your diagnostic, Concept Blocks, checks, Mastery Checks, assignments, PATH Blocks and your teachers' observations. It changes as you learn — nothing here is a fixed label.</p>
+  <div class="card" style="margin-top:14px">
+   <h2>Concept Blocks</h2>
+   ${SA_SUBJECTS.map(s=>{
+    const prog=s.topics.filter(t=>t[1]==="completed").length;
+    return `<div class="mrow">
+     <div class="spread"><b style="font-size:16px">${s.name}</b>${saLvl(s)}</div>
+     <div class="grid2" style="margin-top:10px;gap:8px">
+      <div class="small"><span class="tiny">STRENGTH</span><br>${s.strength}</div>
+      <div class="small"><span class="tiny">GAPS & SUPPORT</span><br>${s.gap} ${s.support!=="Standard track."?`<i>${s.support}</i>`:""}</div>
+     </div>
+     <div class="spread" style="margin-top:10px">
+      <span class="small num">${prog}/${s.topics.length} topics mastered · <span class="tiny">${s.evidence}</span></span>
+      <button class="btn sm" data-action="sa-go" data-v="subject" data-p="${s.id}">Open ${s.name} →</button>
+     </div>
+     <p class="tiny" style="margin-top:6px"><b>Recent:</b> ${s.recent} · <b>Next:</b> ${s.next}</p>
+    </div>`}).join("")}
+  </div>
+  <div class="card">
+   <h2>PATH areas</h2>
+   <div class="grid2" style="margin-top:10px">
+    ${SA_PATHS.map(p=>`<div class="pathcard">
+     <div class="spread"><b>${p.name}</b><span class="stagechips">${SA_PATH_STAGES.map((st,i)=>`<span class="${i===p.stage?"cur":""}">${st}</span>`).join("")}</span></div>
+     <p class="small" style="margin:6px 0">${p.cur}</p>
+     <p class="tiny"><b>Recent:</b> ${p.id==="builder"&&state.sa.builder.logged?"Week 5 evidence logged: v2 load-test photos":p.recent} · Coach ${p.coach}</p>
+     <button class="linkbtn tiny" data-action="sa-go" data-v="path" data-p="${p.id}">Open →</button>
+    </div>`).join("")}
+   </div>
+  </div>
+  <div class="card">
+   <h3>Recent changes</h3>
+   ${state.sa.events.slice(0,8).map(e=>`<div class="evt"><span class="t">${e.day}</span><span>${esc(e.txt)}</span></div>`).join("")}
+  </div>`;
+}
+function saSubjectView(){
+ const s=saSubject(state.sa.param);if(!s)return saHome();
+ const isSci=s.id==="science";
+ return `
+  <div class="eyebrow">Concept Blocks · ${s.name}</div>
+  <div class="spread"><h1>${s.name}</h1>${saLvl(s)}</div>
+  <p class="small" style="margin-top:6px">${s.interp}. ${s.support}</p>
+  ${s.foundation?`<div class="card" style="margin-top:14px;border-color:var(--amber)">
+   <h3>Foundation track — closing earlier gaps first</h3>
+   ${s.foundation.map((f,i)=>`<div class="spread" style="margin-top:8px"><span class="small">${f[0]}</span>
+    ${f[1]==="in_progress"&&s.id==="english"?`<button class="btn sm brand" data-action="sa-eng">Continue →</button>`:
+      f[1]==="in_progress"&&s.id==="math"?`<button class="btn sm brand" data-action="sa-math">Continue →</button>`:saTopicPill(f[1])}</div>`).join("")}
+   <p class="tiny" style="margin-top:10px">The goal stays at Grade 5 — this track rebuilds the steps to reach it.</p>
+  </div>`:""}
+  <div class="card" style="margin-top:14px">
+   <h3>Grade 5 topics</h3>
+   ${s.topics.map(t=>{
+    const cur=t[1]==="in_progress";
+    return `<div class="spread" style="padding:9px 0;border-bottom:1px solid var(--line)">
+     <span class="small" style="font-weight:${cur?"700":"500"}">${t[0]}</span>
+     <span class="hstack">${saTopicPill(t[1])}
+      ${isSci&&t[0].startsWith("Light")?`<button class="btn sm brand" data-action="sa-go" data-v="topic">Open →</button>`:""}
+     </span></div>`}).join("")}
+  </div>
+  ${isSci?`<div class="card ${state.sa.sci.unlocked?"unlockcard":"lockcard"}">
+   <h3>${state.sa.sci.unlocked?"★ Unlocked":"🔒 Locked"} · ${SA_SCI.g6.title}</h3>
+   <p class="small">${state.sa.sci.unlocked?"Opened by your Grade 5 Light mastery — explore it from the Mastery Map.":"Unlocks when you pass the Grade 5 Light Mastery Check."}</p>
+  </div>`:""}
+  <div class="hstack" style="margin-top:12px">
+   <button class="btn sm" data-action="sa-ask" data-ctx="${s.name}">Ask my teacher about ${s.name}</button>
+  </div>`;
+}
+function saTopic(){
+ const sci=state.sa.sci,m=sci.mastery;
+ const nodes=[];
+ nodes.push({dot:"done",icon:"✓",title:SA_SCI.prereq.title,body:SA_SCI.prereq.note});
+ for(const sub of SA_SCI.subs){
+  const rec=sci.sub[sub.id];
+  const cur=!rec.done&&SA_SCI.subs.find(x=>!sci.sub[x.id].done)===sub;
+  nodes.push({dot:rec.done?"done":cur?"prog":"lock",icon:rec.done?"✓":String(sub.n),
+   title:`Subtopic ${sub.n} · ${sub.title}`,
+   body:rec.done?`Completed · Check for Understanding ${rec.score}%`:cur?"Current position — open it from here or your schedule.":"Opens after the previous subtopic.",
+   act:cur||rec.done?`<button class="btn sm ${cur?"brand":""}" data-action="sa-go" data-v="cb">${cur?"Continue →":"Review"}</button>`:""});
+ }
+ nodes.push({dot:m.status==="passed"?"done":m.status==="window"?"ready":"lock",icon:m.status==="passed"?"✓":"◆",
+  title:"Grade 5 Mastery Check · Light",
+  body:m.status==="passed"?`Passed at ${m.score}% — in class, supervised.`:
+   m.status==="window"?`Window open · attempt ${m.deadline}, in class with your teacher. Suggested revision: subtopics 3 & 4. One item per thinking level (Remember → Create).`:
+   "Unlocks when all five subtopics are complete. You'll get a 7–10 day window to prepare and attempt it, supervised in class.",
+  act:m.status==="window"?`<button class="btn sm brand" data-action="sa-start-mc">Begin supervised attempt</button>`:""});
+ nodes.push({dot:sci.unlocked?"accel":"lock",icon:sci.unlocked?"★":"🔒",title:SA_SCI.g6.title,
+  body:sci.unlocked?`Open to explore: ${SA_SCI.g6.blocks.join(" · ")}`:"Locked — needs all Grade 5 subtopics + the Mastery Check. Finishing fast isn't enough; showing mastery is."});
+ nodes.push({dot:"lock",icon:"🔒",title:SA_SCI.g7.title,body:SA_SCI.g7.note});
+ return `
+  <div class="eyebrow">Science · Mastery Map</div>
+  <h1>${SA_SCI.topic}</h1>
+  <p class="small" style="margin-top:4px">${SA_SCI.unit} · one strand of light, from Grade 4 to Grade 7. This map is about <b>this topic</b>; your whole-child map lives in <button class="linkbtn" data-action="sa-go" data-v="map">Learning Map</button>.</p>
+  <div class="card" style="margin-top:14px">
+   ${nodes.map(n=>`<div class="mapnode"><div class="mapdot ${n.dot}">${n.icon}</div>
+    <div class="mapbody"><div class="spread"><b>${n.title}</b>${n.act||""}</div><div class="small">${n.body}</div></div></div>`).join("")}
+  </div>`;
+}
+function saCB(){
+ const P=saPlayerState();save();
+ const sub=SA_SCI.subs.find(x=>x.id===P.st);
+ const rec=state.sa.sci.sub[P.st];
+ const lesson=SA_LESSON[P.st]||SA_LESSON.L3;
+ const stages=["revision","learn","practice","cfu"];
+ const names={revision:"Revision",learn:"Learn",practice:"Practice",cfu:"Check"};
+ const idx=P.stage==="done"?4:stages.indexOf(P.stage);
+ let body="";
+ if(P.stage==="revision"){
+  const rq=SA_QB.rev[P.st];
+  body=`<span class="revtag">Revision first · previous subtopic</span>
+   <h2 style="margin-top:4px">${esc(rq.q.replace(/^\(.*?\)\s*/,""))}</h2>
+   ${rq.opts.map((o,i)=>`<button class="qopt ${P.answered!=null?(i===rq.a?"correct":i===P.answered?"wrong":""):""}" data-action="sa-ans" data-i="${i}" ${P.answered!=null?"disabled":""}>${esc(o)}</button>`).join("")}
+   ${P.answered!=null?`<div class="feedback ${P.answered===rq.a?"good":"bad"}">${P.answered===rq.a?"✓ ":"Not quite — "}${esc(rq.fb)}</div>
+   <div style="margin-top:14px"><button class="btn brand" data-action="sa-adv">Start today's learning →</button></div>`:""}`;
+ }else if(P.stage==="learn"){
+  const fmts=["Video","Slides","Interactive","Simulation","Story","Worked example","Audio-supported","Printed"];
+  body=`
+   <div class="hstack" style="margin-bottom:10px">${fmts.map(f=>`<span class="fmt ${lesson.fmt.toLowerCase().includes(f.split(" ")[0].toLowerCase())?"on":""}">${f}</span>`).join("")}</div>
+   <div class="diagram" style="padding:26px"><b>${lesson.fmt}</b><div class="tiny" style="margin-top:4px">Placeholder — the real learning material renders here. Format chosen for you; the learning objective is the standard Grade 5 one.</div></div>
+   <div class="lesson-prose"><p>${lesson.core}</p></div>
+   <details style="margin-top:12px"><summary class="small" style="cursor:pointer;color:var(--brand-ink);font-weight:600">Why this lesson is personalised</summary>
+    <div class="whybox" style="margin-top:8px">${esc(lesson.why)}</div></details>
+   <div class="hstack" style="margin-top:14px">
+    <button class="btn brand" data-action="sa-adv">Done — go to practice</button>
+    <button class="btn" data-action="toast" data-msg="Tomoé: “Try this — where exactly does the pencil seem to break: under water, or right at the surface?”">Ask Tomoé</button>
+    <button class="btn" data-action="sa-ask" data-ctx="Science · Light">Request help</button>
+   </div>`;
+ }else if(P.stage==="practice"){
+  const items=saPracticeItems(P.st);const q=items[P.pIdx];
+  let inner="";
+  if(q.type==="mcq"){
+   inner=`${q.rev?'<span class="revtag">Revision item</span>':""}
+    <h2>${esc(q.q.replace(/^\(.*?\)\s*/,""))}</h2>
+    ${q.opts.map((o,i)=>`<button class="qopt ${P.answered!=null?(i===q.a?"correct":i===P.answered?"wrong":""):""}" data-action="sa-ans" data-i="${i}" ${P.answered!=null?"disabled":""}>${esc(o)}</button>`).join("")}
+    ${P.answered!=null?`<div class="feedback ${P.answered===q.a?"good":"bad"}">${P.answered===q.a?"✓ ":"Not quite — "}${esc(q.fb)}</div>
+    <div style="margin-top:14px"><button class="btn brand" data-action="sa-padv">Next →</button></div>`:""}`;
+  }else if(q.type==="order"){
+   if(!P.order)P.order=saShuffleFixed(q.items.map((_,i)=>i),2);
+   inner=`<span class="fmt on">Arrange in order</span><h2 style="margin-top:8px">${esc(q.q)}</h2>
+    <div class="orderlist">${P.order.map((it,pos)=>`<div class="oitem ${P.orderDone?(it===pos?"ok":"bad"):""}">
+      <span class="num2 num">${pos+1}</span><span>${esc(q.items[it])}</span>
+      ${P.orderDone?"":`<span class="mv"><button data-action="sa-omv" data-i="${pos}" data-d="-1" aria-label="Move up">↑</button><button data-action="sa-omv" data-i="${pos}" data-d="1" aria-label="Move down">↓</button></span>`}
+     </div>`).join("")}</div>
+    ${P.orderDone?`<div class="feedback ${P.order.every((v,i)=>v===i)?"good":"bad"}">${P.order.every((v,i)=>v===i)?"✓ Perfect sequence. ":"Check the highlighted steps — "}${esc(q.fb)}</div>
+     <div style="margin-top:12px"><button class="btn brand" data-action="sa-padv">Next →</button></div>`
+    :`<div style="margin-top:12px"><button class="btn brand" data-action="sa-ocheck">Check my order</button></div>`}`;
+  }else{ /* match */
+   const M=P.match;const done=Object.keys(M.pairs).length===q.pairs.length;
+   const rights=saShuffleFixed(q.pairs.map((_,i)=>i),1);
+   inner=`<span class="fmt on">Match the two columns</span><h2 style="margin-top:8px">${esc(q.q)}</h2>
+    <div class="matchgrid"><div class="mcol">
+     ${q.pairs.map((p,i)=>`<button class="mitem ${M.pairs[i]!=null?"paired":M.sel===i?"sel":""}" data-action="sa-msel" data-i="${i}" ${M.pairs[i]!=null?"disabled":""}>${esc(p[0])}</button>`).join("")}
+    </div><div class="mcol">
+     ${rights.map(ri=>{const used=Object.values(M.pairs).includes(ri);
+      return `<button class="mitem ${used?"paired":M.wrong===ri?"mispair":""}" data-action="sa-mpair" data-i="${ri}" ${used?"disabled":""}>${esc(q.pairs[ri][1])}</button>`}).join("")}
+    </div></div>
+    ${done?`<div class="feedback good">✓ All matched. ${esc(q.fb)}</div><div style="margin-top:12px"><button class="btn brand" data-action="sa-padv">Finish practice →</button></div>`:`<p class="tiny" style="margin-top:10px">Tap a word on the left, then its meaning on the right.</p>`}`;
+  }
+  body=`<div class="tiny num" style="margin-bottom:6px">Practice · ${P.pIdx+1} of ${items.length} — different formats, same idea</div>${inner}`;
+ }else if(P.stage==="cfu"){
+  const items=[...SA_QB.cfu[P.st],{...SA_QB.rev[P.st],rev:true}];
+  const q=items[P.cIdx];
+  body=`<p class="tiny" style="margin-bottom:8px">This check decides your next step and is saved to your maps.</p>
+   ${q.rev?'<span class="revtag">Revision item</span>':""}
+   <div class="tiny num" style="margin-bottom:4px">Check for Understanding · ${P.cIdx+1} of ${items.length}</div>
+   <h2>${esc(q.q.replace(/^\(.*?\)\s*/,""))}</h2>
+   ${q.opts.map((o,i)=>`<button class="qopt ${P.answered!=null?(i===q.a?"correct":i===P.answered?"wrong":""):""}" data-action="sa-cans" data-i="${i}" ${P.answered!=null?"disabled":""}>${esc(o)}</button>`).join("")}
+   ${P.answered!=null?`<div class="feedback ${P.answered===q.a?"good":"bad"}">${P.answered===q.a?"✓ ":"Not quite — "}${esc(q.fb)}</div>
+   <div style="margin-top:14px"><button class="btn brand" data-action="sa-cnext">${P.cIdx+1>=items.length?"Finish check →":"Next →"}</button></div>`:""}`;
+ }else{
+  const score=P.score;
+  const nxt=score>=80?"Ready for the next subtopic":score>=60?"Review this idea before continuing — a short revision set has been added":"Teacher support recommended — Ms. Iyer can see this check";
+  body=`<h2>${score>=60?"Subtopic complete ✓":"Saved — let's strengthen this one"}</h2>
+   <p class="small" style="margin:8px 0">Check for Understanding: <b class="num">${score}%</b>. <b>${nxt}.</b> Your Mastery Map and Learning Map are updated.</p>
+   <div class="hstack">
+    ${SA_SCI.subs.some(x=>!state.sa.sci.sub[x.id].done)?`<button class="btn brand" data-action="sa-next-sub">Next subtopic →</button>`:`<button class="btn brand" data-action="sa-go" data-v="topic">Mastery Check is unlocked →</button>`}
+    <button class="btn" data-action="sa-go" data-v="topic">Mastery Map</button>
+    <button class="btn" data-action="sa-go" data-v="map">Learning Map</button>
+   </div>`;
+ }
+ return `
+  <div class="eyebrow">Science Concept Block · ${SA_SCI.topic}</div>
+  <h1>Subtopic ${sub.n}: ${sub.title}</h1>
+  <div class="stage-steps">${stages.map((sg,i)=>`<div class="stage-step ${i===idx?"cur":i<idx?"done":""}">${names[sg]}</div>`).join("")}</div>
+  <p class="tiny" style="margin:2px 0 12px">About ${sub.mins} minutes · progress saves automatically — leave any time and resume here.</p>
+  <div class="card">${body}</div>`;
+}
+function saMCRun(){
+ const R=state.sa.mcRun;if(!R)return saTopic();
+ if(R.idx>=SA_MC.length){
+  return `<div class="card" style="margin-top:20px;text-align:center;padding:34px">
+   <div class="eyebrow">Grade 5 Mastery Check · result</div>
+   <h1 style="margin:10px 0" class="num">${R.score}%</h1>
+   ${R.pass?`<p class="small" style="max-width:46ch;margin:0 auto">Mastered! Light (Grade 5) is complete — and <b>${SA_SCI.g6.title}</b> just unlocked on your Mastery Map.</p>`:`<p class="small" style="max-width:46ch;margin:0 auto">Below the 80% bar this time. A revision plan is on your map and the window stays open — mastery is when, not if.</p>`}
+   <div class="hstack" style="justify-content:center;margin-top:16px">
+    <button class="btn brand" data-action="sa-go" data-v="topic">${R.pass?"See what unlocked →":"Back to preparation"}</button>
+   </div></div>`;
+ }
+ const item=SA_MC[R.idx];
+ return `
+  <div class="eyebrow">Supervised Mastery Check · in class · Tomoé unavailable during the check</div>
+  <h1>Light — Grade 5</h1>
+  <p class="tiny" style="margin:4px 0 12px">Question ${R.idx+1} of ${SA_MC.length} · thinking level: <b>${item.bloom}</b></p>
+  <div class="card">
+   <h2>${esc(item.q)}</h2>
+   ${item.opts.map((o,i)=>`<button class="qopt ${i===R.answered?"sel":""}" data-action="sa-mcans" data-i="${i}">${esc(o)}</button>`).join("")}
+   ${R.answered!=null?`<div style="margin-top:14px"><button class="btn brand" data-action="sa-mcnext">${R.idx+1>=SA_MC.length?"Submit":"Next"} →</button></div>`:""}
+   <p class="tiny" style="margin-top:12px">Results come at the end — no per-question feedback in a Mastery Check.</p>
+  </div>`;
+}
+function saMicro(kind){
+ const D=kind==="eng"?SA_ENG:SA_MATH;const run=state.sa[kind].run;
+ if(!run)return saHome();
+ if(run.idx>=D.items.length){
+  return `<div class="eyebrow">${D.unit}</div><h1>${D.title}</h1>
+   <div class="card" style="margin-top:14px;text-align:center;padding:30px">
+    <h2 class="num">${run.doneScore}%</h2>
+    <p class="small" style="max-width:46ch;margin:8px auto">${kind==="eng"?"Foundation step complete — your Grade 3 comprehension gap just narrowed on the Learning Map (2 of 3 repair steps done).":"Check passed — the Grade 4 fractions flag is cleared for this block, and your map shows it."}</p>
+    <div class="hstack" style="justify-content:center;margin-top:12px">
+     <button class="btn brand" data-action="sa-go" data-v="map">See my Learning Map</button>
+     <button class="btn" data-action="sa-go" data-v="subject" data-p="${kind==="eng"?"english":"math"}">Back to ${kind==="eng"?"English":"Mathematics"}</button>
+    </div></div>`;
+ }
+ const q=D.items[run.idx];
+ return `
+  <div class="eyebrow">${D.unit}</div><h1>${D.title}</h1>
+  <div class="card" style="margin-top:14px">
+   ${kind==="eng"&&run.idx===0?`<div class="lesson-prose" style="background:var(--panel2);border-radius:8px;padding:14px;margin-bottom:12px"><p>${SA_ENG.passage}</p></div>`:""}
+   <div class="tiny num" style="margin-bottom:4px">Question ${run.idx+1} of ${D.items.length}</div>
+   <h2>${esc(q.q.replace(/^\(.*?\)\s*/,""))}</h2>
+   ${run.idx===0&&kind==="math"?'<span class="revtag">Refresher · Grade 4</span>':""}
+   ${q.opts.map((o,i)=>`<button class="qopt ${run.answered!=null?(i===q.a?"correct":i===run.answered?"wrong":""):""}" data-action="sa-micro-ans" data-k="${kind}" data-i="${i}" ${run.answered!=null?"disabled":""}>${esc(o)}</button>`).join("")}
+   ${run.answered!=null?`<div class="feedback ${run.answered===q.a?"good":"bad"}">${run.answered===q.a?"✓ ":"Not quite — "}${esc(q.fb)}</div>
+   <div style="margin-top:12px"><button class="btn brand" data-action="sa-micro-next" data-k="${kind}">${run.idx+1>=D.items.length?"Finish":"Next"} →</button></div>`:""}
+   <details style="margin-top:14px"><summary class="small" style="cursor:pointer;color:var(--brand-ink);font-weight:600">Why this is personalised</summary>
+    <div class="whybox" style="margin-top:8px">${esc(D.why)}</div></details>
+  </div>`;
+}
+function saPathView(){
+ const p=saPath(state.sa.param);if(!p)return saHome();
+ return `
+  <div class="eyebrow">PATH Blocks · ${p.name}</div>
+  <div class="spread"><h1>${p.name}</h1><span class="stagechips">${SA_PATH_STAGES.map((st,i)=>`<span class="${i===p.stage?"cur":""}">${st}</span>`).join("")}</span></div>
+  <p class="small" style="margin-top:6px"><i>“${p.q}”</i> · Proof looks like: ${p.proof.toLowerCase()}.</p>
+  <div class="card" style="margin-top:14px">
+   <h3>Current activity</h3>
+   <p class="small" style="margin:6px 0">${p.cur}</p>
+   <p class="tiny">Domain: ${p.domain} · Coach: ${p.coach}</p>
+   ${p.id==="builder"?`<button class="btn brand sm" style="margin-top:8px" data-action="sa-go" data-v="builder">Open today's Builder Block →</button>`:""}
+  </div>
+  <div class="grid2">
+   <div class="card"><h3>Recent work</h3><p class="small" style="margin-top:6px">${p.id==="builder"&&state.sa.builder.logged?"Week 5 evidence logged: v2 load-test photos.":p.recent}.</p></div>
+   <div class="card"><h3>Next step: ${p.next}</h3><p class="small" style="margin-top:6px">${p.nextWhy}</p>
+    <p class="tiny" style="margin-top:8px">Next steps are always one of: Deepen · Broaden · Connect · Move · Switch — you never have to guess what happens next.</p></div>
+  </div>`;
+}
+function saBuilderBlock(){
+ const B=SA_BUILDER_BLOCK,logged=state.sa.builder.logged;
+ return `
+  <div class="eyebrow">PATH Block · Builder · 12-week cycle, week 5</div>
+  <h1>Repair-and-improve: the bookstand</h1>
+  <div class="card" style="margin-top:14px">
+   <h3>Your challenge</h3>
+   <p class="small" style="margin:6px 0">${B.challenge}</p>
+   <p class="tiny">${B.standard}</p>
+  </div>
+  <div class="card">
+   <h3>Milestones</h3>
+   ${B.milestones.map(m=>`<div class="spread" style="padding:8px 0;border-bottom:1px solid var(--line)"><span class="small">${m[0]}</span>${saTopicPill(m[1])}</div>`).join("")}
+  </div>
+  <div class="card">
+   <h3>Today's session</h3>
+   <p class="small" style="margin:6px 0">Load-test v2 with 20 books, photograph the base, and note one thing that still worries you. Ms. Fernandes reviews logs at 14:00.</p>
+   <div class="hstack" style="margin-top:8px">
+    <button class="btn brand sm" data-action="sa-log-builder" ${logged?"disabled":""}>${logged?"Evidence logged ✓":"Log today's evidence"}</button>
+    <button class="btn sm" data-action="sa-ask" data-ctx="PATH · Builder">Message my coach</button>
+   </div>
+   ${logged?`<p class="tiny" style="margin-top:8px">Logged — your Builder progression and Learning Map are updated, and week 5–6 is marked complete.</p>`:""}
+  </div>`;
+}
+function saAssigns(){
+ const one=state.sa.param?SA_ASSIGNS.find(a=>a.id===state.sa.param):null;
+ if(one){
+  const st=state.sa.assigns[one.id].status;
+  return `
+   <button class="linkbtn" data-action="sa-go" data-v="assigns">← All assignments</button>
+   <div class="spread" style="margin-top:8px"><h1>${one.title}</h1>${saAssignPill(st)}</div>
+   <p class="small">${one.area} · due ${one.due}</p>
+   <div class="card" style="margin-top:12px">
+    <h3>Instructions</h3><p class="small" style="margin:6px 0">${one.instr}</p>
+    <p class="tiny">Submission: ${one.fmt}</p>
+    <hr>
+    ${one.feedback&&st!=="completed"?`<div class="whybox" style="border-left-color:var(--brand)"><b>Teacher feedback:</b> ${esc(one.feedback)}</div><hr>`:""}
+    <div class="hstack">
+     ${["not_started","in_progress","revision"].includes(st)?`<button class="btn brand" data-action="sa-submit" data-id="${one.id}">${one.fmt.includes("scan")||one.fmt.includes("Photo")?"Upload / scan work":"Submit"}</button>`:""}
+     <button class="btn" data-action="sa-go" data-v="${one.link==="topic"?"topic":one.link==="builder"?"builder":"subject"}" ${one.link==="english"?'data-p="english"':""}>Open related ${one.link==="builder"?"PATH Block":"learning"}</button>
+     <button class="btn" data-action="sa-ask" data-ctx="${one.area}">Ask about this</button>
+    </div>
+    ${st==="submitted"?`<p class="tiny" style="margin-top:10px">Submitted — your teacher has been notified. Feedback will appear here and in Teacher messages.</p>`:""}
+   </div>`;
+ }
+ return `
+  <div class="eyebrow">Assignments</div><h1>Your work</h1>
+  <div class="card" style="margin-top:14px">
+  ${SA_ASSIGNS.map(a=>`<div class="slot rowbtn" data-action="sa-go" data-v="assigns" data-p="${a.id}" role="button" tabindex="0">
+   <div style="flex:1"><b>${a.title}</b><div class="small">${a.area} · due ${a.due} · ${a.fmt}</div></div>
+   ${saAssignPill(state.sa.assigns[a.id].status)}</div>`).join("")}
+  </div>
+  <p class="tiny" style="margin-top:10px">Statuses: Not started → In progress → Submitted → Feedback received / Revision requested → Completed.</p>`;
+}
+function saMsgs(){
+ const all=[...SA_MSGS,...state.sa.extraMsgs];
+ return `
+  <div class="eyebrow">Teacher communication</div><h1>Messages</h1>
+  <div class="card" style="margin-top:14px">
+   ${all.map(m=>`<div class="msg"><span class="who ${m.me?"me":""}">${m.init}</span>
+    <div><div class="spread"><b>${m.from}</b><span class="tiny">${m.day}</span></div>
+    <span class="ctx">${m.ctx}</span><p class="small">${esc(m.text)}</p></div></div>`).join("")}
+  </div>
+  <div class="card">
+   <h3>Ask for help</h3>
+   <p class="small" style="margin:6px 0">Your teacher sees where you are in your learning, so you don't have to explain everything.</p>
+   <div class="hstack">
+    <button class="btn brand sm" data-action="sa-ask" data-ctx="Science · Light">About Science · Light</button>
+    <button class="btn sm" data-action="sa-ask" data-ctx="English · Foundation">About English</button>
+    <button class="btn sm" data-action="sa-ask" data-ctx="General">Something else</button>
+   </div>
+  </div>`;
+}
+function saSync(){
+ /* re-apply persisted progress to static data after a reload */
+ const e=saSubject("english").foundation,mf=saSubject("math").foundation;
+ e[1][1]=state.sa.eng.done?"completed":"in_progress";
+ e[2][1]=state.sa.eng.done?"in_progress":"not_started";
+ mf[0][1]=state.sa.math.done?"completed":"in_progress";
+ SA_BUILDER_BLOCK.milestones[2][1]=state.sa.builder.logged?"completed":"in_progress";
+ const sciTopics=saSubject("science").topics;
+ sciTopics[6][1]=state.sa.sci.mastery.status==="passed"?"completed":"in_progress";
+}
+function saShell(){
+ const V={home:saHome,sched:saSched,map:saMap,subject:saSubjectView,topic:saTopic,cb:saCB,mcrun:saMCRun,
+  diag:saDiag,path:saPathView,builder:saBuilderBlock,assigns:saAssigns,msgs:saMsgs,
+  engact:()=>saMicro("eng"),mathact:()=>saMicro("math")}[state.sa.view]||saHome;
+ return `<div class="frame">${saSidebar()}<main class="canvas"><div class="canvas-inner">${V()}</div></main></div>`;
+}
+
 /* ============================= APP SHELL ============================= */
 function demoBar(){
  return `<div class="demobar">
   <span class="lbl">Demo · view as</span>
-  <button class="rolebtn" data-action="role-teacher" aria-current="${state.role==="teacher"}">Ms. Iyer (teacher)</button>
-  ${ROSTER.map(sid=>`<button class="rolebtn" data-action="role-student" data-s="${sid}" aria-current="${state.role==="student"&&state.activeStudent===sid}">${STUDENTS[sid].name.split(" ")[0]}</button>`).join("")}
+  <button class="rolebtn" data-action="role-sa" aria-current="${state.role==="sa"}">Kabir · Student AI</button>
+  <button class="rolebtn" data-action="role-teacher" aria-current="${state.role==="teacher"}">Ms. Iyer · Teacher</button>
+  ${state.role==="student"?`<span class="tiny">previewing ${STUDENTS[state.activeStudent].name} (Grade 6 class)</span>`:""}
   <span style="flex:1"></span>
-  <span class="tiny num">Topic window · day ${state.day}/${WINDOW_DAYS}</span>
-  <button class="btn sm" data-action="advance-day">Next day →</button>
+  ${state.role!=="sa"?`<span class="tiny num">Topic window · day ${state.day}/${WINDOW_DAYS}</span>
+  <button class="btn sm" data-action="advance-day">Next day →</button>`:""}
   <button class="btn sm" data-action="reset">Reset demo</button>
  </div>`;
 }
 function render(){
  const app=document.getElementById("app");
  let html="";
- if(state.role==="teacher"){
+ if(state.role==="sa"){
+  saSync();
+  html=saShell();
+ }else if(state.role==="teacher"){
   const view={home:tHome,class:tClass,live:tLive,progress:tProgress}[state.teacherView]||tHome;
   html=`<div class="frame">${tNav()}<main class="canvas">${view()}</main></div>${tDrawer()}`;
  }else{
@@ -1124,6 +2025,40 @@ document.addEventListener("click",e=>{
   case"start-mc":startMC(state.activeStudent);break;
   case"mc-ans":answerMC(parseInt(el.dataset.i));break;
   case"mc-next":nextMC();break;
+  /* Student AI */
+  case"role-sa":mutate(s=>{s.role="sa"});break;
+  case"sa-go":saGo(el.dataset.v,el.dataset.p);break;
+  case"sa-grp":mutate(s=>{s.sa.grp[el.dataset.g]=!s.sa.grp[el.dataset.g]});break;
+  case"sa-sched":mutate(s=>{s.sa.schedTab=el.dataset.t});break;
+  case"sa-diag":saDiagAction(el.dataset.a);break;
+  case"sa-diag-ans":mutate(s=>{s.sa.diag.answered=parseInt(el.dataset.i)});break;
+  case"sa-ans":mutate(s=>{saPlayerState();s.sa.player.answered=parseInt(el.dataset.i)});break;
+  case"sa-adv":mutate(s=>{const P=s.sa.player;if(P.stage==="revision"){P.stage="learn";P.answered=null}else if(P.stage==="learn"){P.stage="practice";toast("Learning done — practice has three different formats today.")}});break;
+  case"sa-padv":mutate(s=>{saAdvancePractice(s)});break;
+  case"sa-omv":mutate(s=>{const P=s.sa.player;const i=parseInt(el.dataset.i),d=parseInt(el.dataset.d),j=i+d;
+    if(j>=0&&j<P.order.length){[P.order[i],P.order[j]]=[P.order[j],P.order[i]]}});break;
+  case"sa-ocheck":mutate(s=>{s.sa.player.orderDone=true});break;
+  case"sa-msel":mutate(s=>{s.sa.player.match.sel=parseInt(el.dataset.i);s.sa.player.match.wrong=null});break;
+  case"sa-mpair":mutate(s=>{const M=s.sa.player.match;const ri=parseInt(el.dataset.i);
+    if(M.sel==null){toast("Pick a word on the left first.");return}
+    if(M.sel===ri){M.pairs[M.sel]=ri;M.sel=null;M.wrong=null}else{M.wrong=ri}});break;
+  case"sa-cans":mutate(s=>{const P=s.sa.player;P.answered=parseInt(el.dataset.i);
+    const items=[...SA_QB.cfu[P.st],{...SA_QB.rev[P.st],rev:true}];
+    if(P.answered===items[P.cIdx].a)P.cRight++});break;
+  case"sa-cnext":mutate(s=>{const P=s.sa.player;P.cIdx++;P.answered=null;
+    const total=SA_QB.cfu[P.st].length+1;
+    if(P.cIdx>=total)saFinishCFU(s)});break;
+  case"sa-next-sub":mutate(s=>{s.sa.player=null});break;
+  case"sa-start-mc":saStartMC();break;
+  case"sa-mcans":mutate(s=>{s.sa.mcRun.answered=parseInt(el.dataset.i)});break;
+  case"sa-mcnext":saNextMC();break;
+  case"sa-eng":saEngRun();break;
+  case"sa-math":saMathRun();break;
+  case"sa-micro-ans":mutate(s=>{s.sa[el.dataset.k].run.answered=parseInt(el.dataset.i)});break;
+  case"sa-micro-next":saMicroNext(el.dataset.k);break;
+  case"sa-log-builder":saLogBuilder();break;
+  case"sa-submit":saSubmit(el.dataset.id);break;
+  case"sa-ask":saAsk(el.dataset.ctx);break;
  }
 });
 document.addEventListener("keydown",e=>{
