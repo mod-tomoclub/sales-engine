@@ -1,0 +1,1136 @@
+<title>Tomo · K–12 Prototype — Grade 6 Light</title>
+<style>
+:root{
+  --ground:#F7F8F6; --panel:#FFFFFF; --panel2:#EFF2EF; --line:#DDE3DE; --line2:#CBD3CC;
+  --ink:#1D2A28; --ink2:#51625E; --ink3:#7C8B87;
+  --accent:#166257; --accent-ink:#0E4A41; --accent-soft:#E2EEEB; --on-accent:#FFFFFF;
+  --blue:#3D6FB4; --blue-soft:#E4ECF6;
+  --green:#2E7D4F; --green-soft:#E3F0E7;
+  --amber:#A85E12; --amber-soft:#F7ECDD;
+  --violet:#6455C4; --violet-soft:#ECE9F8;
+  --red:#B03A2E; --red-soft:#F8E6E3;
+  --shadow:0 1px 2px rgba(29,42,40,.06),0 8px 24px rgba(29,42,40,.07);
+  --r:10px;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+}
+@media (prefers-color-scheme: dark){:root{
+  --ground:#141B1A; --panel:#1C2523; --panel2:#232E2C; --line:#2E3B38; --line2:#3B4A46;
+  --ink:#E8EDEB; --ink2:#A7B5B1; --ink3:#7C8B87;
+  --accent:#4FA995; --accent-ink:#7CC7B6; --accent-soft:#1E332F; --on-accent:#0F1917;
+  --blue:#7CA6DC; --blue-soft:#1E2A3A;
+  --green:#6FB98B; --green-soft:#1D3226;
+  --amber:#D99A55; --amber-soft:#38291A;
+  --violet:#A79AE8; --violet-soft:#282343;
+  --red:#DC8A80; --red-soft:#3A211E;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+}}
+:root[data-theme="light"]{
+  --ground:#F7F8F6; --panel:#FFFFFF; --panel2:#EFF2EF; --line:#DDE3DE; --line2:#CBD3CC;
+  --ink:#1D2A28; --ink2:#51625E; --ink3:#7C8B87;
+  --accent:#166257; --accent-ink:#0E4A41; --accent-soft:#E2EEEB; --on-accent:#FFFFFF;
+  --blue:#3D6FB4; --blue-soft:#E4ECF6;
+  --green:#2E7D4F; --green-soft:#E3F0E7;
+  --amber:#A85E12; --amber-soft:#F7ECDD;
+  --violet:#6455C4; --violet-soft:#ECE9F8;
+  --red:#B03A2E; --red-soft:#F8E6E3;
+  --shadow:0 1px 2px rgba(29,42,40,.06),0 8px 24px rgba(29,42,40,.07);
+}
+:root[data-theme="dark"]{
+  --ground:#141B1A; --panel:#1C2523; --panel2:#232E2C; --line:#2E3B38; --line2:#3B4A46;
+  --ink:#E8EDEB; --ink2:#A7B5B1; --ink3:#7C8B87;
+  --accent:#4FA995; --accent-ink:#7CC7B6; --accent-soft:#1E332F; --on-accent:#0F1917;
+  --blue:#7CA6DC; --blue-soft:#1E2A3A;
+  --green:#6FB98B; --green-soft:#1D3226;
+  --amber:#D99A55; --amber-soft:#38291A;
+  --violet:#A79AE8; --violet-soft:#282343;
+  --red:#DC8A80; --red-soft:#3A211E;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--ground);color:var(--ink);font:15px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:.01em;text-wrap:balance}
+h1{font-size:26px;line-height:1.25}
+h2{font-size:19px;line-height:1.3}
+h3{font-size:16px}
+.small{font-size:13px;color:var(--ink2)}
+.tiny{font-size:12px;color:var(--ink3)}
+.num{font-variant-numeric:tabular-nums}
+.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);font-weight:600}
+
+/* App frame */
+#app{min-height:100%;display:flex;flex-direction:column}
+.frame{flex:1;display:flex;min-height:0}
+.rail{width:216px;flex-shrink:0;border-right:1px solid var(--line);padding:18px 12px;display:flex;flex-direction:column;gap:2px;background:var(--panel)}
+.rail .brand{font-family:var(--serif);font-size:20px;font-weight:700;padding:4px 10px 14px;color:var(--accent-ink)}
+.rail .brand span{color:var(--ink3);font-weight:400;font-size:13px;display:block;font-family:var(--sans);letter-spacing:.04em}
+.navbtn{display:flex;align-items:center;gap:10px;text-align:left;padding:9px 10px;border-radius:8px;color:var(--ink2);font-weight:500;width:100%}
+.navbtn:hover{background:var(--panel2)}
+.navbtn[aria-current="true"]{background:var(--accent-soft);color:var(--accent-ink);font-weight:600}
+.navbtn .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);margin-left:auto}
+.canvas{flex:1;min-width:0;overflow-y:auto;padding:26px 30px 90px}
+.canvas-inner{max-width:980px;margin:0 auto}
+
+/* Student frame */
+.stu-top{background:var(--panel);border-bottom:1px solid var(--line);padding:0 22px}
+.stu-top .row1{display:flex;align-items:center;gap:14px;padding:14px 0 6px}
+.stu-top .brand{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--accent-ink)}
+.stu-tabs{display:flex;gap:4px}
+.stu-tab{padding:9px 14px;border-radius:8px 8px 0 0;color:var(--ink2);font-weight:500;border-bottom:2px solid transparent}
+.stu-tab[aria-current="true"]{color:var(--accent-ink);border-bottom-color:var(--accent);font-weight:600}
+.stu-canvas{flex:1;overflow-y:auto;padding:24px 22px 90px}
+.stu-inner{max-width:760px;margin:0 auto}
+
+/* Cards & layout */
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px}
+.card.flat{box-shadow:none}
+.card + .card{margin-top:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:860px){
+ .grid2,.grid3{grid-template-columns:1fr}
+ .frame{flex-direction:column}
+ .rail{width:100%;flex-direction:row;align-items:center;overflow-x:auto;padding:8px 10px;border-right:0;border-bottom:1px solid var(--line);gap:4px}
+ .rail .brand{font-size:16px;padding:0 8px;white-space:nowrap}
+ .rail .brand span{display:none}
+ .navbtn{width:auto;white-space:nowrap;padding:7px 10px;font-size:13px}
+ .rail .tiny{display:none}
+ .canvas{padding:18px 14px 110px}
+}
+.hstack{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.vstack{display:flex;flex-direction:column;gap:10px}
+.spread{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+
+/* Pills & status */
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.pill.plain::before{display:none}
+.p-idle{background:var(--panel2);color:var(--ink2)}
+.p-prog{background:var(--blue-soft);color:var(--blue)}
+.p-done{background:var(--green-soft);color:var(--green)}
+.p-supp{background:var(--amber-soft);color:var(--amber)}
+.p-ready{background:var(--accent-soft);color:var(--accent-ink)}
+.p-mast{background:var(--green-soft);color:var(--green)}
+.p-accel{background:var(--violet-soft);color:var(--violet)}
+.p-alert{background:var(--red-soft);color:var(--red)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:8px;font-weight:600;border:1px solid var(--line2);background:var(--panel);color:var(--ink)}
+.btn:hover{background:var(--panel2)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.subtle{border-color:transparent;color:var(--accent-ink);background:var(--accent-soft)}
+.btn.sm{padding:5px 12px;font-size:13px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.linkbtn{color:var(--accent-ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* Progress */
+.bar{height:8px;border-radius:99px;background:var(--panel2);overflow:hidden;min-width:60px}
+.bar>i{display:block;height:100%;border-radius:99px;background:var(--accent)}
+.bar.blue>i{background:var(--blue)} .bar.amber>i{background:var(--amber)} .bar.violet>i{background:var(--violet)} .bar.green>i{background:var(--green)}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink3);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--line)}
+td{padding:10px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+.rowbtn{cursor:pointer}
+.rowbtn:hover td{background:var(--panel2)}
+.tablewrap{overflow-x:auto}
+
+/* Learning map */
+.mapnode{display:flex;gap:14px;align-items:flex-start;position:relative;padding:0 0 22px 0}
+.mapnode::before{content:"";position:absolute;left:13px;top:30px;bottom:-2px;width:2px;background:var(--line2)}
+.mapnode:last-child::before{display:none}
+.mapdot{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;border:2px solid var(--line2);background:var(--panel);color:var(--ink3);z-index:1}
+.mapdot.done{background:var(--green);border-color:var(--green);color:#fff}
+.mapdot.prog{background:var(--blue);border-color:var(--blue);color:#fff}
+.mapdot.supp{background:var(--amber);border-color:var(--amber);color:#fff}
+.mapdot.lock{background:var(--panel2)}
+.mapdot.accel{background:var(--violet);border-color:var(--violet);color:#fff}
+.mapdot.ready{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.mapbody{flex:1;padding-top:2px}
+
+/* Drawer */
+.drawer-veil{position:fixed;inset:0;background:rgba(15,25,23,.45);z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(480px,94vw);background:var(--panel);z-index:41;box-shadow:var(--shadow);overflow-y:auto;padding:22px 24px;border-left:1px solid var(--line)}
+@media (prefers-reduced-motion:no-preference){.drawer{animation:slidein .22s ease}}
+@keyframes slidein{from{transform:translateX(30px);opacity:0}to{transform:none;opacity:1}}
+
+/* Demo bar */
+.demobar{position:fixed;bottom:0;left:0;right:0;z-index:30;background:var(--panel);border-top:1px solid var(--line);padding:8px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;box-shadow:0 -4px 16px rgba(0,0,0,.05)}
+.demobar .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);font-weight:700}
+.rolebtn{padding:5px 11px;border-radius:99px;border:1px solid var(--line2);font-size:13px;font-weight:600;color:var(--ink2)}
+.rolebtn[aria-current="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+
+/* Toasts */
+#toasts{position:fixed;bottom:64px;right:18px;z-index:60;display:flex;flex-direction:column;gap:8px;max-width:340px}
+.toast{background:var(--ink);color:var(--ground);padding:10px 14px;border-radius:8px;font-size:13.5px;font-weight:500;box-shadow:var(--shadow)}
+@media (prefers-reduced-motion:no-preference){.toast{animation:toastin .25s ease}}
+@keyframes toastin{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
+
+/* Lesson player */
+.stage-steps{display:flex;gap:6px;margin:10px 0 4px}
+.stage-step{flex:1;text-align:center;font-size:12px;font-weight:600;color:var(--ink3);padding:7px 4px;border-radius:7px;background:var(--panel2)}
+.stage-step.cur{background:var(--accent);color:var(--on-accent)}
+.stage-step.done{background:var(--accent-soft);color:var(--accent-ink)}
+.whybox{background:var(--violet-soft);border-radius:8px;padding:12px 14px;font-size:13.5px;color:var(--ink);border-left:3px solid var(--violet)}
+.whybox b{color:var(--violet)}
+.qopt{display:block;width:100%;text-align:left;padding:11px 14px;border:1px solid var(--line2);border-radius:8px;margin-top:8px;background:var(--panel)}
+.qopt:hover{border-color:var(--accent)}
+.qopt.correct{border-color:var(--green);background:var(--green-soft)}
+.qopt.wrong{border-color:var(--red);background:var(--red-soft)}
+.qopt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.qopt:disabled{cursor:default}
+.feedback{margin-top:10px;padding:10px 14px;border-radius:8px;font-size:13.5px}
+.feedback.good{background:var(--green-soft);color:var(--green)}
+.feedback.bad{background:var(--amber-soft);color:var(--amber)}
+.lesson-prose{font-size:15.5px;max-width:62ch}
+.lesson-prose p{margin:10px 0}
+.lesson-prose .gloss{border-bottom:2px dotted var(--violet);cursor:help;font-weight:600}
+.diagram{background:var(--panel2);border-radius:8px;padding:14px;margin:12px 0;text-align:center}
+.revtag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);background:var(--blue-soft);padding:2px 8px;border-radius:5px;margin-bottom:6px}
+
+/* Schedule */
+.schtabs{display:flex;gap:4px;background:var(--panel2);border-radius:9px;padding:3px;width:max-content}
+.schtab{padding:6px 14px;border-radius:7px;font-size:13px;font-weight:600;color:var(--ink2)}
+.schtab[aria-current="true"]{background:var(--panel);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.slot{display:flex;gap:14px;padding:11px 4px;border-bottom:1px solid var(--line);align-items:center}
+.slot:last-child{border-bottom:0}
+.slot .time{width:86px;flex-shrink:0;font-weight:600;color:var(--ink2)}
+.slot.live-now{background:var(--accent-soft);border-radius:8px;padding-left:12px;padding-right:12px}
+.blocktag{font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:5px}
+.bt-cb{background:var(--accent-soft);color:var(--accent-ink)}
+.bt-path{background:var(--violet-soft);color:var(--violet)}
+.bt-mc{background:var(--amber-soft);color:var(--amber)}
+
+/* Live view */
+.livehead{display:flex;align-items:center;gap:12px}
+.livedot{width:9px;height:9px;border-radius:50%;background:var(--red)}
+@media (prefers-reduced-motion:no-preference){.livedot.on{animation:pulse 1.4s infinite}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.evt{display:flex;gap:10px;padding:7px 0;font-size:13.5px;border-bottom:1px dashed var(--line)}
+.evt:last-child{border-bottom:0}
+.evt .t{color:var(--ink3);font-variant-numeric:tabular-nums;width:46px;flex-shrink:0;font-weight:600}
+
+/* Bloom chips */
+.bloomrow{display:flex;gap:6px;flex-wrap:wrap}
+.bloom{font-size:12px;font-weight:600;padding:3px 10px;border-radius:6px;background:var(--panel2);color:var(--ink2);border:1px solid var(--line)}
+.bloom.hit{background:var(--accent-soft);color:var(--accent-ink);border-color:transparent}
+
+.lockcard{border-style:dashed;color:var(--ink3)}
+.unlockcard{border-color:var(--violet);background:var(--violet-soft)}
+.avatar{width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.kpi{padding:14px 16px}
+.kpi .v{font-size:24px;font-weight:700;font-family:var(--serif)}
+.kpi .l{font-size:12px;color:var(--ink3);font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+</style>
+<div id="app"></div>
+<div id="toasts"></div>
+<script>
+"use strict";
+/* ============================= DATA ============================= */
+const SUBTOPICS=[
+ {id:"st1",n:1,title:"Seeing objects: sources of light",mins:20,
+  goal:"Identify luminous and non-luminous objects and explain that we see things when light enters our eyes.",
+  core:"We see an object only when light from it reaches our eyes. Some objects — the Sun, a flame, a glowing bulb — give out their own light. We call them <b>luminous</b>. Most things around us (a book, the Moon, a wall) are <b>non-luminous</b>: we see them because they bounce light from a luminous source into our eyes."},
+ {id:"st2",n:2,title:"Light travels in straight lines",mins:20,
+  goal:"Show with evidence that light travels in straight lines (rectilinear propagation).",
+  core:"Light does not bend around corners on its own. If you look at a candle through a straight pipe you can see it; bend the pipe and the flame disappears. This one idea — <b>light travels in straight lines</b> — explains shadows, pinhole images, and why we can't see around walls."},
+ {id:"st3",n:3,title:"Shadows: how and why they form",mins:20,
+  goal:"Explain shadow formation using a light source, an opaque object, and a screen, and predict how shadows change.",
+  core:"A <b>shadow</b> forms when an opaque object blocks light. Three things are always needed: a source of light, an opaque object, and a screen behind it. A shadow shows the outline of the object — but never its colour or surface detail. Moving the object closer to the source makes the shadow bigger."},
+ {id:"st4",n:4,title:"The pinhole camera: images vs shadows",mins:20,
+  goal:"Build the idea of an image with a pinhole camera and contrast an image with a shadow.",
+  core:"A tiny hole in a box can form a picture of the world — upside-down, in full colour. This is a <b>pinhole image</b>. Unlike a shadow, an image carries colour and detail, and it is inverted — because light from the top of the object travels in a straight line through the hole to the bottom of the screen."},
+ {id:"st5",n:5,title:"Mirrors and reflection",mins:20,
+  goal:"Describe reflection from a plane mirror and where mirrors redirect light.",
+  core:"A mirror does not stop light — it changes its direction. This is <b>reflection</b>. A plane mirror forms an image that is upright and left-right reversed. Periscopes use two mirrors to let light take two right-angle turns, so you can see over a wall."}
+];
+const PREREQ={id:"g5",title:"Grade 5 · Transparent, translucent and opaque materials",
+ desc:"Whether light passes through a material fully, partly, or not at all. Needed before shadows make sense."};
+const ADV=[
+ {id:"g7",grade:7,title:"Light: Reflection and images",
+  items:["Laws of reflection — measuring angles with a ray box","Real vs virtual images","Spherical mirrors: concave & convex","Investigation: build a two-mirror periscope and trace the rays"]},
+ {id:"g8",grade:8,title:"Light: Refraction and the human eye",
+  items:["Refraction: why a pencil bends in water","Lenses and image formation","Structure of the human eye","Dispersion: white light and the spectrum"]}
+];
+const OBJECTIVES=[
+ {bloom:"Remember",text:"Recall which objects are luminous and which materials are opaque."},
+ {bloom:"Understand",text:"Explain why a shadow forms, using source, object and screen."},
+ {bloom:"Apply",text:"Predict how a shadow changes when the object or source moves."},
+ {bloom:"Analyse",text:"Compare a pinhole image with a shadow and account for the differences."},
+ {bloom:"Evaluate",text:"Judge whether an experimental setup can test straight-line travel of light."},
+ {bloom:"Create",text:"Design an investigation using mirrors or a pinhole to solve a seeing problem."}
+];
+const WINDOW_DAYS=15; /* stipulated topic window, school days */
+
+const STUDENTS={
+ s1:{id:"s1",name:"Sana Kapoor",init:"SK",
+  bg:"Steady, organised worker. Enjoys drawing labelled diagrams.",
+  diag:"Diagnostic: all Grade 5 prerequisites secure. Reads at grade level.",
+  gaps:[],strengths:"Careful observation; strong written explanations.",
+  pace:"On pace",paceKey:"on",
+  support:"None currently — standard track.",
+  adapt:["Standard sequence with optional diagram-first entry to each lesson","Practice mixes recall and application at grade level"],
+  adaptWhy:"Sana's diagnostic showed no gaps, so she receives the core sequence. Her materials open with a diagram to match how she likes to start, but the tasks and objectives are the standard grade-level set."},
+ s2:{id:"s2",name:"Dev Sharma",init:"DS",
+  bg:"Curious and hands-on; happiest during experiments.",
+  diag:"Diagnostic: gap in Grade 5 'transparent / translucent / opaque'. Confuses translucent with transparent, which breaks shadow reasoning.",
+  gaps:["G5: transparent / translucent / opaque materials"],
+  strengths:"Practical setups; oral explanation.",
+  pace:"Slightly behind",paceKey:"watch",
+  support:"Prerequisite repair woven into practice; extra worked examples.",
+  adapt:["A short Grade 5 materials refresher is inserted before the shadows lesson","Every practice set includes one prerequisite item on materials","More worked examples before independent practice"],
+  adaptWhy:"Dev's diagnostic flagged a Grade 5 gap on how materials transmit light. Shadows can't be reasoned about without it, so his lessons open with a two-minute prerequisite repair and his practice always retrieves it once. The Grade 6 objective is unchanged."},
+ s3:{id:"s3",name:"Meera Nair",init:"MN",
+  bg:"Joined this term from a different-medium school. Sharp scientific reasoning.",
+  diag:"Diagnostic: concepts secure; academic English vocabulary is the barrier, not the science.",
+  gaps:["Academic vocabulary in English (not a science gap)"],
+  strengths:"Reasoning from observations; mathematics.",
+  pace:"On pace",paceKey:"on",
+  support:"Vocabulary scaffolds on all reading; same objectives.",
+  adapt:["Key terms glossed inline with plain-language definitions","Sentences shortened; reading level reduced without reducing the objective","Diagrams paired with every text explanation"],
+  adaptWhy:"Meera's science is strong — her diagnostic showed the barrier is academic English vocabulary. Her version glosses key terms, shortens sentences and pairs every idea with a diagram. The learning objective is identical to the class."},
+ s4:{id:"s4",name:"Rohan Verma",init:"RV",
+  bg:"Loses confidence quickly when a task looks long; responds well to one-step-at-a-time help.",
+  diag:"Diagnostic: partial Grade 5 recall; needs chunked tasks and frequent check-ins to sustain effort.",
+  gaps:["Fragile Grade 5 recall (light & materials)","Task persistence"],
+  strengths:"Verbal reasoning when working with a partner.",
+  pace:"Behind timeline",paceKey:"behind",
+  support:"Step-by-step scaffolds; teacher check-ins each block; may need additional classes.",
+  adapt:["Lessons broken into one-idea steps with a check after each","Sentence starters for written answers","Teacher check-in scheduled mid-block"],
+  adaptWhy:"Rohan sustains effort best in small steps with quick wins. His lesson is chunked into one-idea screens with a check after each, and the system schedules a teacher check-in mid-block. Objectives stay at grade level; the scaffolding is what changes."},
+ s5:{id:"s5",name:"Anika Rao",init:"AR",
+  bg:"Reads ahead; keeps a home notebook of experiments.",
+  diag:"Diagnostic: all prerequisites secure; already fluent with much of the Grade 6 topic.",
+  gaps:[],strengths:"Independent investigation; connecting ideas across topics.",
+  pace:"Ahead",paceKey:"ahead",
+  support:"Compacted core; extension tasks; Mastery Check unlocked early.",
+  adapt:["Core lessons compacted (skips what the diagnostic proved)","Open-ended investigation replaces routine practice","Mastery Check window opened early; Grade 7 preview on pass"],
+  adaptWhy:"Anika's diagnostic showed fluency with much of this topic, so her core is compacted and her practice is an open-ended investigation. She sat the readiness checks early, so her Mastery Check window is already open."}
+};
+const ROSTER=["s1","s2","s3","s4","s5"];
+
+/* Personalized learning-material variants per subtopic (keyed by student) */
+function lessonFor(sid,st){
+ const S=STUDENTS[sid];
+ const base={title:st.title,core:st.core,why:S.adaptWhy,extra:null,gloss:false,chunked:false,prereq:false,diagramFirst:false,extension:false};
+ if(sid==="s2")Object.assign(base,{prereq:true,extra:"Worked example: a torch shines on (a) a glass sheet, (b) butter paper, (c) a wooden board. Only (c) makes a dark shadow — because only wood is opaque. Butter paper makes a faint, blurry shadow: it is translucent."});
+ if(sid==="s3")Object.assign(base,{gloss:true});
+ if(sid==="s4")Object.assign(base,{chunked:true});
+ if(sid==="s1")Object.assign(base,{diagramFirst:true});
+ if(sid==="s5")Object.assign(base,{extension:true,extra:"Extension: predict what happens to a pinhole image if you make the hole larger, then design a test. Record your prediction before you try it."});
+ return base;
+}
+/* Question banks — one revision item + core items per subtopic, with per-student variants where relevant */
+const QB={
+ rev:{ /* revision of PREVIOUS subtopic, used in practice + CFU */
+  st1:{q:"(Revision · Grade 5) Which material lets light pass through completely?",opts:["Wood","Clear glass","Butter paper","Cardboard"],a:1,fb:"Clear glass is transparent — light passes straight through."},
+  st2:{q:"(Revision · Subtopic 1) We can see the Moon at night because it…",opts:["is luminous","reflects sunlight to our eyes","is transparent","makes its own heat"],a:1,fb:"The Moon is non-luminous — it reflects the Sun's light into our eyes."},
+  st3:{q:"(Revision · Subtopic 2) You can see a candle through a straight pipe but not a bent one. This shows that light…",opts:["is very bright","travels in straight lines","can bend easily","is yellow"],a:1,fb:"The bent pipe blocks the straight-line path — light travels in straight lines."},
+  st4:{q:"(Revision · Subtopic 3) Which three things are needed to form a shadow?",opts:["Source, opaque object, screen","Mirror, lens, screen","Source, transparent object, wall","Two sources and a mirror"],a:0,fb:"A shadow needs a light source, an opaque object to block it, and a screen."},
+  st5:{q:"(Revision · Subtopic 4) A pinhole image differs from a shadow because the image…",opts:["is always larger","has colour and detail, and is inverted","forms without light","is always the same size"],a:1,fb:"Images carry colour and detail and are inverted; shadows are dark outlines."}
+ },
+ core:{
+  st1:[{q:"Which of these is a luminous object?",opts:["The Moon","A lit candle","A mirror","A white wall"],a:1,fb:"A lit candle gives out its own light. The Moon and mirror only reflect light."},
+       {q:"We see a book on the desk because…",opts:["the book is luminous","our eyes send out rays","light bounces off the book into our eyes","books glow faintly"],a:2,fb:"Non-luminous objects are seen by reflected light reaching our eyes."}],
+  st2:[{q:"Which observation is the best evidence that light travels in straight lines?",opts:["Light is bright","A torch beam spreads out","You can't see around a corner without a mirror","The Sun rises daily"],a:2,fb:"If light bent around corners, walls wouldn't block our view."},
+       {q:"A student claims light can curve around a book. Which test would check this claim?",opts:["Shine a torch at the book and look from behind it","Weigh the book","Read the book in sunlight","Paint the book white"],a:0,fb:"If any light reached your eye from behind the opaque book, the claim would need explaining — none does."}],
+  st3:[{q:"A shadow never shows the object's…",opts:["outline","size","colour and surface detail","position"],a:2,fb:"Shadows are formed by blocked light — outline only, no colour or detail."},
+       {q:"Moving an object closer to the lamp makes its shadow on the wall…",opts:["smaller","bigger","disappear","turn grey"],a:1,fb:"Closer to the source, the object blocks a wider cone of light — bigger shadow."}],
+  st4:[{q:"The image in a pinhole camera is…",opts:["upright and colourless","inverted and coloured","the same as a shadow","always blurry"],a:1,fb:"Straight-line travel through the hole flips the image; it keeps the object's colour."},
+       {q:"Why is the pinhole image inverted?",opts:["The box flips it","Light from the top passes through the hole to the bottom of the screen","The hole reflects light","Air inside bends the light"],a:1,fb:"Straight lines from top and bottom cross at the hole — so the image flips."}],
+  st5:[{q:"A plane mirror image is…",opts:["inverted top-to-bottom","left-right reversed and upright","always smaller","colourless"],a:1,fb:"Plane mirrors keep the image upright but swap left and right."},
+       {q:"A periscope lets you see over a wall because its two mirrors…",opts:["magnify the light","make light take two right-angle turns","slow the light down","create shadows"],a:1,fb:"Each mirror redirects the straight-line path by 90°."}]
+ }
+};
+/* Mastery Check items — one per objective/Bloom level */
+const MC_ITEMS=[
+ {bloom:"Remember",q:"Which list contains ONLY luminous objects?",opts:["Sun, lit bulb, flame","Moon, mirror, Sun","Candle, book, wall","Star, Moon, glass"],a:0},
+ {bloom:"Understand",q:"Explain-why item: a shadow forms when…",opts:["light passes through an object","an opaque object blocks light from reaching a screen","a mirror reflects light","an object is luminous"],a:1},
+ {bloom:"Apply",q:"A bird flies lower, closer to the ground, at noon. Its shadow…",opts:["gets sharper and closer to true size","disappears","becomes coloured","doubles in size"],a:0},
+ {bloom:"Analyse",q:"A pinhole image of a tree differs from the tree's shadow because the image…",opts:["is an outline only","is coloured, detailed and inverted","needs no light","forms only at night"],a:1},
+ {bloom:"Evaluate",q:"Which setup is a FAIR test of straight-line travel?",opts:["Three cards with aligned holes and a candle — then misalign one card","A torch shone at a mirror","Reading in dim light","A prism in sunlight"],a:0},
+ {bloom:"Create",q:"You must see round a corner into a box without moving it. The best design uses…",opts:["a brighter torch","two mirrors at 45° (a periscope)","a bigger pinhole","a translucent screen"],a:1}
+];
+/* Class schedule (teacher) */
+const TODAY_SLOTS=[
+ {time:"08:30",tag:"cb",label:"Grade 6 Mathematics — Concept Block",sub:"Fractions · subtopic 3"},
+ {time:"09:30",tag:"cb",label:"Grade 6 Science — Concept Block",sub:"Light · Subtopic 4: The pinhole camera",main:true},
+ {time:"10:30",tag:"path",label:"PATH Block — mentoring & goal review",sub:"Advisory group B"},
+ {time:"11:30",tag:"mc",label:"Mastery Check supervision — Grade 6 Science",sub:"Anika Rao · Light (window closes day 14)"},
+ {time:"13:00",tag:"cb",label:"Grade 7 Science — Concept Block",sub:"Heat · subtopic 2"}
+];
+/* Live-session script: deterministic events keyed by minute tick */
+const LIVE_SCRIPT={
+ 1:[{t:"Session started. All five students have personalized material for Subtopic 4 (or their own track).",kind:"info"}],
+ 2:[{s:"s1",set:{phase:"learning",pct:15},t:"Sana started the learning material."},
+    {s:"s3",set:{phase:"learning",pct:12},t:"Meera started — vocabulary-supported version."},
+    {s:"s5",set:{phase:"extension",pct:10},t:"Anika started Mastery Check revision + extension investigation."}],
+ 3:[{s:"s2",set:{phase:"learning",pct:10},t:"Dev started (Subtopic 3 track — finishing practice from yesterday)."},
+    {s:"s4",set:{phase:"learning",pct:5},t:"Rohan started the chunked learning material."}],
+ 6:[{s:"s1",set:{pct:40}},{s:"s3",set:{pct:38}},{s:"s5",set:{pct:35}},{s:"s2",set:{pct:25}},{s:"s4",set:{pct:15}}],
+ 8:[{s:"s4",set:{stuck:true,pct:18,note:"3 wrong attempts on inline check 2 (why the image inverts)"},t:"Rohan: 3 wrong attempts on the same inline check — flagged as stuck.",kind:"warn"}],
+ 10:[{s:"s4",set:{help:true},t:"Rohan tapped 'I need help'. Tomoé gave one hint (straight-line diagram); requesting teacher.",kind:"alert"},
+     {s:"s1",set:{pct:60}},{s:"s3",set:{pct:58}},{s:"s5",set:{pct:55}},{s:"s2",set:{pct:38}}],
+ 13:[{s:"s3",set:{phase:"practice",pct:70},t:"Meera completed the learning material → moved to practice."},
+     {s:"s1",set:{pct:72}}],
+ 15:[{s:"s1",set:{phase:"practice",pct:78},t:"Sana completed the learning material → moved to practice."},
+     {s:"s5",set:{pct:75}}],
+ 18:[{s:"s2",set:{pct:55,note:"Slower on the prerequisite item (translucent materials)"},t:"Dev is taking longer on the prerequisite repair item.",kind:"warn"}],
+ 20:[{s:"s2",set:{late:true},t:"20-minute mark: Dev has not completed the learning segment.",kind:"alert"},
+     {s:"s5",set:{phase:"extension",pct:90},t:"Anika logged her periscope prediction; ready for Mastery Check slot at 11:30."}],
+ 22:[{s:"s3",set:{pct:85}},{s:"s1",set:{pct:86}}],
+ 24:[{s:"s3",set:{phase:"cfu",pct:92},t:"Meera moved to the Check for Understanding."},
+     {s:"s1",set:{phase:"cfu",pct:90},t:"Sana moved to the Check for Understanding."}]
+};
+const LIVE_MAX=25;
+
+/* ============================= STATE ============================= */
+const LS_KEY="tomo-k12-light-v1";
+function defaultState(){
+ return {
+  role:"teacher", teacherView:"home", schedView:"day", drawer:null,
+  studentView:"home", activeStudent:"s4",
+  day:9, /* day of the 15-day topic window */
+  live:{running:false,tick:0,events:[],per:{
+    s1:{phase:"idle",pct:0,stuck:false,help:false,late:false,note:""},
+    s2:{phase:"idle",pct:0,stuck:false,help:false,late:false,note:""},
+    s3:{phase:"idle",pct:0,stuck:false,help:false,late:false,note:""},
+    s4:{phase:"idle",pct:0,stuck:false,help:false,late:false,note:""},
+    s5:{phase:"idle",pct:0,stuck:false,help:false,late:false,note:""}}},
+  students:{
+   s1:{sub:{st1:d3(90),st2:d3(85),st3:d3(88),st4:{learn:"in_progress",practice:"not_started",cfu:null},st5:z()},
+       mastery:{status:"locked"},supports:[],unlocked:[],extraClasses:[]},
+   s2:{sub:{st1:d3(72),st2:d3(78),st3:{learn:"done",practice:"in_progress",cfu:null},st4:z(),st5:z()},
+       mastery:{status:"locked"},supports:[{day:5,by:"System",what:"Grade 5 materials refresher inserted before Subtopic 3"}],unlocked:[],extraClasses:[]},
+   s3:{sub:{st1:d3(92),st2:d3(86),st3:d3(90),st4:z(),st5:z()},
+       mastery:{status:"locked"},supports:[{day:2,by:"System",what:"Vocabulary scaffolds enabled on all reading"}],unlocked:[],extraClasses:[]},
+   s4:{sub:{st1:d3(65),st2:{learn:"in_progress",practice:"not_started",cfu:null},st3:z(),st4:z(),st5:z()},
+       mastery:{status:"locked"},supports:[{day:6,by:"Ms. Iyer",what:"Paired re-teach of Subtopic 1; retry passed at 65%"}],unlocked:[],extraClasses:[]},
+   s5:{sub:{st1:d3(96),st2:d3(94),st3:d3(98),st4:d3(95),st5:d3(97)},
+       mastery:{status:"window",openedDay:6,deadlineDay:14,attempts:[]},supports:[],unlocked:[],extraClasses:[]}
+  },
+  player:{}, /* per-student in-progress lesson state: {sid:{st,stage,qIdx,answers,score…}} */
+  mcRun:null /* in-progress mastery check: {sid,idx,correct:[]} */
+ };
+ function d3(score){return{learn:"done",practice:"done",cfu:{status:"done",score}}}
+ function z(){return{learn:"not_started",practice:"not_started",cfu:null}}
+}
+let state=load();
+function load(){try{const raw=localStorage.getItem(LS_KEY);if(raw)return JSON.parse(raw)}catch(e){}return defaultState()}
+function save(){try{localStorage.setItem(LS_KEY,JSON.stringify(state))}catch(e){}}
+function mutate(fn){fn(state);save();render()}
+function toast(msg){const t=document.createElement("div");t.className="toast";t.textContent=msg;document.getElementById("toasts").appendChild(t);setTimeout(()=>t.remove(),4200)}
+
+/* ============================= DERIVED ============================= */
+function subStatus(rec){ /* per-subtopic */
+ if(rec.cfu&&rec.cfu.status==="done")return"completed";
+ if(rec.learn==="not_started")return"not_started";
+ return"in_progress";
+}
+function subtopicsDone(sid){return SUBTOPICS.filter(st=>subStatus(state.students[sid].sub[st.id])==="completed").length}
+function currentSubtopic(sid){const s=state.students[sid];for(const st of SUBTOPICS){if(subStatus(s.sub[st.id])!=="completed")return st}return null}
+function topicStatus(sid){
+ const s=state.students[sid],S=STUDENTS[sid];
+ if(s.mastery.status==="passed")return s.unlocked.length?"accelerated":"mastered";
+ if(s.mastery.status==="window")return"ready_mc";
+ if(S.paceKey==="behind"||s.extraClasses.length)return"needs_support";
+ if(subtopicsDone(sid)===0)return"not_started";
+ return"in_progress";
+}
+const STATUS_META={
+ not_started:{label:"Not started",cls:"p-idle"},
+ in_progress:{label:"In progress",cls:"p-prog"},
+ completed:{label:"Completed",cls:"p-done"},
+ needs_support:{label:"Needs support",cls:"p-supp"},
+ ready_mc:{label:"Ready for Mastery Check",cls:"p-ready"},
+ mastered:{label:"Mastered",cls:"p-mast"},
+ accelerated:{label:"Accelerated content unlocked",cls:"p-accel"}
+};
+function pill(key){const m=STATUS_META[key];return `<span class="pill ${m.cls}">${m.label}</span>`}
+function expectedDone(){ /* expected subtopics complete by current day */
+ return Math.min(5,Math.round(5*state.day/WINDOW_DAYS))
+}
+function paceLabel(sid){
+ const done=subtopicsDone(sid),exp=expectedDone();
+ if(state.students[sid].mastery.status==="passed"||done===5)return{t:"Ahead of timeline",cls:"p-accel"};
+ if(done>=exp)return{t:"On the timeline",cls:"p-done"};
+ if(done===exp-1)return{t:"Slightly behind",cls:"p-supp"};
+ return{t:"Behind timeline",cls:"p-alert"};
+}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+/* ============================= LIVE SIMULATION ============================= */
+let liveTimer=null;
+function liveTickOnce(){
+ const L=state.live;
+ if(L.tick>=LIVE_MAX){stopLive(false);return}
+ L.tick++;
+ const evts=LIVE_SCRIPT[L.tick]||[];
+ for(const e of evts){
+  if(e.s&&e.set)Object.assign(L.per[e.s],e.set);
+  if(e.t)L.events.unshift({t:L.tick,txt:e.s?`${STUDENTS[e.s].name.split(" ")[0]} — ${e.t.replace(/^[A-Z][a-z]+[:,]?\s*/,m=>m)}`:e.t,txtRaw:e.t,s:e.s,kind:e.kind||"info"});
+ }
+ /* gentle drift for anyone active without a scripted update */
+ for(const sid of ROSTER){const p=L.per[sid];if(p.phase!=="idle"&&!p.stuck&&Math.random()<0)p.pct=p.pct}
+ save();render();
+}
+function startLive(){
+ if(state.live.running)return;
+ mutate(s=>{s.live.running=true});
+ liveTimer=setInterval(liveTickOnce,1500);
+}
+function pauseLive(){if(liveTimer){clearInterval(liveTimer);liveTimer=null}mutate(s=>{s.live.running=false})}
+function stopLive(reset){
+ if(liveTimer){clearInterval(liveTimer);liveTimer=null}
+ mutate(s=>{s.live.running=false;if(reset){s.live=defaultState().live}})
+}
+
+/* ============================= ACTIONS ============================= */
+function assignSupport(sid,what){
+ mutate(s=>{
+  s.students[sid].supports.push({day:s.day,by:"Ms. Iyer",what});
+  const p=s.live.per[sid];
+  if(p){p.stuck=false;p.help=false;p.note="Teacher support in progress: "+what}
+  s.live.events.unshift({t:s.live.tick,txt:`Ms. Iyer → ${STUDENTS[sid].name.split(" ")[0]}: ${what}`,kind:"good"});
+ });
+ toast(`Support recorded for ${STUDENTS[sid].name}. Learning Map updated.`);
+}
+function scheduleExtraClass(sid){
+ mutate(s=>{
+  s.students[sid].extraClasses.push({day:s.day+1,what:"Additional class: guided re-teach of Subtopics 2–3 (small group)"});
+  s.students[sid].supports.push({day:s.day,by:"Ms. Iyer",what:"Scheduled additional class — behind the stipulated timeline"});
+ });
+ toast(`Additional class scheduled for ${STUDENTS[sid].name} (day ${state.day+1}).`);
+}
+function advanceDay(){
+ mutate(s=>{s.day=Math.min(WINDOW_DAYS+5,s.day+1)});
+ toast(`Advanced to day ${state.day} of the ${WINDOW_DAYS}-day topic window.`);
+}
+function resetAll(){
+ if(liveTimer){clearInterval(liveTimer);liveTimer=null}
+ state=defaultState();save();render();
+ toast("Prototype reset to its starting state.");
+}
+function setRole(role,sid){
+ mutate(s=>{s.role=role;if(sid)s.activeStudent=sid;if(role==="student")s.studentView=s.studentView||"home"});
+}
+
+/* ============================= CONCEPT BLOCK PLAYER ============================= */
+/* stages: revision → learn → practice → cfu → done */
+function playerState(sid){
+ if(!state.player[sid]){
+  const cur=currentSubtopic(sid);
+  state.player[sid]={st:cur?cur.id:"st5",stage:"revision",qIdx:0,answered:null,practiceIdx:0,practiceRight:0,cfuIdx:0,cfuRight:0,learnStep:0};
+ }
+ return state.player[sid];
+}
+function playerQuestions(sid,stId,kind){
+ /* practice: revision item + 2 core; cfu: 2 core + revision item (4 total incl. inline) */
+ const rev=QB.rev[stId],core=QB.core[stId];
+ if(kind==="practice")return[{...rev,rev:true},core[0],core[1]];
+ return[core[0],core[1],{...rev,rev:true}];
+}
+function answerQ(sid,qi,opt){
+ mutate(s=>{const P=s.player[sid];P.answered=opt});
+}
+function nextQ(sid,kind){
+ mutate(s=>{
+  const P=s.player[sid];const qs=playerQuestions(sid,P.st,kind);
+  const q=qs[kind==="practice"?P.practiceIdx:P.cfuIdx];
+  const right=P.answered===q.a;
+  if(kind==="practice"){if(right)P.practiceRight++;P.practiceIdx++;P.answered=null;
+   if(P.practiceIdx>=qs.length){P.stage="cfu";s.students[sid].sub[P.st].practice="done";toast("Practice complete — moving to the Check for Understanding.")}
+  }else{if(right)P.cfuRight++;P.cfuIdx++;P.answered=null;
+   if(P.cfuIdx>=qs.length){
+    const score=Math.round(100*P.cfuRight/qs.length);
+    s.students[sid].sub[P.st].cfu={status:"done",score};
+    s.students[sid].sub[P.st].learn="done";s.students[sid].sub[P.st].practice="done";
+    P.stage="done";P.score=score;
+    if(score<60)s.students[sid].supports.push({day:s.day,by:"System",what:`CFU on ${SUBTOPICS.find(x=>x.id===P.st).title} below 60% — revision recommended`});
+    if(subtopicsDone(sid)===5&&s.students[sid].mastery.status==="locked"){
+     s.students[sid].mastery={status:"window",openedDay:s.day,deadlineDay:s.day+8,attempts:[]};
+     toast("All subtopics complete — Mastery Check unlocked with an 8-day window.");
+    }else{toast(`Check for Understanding saved · ${score}%. Learning Map updated.`)}
+   }
+  }
+ });
+}
+function playerAdvance(sid){
+ mutate(s=>{
+  const P=s.player[sid];
+  if(P.stage==="revision"){P.stage="learn";P.answered=null}
+  else if(P.stage==="learn"){
+   const L=lessonFor(sid,SUBTOPICS.find(x=>x.id===P.st));
+   const steps=L.chunked?3:1;
+   if(P.learnStep<steps-1)P.learnStep++;
+   else{P.stage="practice";s.students[sid].sub[P.st].learn="done";toast("Learning material complete — practice unlocked.")}
+  }
+  else if(P.stage==="done"){
+   delete s.player[sid];s.studentView="home";
+  }
+ });
+}
+function startNextSubtopic(sid){
+ mutate(s=>{delete s.player[sid];s.studentView="block"});
+}
+
+/* ============================= MASTERY CHECK ============================= */
+function startMC(sid){
+ mutate(s=>{s.mcRun={sid,idx:0,correct:0,answered:null};s.studentView="mcrun"});
+}
+function answerMC(opt){mutate(s=>{s.mcRun.answered=opt})}
+function nextMC(){
+ mutate(s=>{
+  const R=s.mcRun,item=MC_ITEMS[R.idx];
+  if(R.answered===item.a)R.correct++;
+  R.idx++;R.answered=null;
+  if(R.idx>=MC_ITEMS.length){
+   const score=Math.round(100*R.correct/MC_ITEMS.length);
+   const pass=score>=80;
+   const stu=s.students[R.sid];
+   stu.mastery.attempts.push({day:s.day,score,pass});
+   if(pass){
+    stu.mastery.status="passed";stu.mastery.passedDay=s.day;
+    stu.unlocked=["g7"];
+    toast(`Mastery Check passed at ${score}%. Grade 7 “Light: Reflection and images” unlocked.`);
+   }else{
+    toast(`Score ${score}% — below 80%. Targeted revision assigned; the window stays open.`);
+    stu.supports.push({day:s.day,by:"System",what:`Mastery Check attempt at ${score}% — revision plan generated for weakest objectives`});
+   }
+   R.doneScore=score;R.donePass=pass;
+  }
+ });
+}
+function closeMC(){mutate(s=>{s.mcRun=null;s.studentView="mastery"})}
+
+/* ============================= SHARED RENDER HELPERS ============================= */
+function progressBar(pct,cls){return `<div class="bar ${cls||""}"><i style="width:${Math.max(2,pct)}%"></i></div>`}
+function avatar(sid){return `<span class="avatar">${STUDENTS[sid].init}</span>`}
+function learningMapHTML(sid,forTeacher){
+ const s=state.students[sid],S=STUDENTS[sid];
+ const nodes=[];
+ /* prerequisite node */
+ const hasGap=S.gaps.length&&sid!=="s3";
+ nodes.push({dot:hasGap?(sid==="s2"?"supp":"supp"):"done",icon:hasGap?"!":"✓",
+  title:PREREQ.title,body:hasGap?`Gap being repaired alongside Grade 6 work: ${esc(S.gaps[0])}`:"Secure at diagnostic."});
+ for(const st of SUBTOPICS){
+  const rec=s.sub[st.id],stat=subStatus(rec);
+  let dot="lock",icon=String(st.n),body=st.goal;
+  if(stat==="completed"){dot="done";icon="✓";body=`Completed · Check for Understanding ${rec.cfu.score}%`}
+  else if(stat==="in_progress"){dot="prog";icon:String(st.n);body="Current position — in progress. "+(forTeacher?"":"Resume from where you stopped.")}
+  nodes.push({dot,icon,title:`Subtopic ${st.n} · ${st.title}`,body});
+ }
+ const m=s.mastery;
+ let mdot="lock",micon="◆",mbody="Unlocks after all five subtopics are completed.";
+ if(m.status==="window"){mdot="ready";mbody=`Window open — day ${state.day} of preparation. Attempt by day ${m.deadlineDay}, in class, teacher-supervised.`}
+ if(m.status==="passed"){mdot="done";micon="✓";mbody=`Passed on day ${m.passedDay} · ${m.attempts[m.attempts.length-1].score}%. Topic mastered.`}
+ nodes.push({dot:mdot,icon:micon,title:"Mastery Check · Light (Grade 6)",body:mbody});
+ for(const adv of ADV){
+  const un=s.unlocked.includes(adv.id);
+  nodes.push({dot:un?"accel":"lock",icon:un?"★":"🔒",title:`Grade ${adv.grade} · ${adv.title}`,
+   body:un?"Unlocked by Grade 6 mastery — advanced resources available.":"Locked — unlocks when the Grade 6 Mastery Check is passed."+(adv.id==="g8"?" (after Grade 7)":"")});
+ }
+ const pace=paceLabel(sid);
+ return `
+ <div class="card">
+  <div class="spread"><div><div class="eyebrow">Learning Map · Science — Light strand</div>
+   <h2>${esc(S.name)}</h2></div>
+   <div class="vstack" style="align-items:flex-end;gap:6px">${pill(topicStatus(sid))}<span class="pill plain ${pace.cls}">${pace.t}</span></div></div>
+  <hr>
+  <div class="grid3" style="margin-bottom:16px">
+   <div class="card flat kpi"><div class="v num">${subtopicsDone(sid)}/5</div><div class="l">Subtopics complete</div></div>
+   <div class="card flat kpi"><div class="v num">Day ${state.day}/${WINDOW_DAYS}</div><div class="l">Topic window</div></div>
+   <div class="card flat kpi"><div class="v num">${s.supports.length}</div><div class="l">Supports received</div></div>
+  </div>
+  ${nodes.map(n=>`<div class="mapnode"><div class="mapdot ${n.dot}">${n.icon}</div>
+    <div class="mapbody"><b>${n.title}</b><div class="small">${n.body}</div></div></div>`).join("")}
+  ${s.supports.length?`<hr><div class="eyebrow" style="margin-bottom:8px">Support log</div>
+   ${s.supports.map(x=>`<div class="evt"><span class="t">Day ${x.day}</span><span>${esc(x.by)} — ${esc(x.what)}</span></div>`).join("")}`:""}
+  ${s.extraClasses.length?`<hr><div class="eyebrow" style="margin-bottom:8px">Additional classes scheduled</div>
+   ${s.extraClasses.map(x=>`<div class="evt"><span class="t">Day ${x.day}</span><span>${esc(x.what)}</span></div>`).join("")}`:""}
+ </div>`;
+}
+
+/* ============================= TEACHER VIEWS ============================= */
+function tNav(){
+ const items=[["home","Home & schedule"],["class","Class detail"],["live","Live Concept Block"],["progress","Class progress"]];
+ const alerts=ROSTER.some(sid=>state.live.per[sid].help||state.live.per[sid].stuck);
+ return `<nav class="rail">
+  <div class="brand">Tomo <span>Teacher · Ms. Iyer</span></div>
+  ${items.map(([k,l])=>`<button class="navbtn" data-action="tview" data-v="${k}" aria-current="${state.teacherView===k}">${l}${k==="live"&&alerts?'<span class="dot"></span>':""}</button>`).join("")}
+  <div style="margin-top:auto" class="tiny">Grade 6 · Section A · Science<br>Topic window: day ${state.day} of ${WINDOW_DAYS}</div>
+ </nav>`;
+}
+function tHome(){
+ const needAttention=ROSTER.filter(sid=>paceLabel(sid).cls==="p-alert"||topicStatus(sid)==="needs_support");
+ const readyMC=ROSTER.filter(sid=>state.students[sid].mastery.status==="window");
+ const views={
+  day:`<div class="card">${TODAY_SLOTS.map(sl=>`
+    <div class="slot ${sl.main?"live-now":""}">
+     <span class="time num">${sl.time}</span>
+     <span class="blocktag bt-${sl.tag}">${sl.tag==="cb"?"Concept Block":sl.tag==="path"?"PATH Block":"Mastery Check"}</span>
+     <div style="flex:1"><b>${sl.label}</b><div class="small">${sl.sub}</div></div>
+     ${sl.main?`<button class="btn primary sm" data-action="tview" data-v="class">Open class</button>`:""}
+    </div>`).join("")}</div>`,
+  week:`<div class="card"><div class="small" style="margin-bottom:10px">Week 4 of the Light topic window (days ${state.day}–${Math.min(WINDOW_DAYS,state.day+4)}).</div>
+   ${["Mon","Tue","Wed","Thu","Fri"].map((d,i)=>`<div class="slot"><span class="time">${d}</span><div style="flex:1">
+    ${i===0?"<b>Today</b> — Science CB (Subtopic 4) · MC supervision (Anika)":i===1?"Science CB — Subtopic 4 continues · check-in: Rohan":i===2?"Science CB — Subtopic 5: Mirrors and reflection":i===3?"Practice & revision block · small-group re-teach if scheduled":"Buffer day · Mastery Check attempts (window closes day 14 for early group)"}
+   </div></div>`).join("")}</div>`,
+  month:`<div class="card"><div class="small" style="margin-bottom:10px">Term 2 · Science, Grade 6 — three topics scheduled.</div>
+   ${[["Weeks 1–3","Motion and Measurement","completed"],["Weeks 4–6","Light: shadows, images and reflection — current",""],["Weeks 7–9","Electricity and Circuits","not_started"]].map(([w,t,st])=>`
+   <div class="slot"><span class="time">${w}</span><div style="flex:1"><b>${t}</b></div>${st?pill(st==="completed"?"completed":"not_started"):pill("in_progress")}</div>`).join("")}</div>`,
+  year:`<div class="card"><div class="small" style="margin-bottom:10px">Grade 6 Science — yearly syllabus coverage against the academic calendar.</div>
+   ${[["Term 1","Food & Materials · Living World","100%","green"],["Term 2","Motion · Light · Electricity","38%","blue"],["Term 3","Water · Air · Waste","0%",""]].map(([t,c,p,cl])=>`
+   <div class="slot"><span class="time">${t}</span><div style="flex:1"><b>${c}</b><div style="max-width:280px;margin-top:6px">${progressBar(parseInt(p),cl)}</div></div><span class="small num">${p}</span></div>`).join("")}</div>`
+ };
+ return `
+ <div class="canvas-inner">
+  <div class="spread"><div><div class="eyebrow">Wednesday · Day ${state.day} of the topic window</div><h1>Good morning, Ms. Iyer</h1></div>
+   <div class="schtabs" role="tablist">${["day","week","month","year"].map(v=>`<button class="schtab" data-action="schview" data-v="${v}" aria-current="${state.schedView===v}">${v[0].toUpperCase()+v.slice(1)}</button>`).join("")}</div></div>
+  <div style="height:16px"></div>
+  ${views[state.schedView]}
+  <div class="grid2" style="margin-top:14px">
+   <div class="card">
+    <h3>Students requiring attention</h3>
+    ${needAttention.length?needAttention.map(sid=>`<div class="slot rowbtn" data-action="drawer" data-s="${sid}" role="button" tabindex="0">
+      ${avatar(sid)}<div style="flex:1"><b>${STUDENTS[sid].name}</b><div class="small">${STUDENTS[sid].support}</div></div><span class="pill plain ${paceLabel(sid).cls}">${paceLabel(sid).t}</span></div>`).join(""):'<p class="small">No open alerts.</p>'}
+   </div>
+   <div class="card">
+    <h3>Pending Mastery Checks</h3>
+    ${readyMC.length?readyMC.map(sid=>{const m=state.students[sid].mastery;return `<div class="slot">
+      ${avatar(sid)}<div style="flex:1"><b>${STUDENTS[sid].name}</b><div class="small">Light (Grade 6) · window closes day ${m.deadlineDay} · supervised, 11:30 slot</div></div>${pill("ready_mc")}</div>`}).join(""):'<p class="small">None pending.</p>'}
+    ${ROSTER.filter(sid=>state.students[sid].mastery.status==="passed").map(sid=>`<div class="slot">${avatar(sid)}<div style="flex:1"><b>${STUDENTS[sid].name}</b><div class="small">Passed · Grade 7 resources unlocked</div></div>${pill("accelerated")}</div>`).join("")}
+   </div>
+  </div>
+ </div>`;
+}
+function tClass(){
+ const st=SUBTOPICS[3];
+ return `<div class="canvas-inner">
+  <div class="eyebrow">Grade 6 Science · 09:30 Concept Block</div>
+  <h1>Light — Subtopic 4: ${st.title}</h1>
+  <p class="small" style="max-width:64ch;margin-top:6px">${st.goal} Expected core time: <b class="num">${st.mins} minutes</b>, then practice and the Check for Understanding. Revision of Subtopic 3 (shadows) is built into practice and the check.</p>
+  <div class="grid2" style="margin-top:16px">
+   <div class="card">
+    <h3>Learning objectives (this subtopic)</h3>
+    <ul class="small" style="padding-left:18px;margin-top:8px;display:flex;flex-direction:column;gap:6px">
+     <li>Describe how a pinhole camera forms an image <span class="bloom hit">Understand</span></li>
+     <li>Predict the effect of hole size and screen distance <span class="bloom hit">Apply</span></li>
+     <li>Contrast a pinhole image with a shadow <span class="bloom hit">Analyse</span></li>
+    </ul>
+    <hr>
+    <h3>Block structure</h3>
+    <div class="vstack small" style="margin-top:8px">
+     <div class="spread"><span><span class="revtag">Revision</span> Subtopic 3 retrieval (shadows)</span><span class="num tiny">3 min</span></div>
+     <div class="spread"><span><b>Learning material</b> — text + inline checks (personalized)</span><span class="num tiny">20 min</span></div>
+     <div class="spread"><span><b>Practice</b> — 3 items incl. one revision item</span><span class="num tiny">12 min</span></div>
+     <div class="spread"><span><b>Check for Understanding</b> — 3 items, saved to the Learning Map</span><span class="num tiny">8 min</span></div>
+    </div>
+    <hr>
+    <div class="hstack">
+     <button class="btn sm" data-action="toast" data-msg="Editing opens the activity in the content editor (out of scope for this prototype — all edits are teacher-owned).">Review / edit activities</button>
+     <button class="btn sm subtle" data-action="preview-student" data-s="s1">Preview student experience</button>
+    </div>
+   </div>
+   <div class="card">
+    <h3>Assigned versions — same objective, different route</h3>
+    <div class="tablewrap"><table>
+     <thead><tr><th>Student</th><th>Version</th><th>Why</th></tr></thead><tbody>
+     ${ROSTER.map(sid=>{const S=STUDENTS[sid];return `<tr class="rowbtn" data-action="drawer" data-s="${sid}" tabindex="0" role="button">
+      <td><div class="hstack">${avatar(sid)}<b>${S.name.split(" ")[0]}</b></div></td>
+      <td class="small">${S.adapt[0]}</td>
+      <td class="tiny">${S.diag.replace("Diagnostic: ","")}</td></tr>`}).join("")}
+     </tbody></table></div>
+   </div>
+  </div>
+  <div class="card">
+   <div class="spread"><h3>Students' live progress</h3>
+    <button class="btn primary" data-action="tview" data-v="live">Open Live view →</button></div>
+   <p class="small">Start the block from the Live view to watch all five students move through the material in real time and intervene without waiting for the 20-minute mark.</p>
+  </div>
+ </div>`;
+}
+function tLive(){
+ const L=state.live;
+ const phaseLabel={idle:"Not started",learning:"Learning material",practice:"Practice",cfu:"Check for Understanding",extension:"MC revision + extension"};
+ return `<div class="canvas-inner">
+  <div class="spread">
+   <div class="livehead"><span class="livedot ${L.running?"on":""}"></span>
+    <div><div class="eyebrow">Live Concept Block · Grade 6 Science</div>
+    <h1>Light — Subtopic 4 <span class="num" style="font-size:18px;color:var(--ink3)">· min ${L.tick} / ${LIVE_MAX}</span></h1></div></div>
+   <div class="hstack">
+    ${!L.running?`<button class="btn primary" data-action="live-start">${L.tick?"Resume":"Start session"}</button>`:`<button class="btn" data-action="live-pause">Pause</button>`}
+    <button class="btn sm" data-action="live-tick" ${L.running?"disabled":""}>+1 min</button>
+    <button class="btn sm" data-action="live-reset">Reset session</button>
+   </div>
+  </div>
+  <div class="card" style="margin-top:16px">
+   <div class="tablewrap"><table>
+    <thead><tr><th>Student</th><th style="width:26%">Progress</th><th>Currently in</th><th>Signal</th><th></th></tr></thead><tbody>
+    ${ROSTER.map(sid=>{const p=L.per[sid];const S=STUDENTS[sid];
+     let sig="",cls="";
+     if(p.help){sig="Requested help";cls="p-alert"}
+     else if(p.stuck){sig="Appears stuck";cls="p-supp"}
+     else if(p.late){sig="20 min — learning not complete";cls="p-supp"}
+     else if(p.phase==="idle"){sig="Not started";cls="p-idle"}
+     else if(p.pct>=90){sig="Can move forward independently";cls="p-done"}
+     else{sig="Progressing normally";cls="p-prog"}
+     return `<tr>
+      <td><div class="hstack">${avatar(sid)}<div><b>${S.name}</b><div class="tiny">${sid==="s5"?"Own track: Mastery prep":sid==="s2"?"Own track: Subtopic 3":"Subtopic 4"}</div></div></div></td>
+      <td>${progressBar(p.pct,p.stuck||p.help?"amber":sid==="s5"?"violet":"blue")}<span class="tiny num">${p.pct}%</span></td>
+      <td class="small">${phaseLabel[p.phase]}${p.note?`<div class="tiny">${esc(p.note)}</div>`:""}</td>
+      <td><span class="pill plain ${cls}">${sig}</span></td>
+      <td><button class="btn sm ${p.help||p.stuck?"primary":""}" data-action="drawer" data-s="${sid}">Open</button></td>
+     </tr>`}).join("")}
+    </tbody></table></div>
+  </div>
+  <div class="card">
+   <h3>Session feed</h3>
+   ${L.events.length?L.events.map(e=>`<div class="evt"><span class="t num">min ${e.t}</span><span>${e.kind==="alert"?"⚠ ":""}${esc(e.txtRaw||e.txt)}</span></div>`).join(""):'<p class="small">Press <b>Start session</b> — events appear here as students work. You can intervene at any moment; there is no need to wait for the 20-minute mark.</p>'}
+  </div>
+ </div>`;
+}
+function tProgress(){
+ return `<div class="canvas-inner">
+  <h1>Class progress — Light (Grade 6)</h1>
+  <p class="small">Expected position by day ${state.day}: <b class="num">${expectedDone()} of 5</b> subtopics complete. Window closes on day ${WINDOW_DAYS}.</p>
+  <div class="card" style="margin-top:14px"><div class="tablewrap"><table>
+   <thead><tr><th>Student</th><th style="width:24%">Topic completion</th><th>Status</th><th>Pace</th><th>Mastery Check</th><th>Action</th></tr></thead><tbody>
+   ${ROSTER.map(sid=>{const s=state.students[sid];const done=subtopicsDone(sid);const pace=paceLabel(sid);const m=s.mastery;
+    let mc="Locked";
+    if(m.status==="window")mc=`Window open · by day ${m.deadlineDay}`;
+    if(m.status==="passed")mc=`Passed ${m.attempts[m.attempts.length-1].score}%`;
+    let act="";
+    if(topicStatus(sid)==="accelerated")act=`<span class="pill p-accel">Ready for acceleration</span>`;
+    else if(pace.cls==="p-alert")act=s.extraClasses.length?`<span class="pill plain p-supp">Additional class · day ${s.extraClasses[0].day}</span>`:`<button class="btn sm primary" data-action="extra-class" data-s="${sid}">Schedule additional class</button>`;
+    else if(m.status==="window")act=`<span class="small">Supervise at 11:30</span>`;
+    else act=`<button class="btn sm" data-action="drawer" data-s="${sid}">Detail</button>`;
+    return `<tr>
+     <td><div class="hstack" style="cursor:pointer" data-action="drawer" data-s="${sid}" role="button" tabindex="0">${avatar(sid)}<b>${STUDENTS[sid].name}</b></div></td>
+     <td>${progressBar(done*20,done===5?"green":pace.cls==="p-alert"?"amber":"blue")}<span class="tiny num">${done}/5 subtopics</span></td>
+     <td>${pill(topicStatus(sid))}</td>
+     <td><span class="pill plain ${pace.cls}">${pace.t}</span></td>
+     <td class="small">${mc}</td><td>${act}</td></tr>`}).join("")}
+  </tbody></table></div></div>
+  <div class="grid2">
+   <div class="card"><h3>Ready for acceleration</h3>
+    ${ROSTER.filter(sid=>topicStatus(sid)==="accelerated"||state.students[sid].mastery.status==="window").map(sid=>`<div class="slot">${avatar(sid)}<div style="flex:1"><b>${STUDENTS[sid].name}</b><div class="small">${state.students[sid].mastery.status==="passed"?"Grade 7 Light resources unlocked":"Awaiting Mastery Check attempt"}</div></div></div>`).join("")||'<p class="small">None yet.</p>'}</div>
+   <div class="card"><h3>Pending interventions</h3>
+    ${ROSTER.filter(sid=>paceLabel(sid).cls==="p-alert"||paceLabel(sid).cls==="p-supp").map(sid=>`<div class="slot">${avatar(sid)}<div style="flex:1"><b>${STUDENTS[sid].name}</b><div class="small">${STUDENTS[sid].support}</div></div><span class="pill plain ${paceLabel(sid).cls}">${paceLabel(sid).t}</span></div>`).join("")||'<p class="small">None open.</p>'}</div>
+  </div>
+ </div>`;
+}
+function tDrawer(){
+ const sid=state.drawer;if(!sid)return"";
+ const S=STUDENTS[sid],s=state.students[sid],p=state.live.per[sid];
+ const cur=currentSubtopic(sid);
+ const rec={s4:"Sit with Rohan for 2 minutes at the inverted-image diagram: trace the two straight lines through the pinhole with him, then let him retry inline check 2 unaided.",
+  s2:"Give Dev the three-materials tray (glass, butter paper, wood). One minute of sorting, then link each to its shadow before he retries the practice item.",
+  s3:"Meera is fine — if she asks, confirm the glossed term and move on. Consider her for early Mastery Check readiness next topic.",
+  s1:"No intervention needed. Optional stretch: ask her to annotate her pinhole diagram with the two crossing rays.",
+  s5:"Confirm the 11:30 supervised Mastery Check slot; review her periscope prediction afterwards."}[sid];
+ return `
+ <div class="drawer-veil" data-action="drawer-close"></div>
+ <aside class="drawer" role="dialog" aria-label="Student support panel">
+  <div class="spread"><div class="hstack">${avatar(sid)}<div><h2>${S.name}</h2><span class="tiny">${S.bg}</span></div></div>
+   <button class="btn sm" data-action="drawer-close" aria-label="Close panel">✕</button></div>
+  <hr>
+  <div class="vstack">
+   <div class="spread"><span class="eyebrow">Current activity</span>${pill(topicStatus(sid))}</div>
+   <p class="small">${p&&p.phase!=="idle"?`Live: ${p.phase==="extension"?"Mastery revision + extension":"Subtopic work"} · ${p.pct}% through this block.`:cur?`Subtopic ${cur.n}: ${cur.title} — ${subStatus(s.sub[cur.id]).replace("_"," ")}.`:"All subtopics complete."}
+   ${p&&p.note?`<br><b>Difficulty:</b> ${esc(p.note)}`:""}</p>
+   <div class="eyebrow">Diagnostic & prior gaps</div>
+   <p class="small">${S.diag}</p>
+   ${S.gaps.length?`<div class="hstack">${S.gaps.map(g=>`<span class="pill plain p-supp">${esc(g)}</span>`).join("")}</div>`:""}
+   <div class="eyebrow">Recent responses</div>
+   <p class="small">${sid==="s4"?"Inline check 1 ✓ · inline check 2 ✗ ✗ ✗ (chose “the box flips it” twice — not connecting straight-line travel to inversion).":sid==="s2"?"Practice: shadow items ✓ ✓ · prerequisite item (translucent) ✗ then ✓ with the worked example.":"Recent checks passed on the first or second attempt."}</p>
+   <div class="eyebrow">Tomoé AI support already given</div>
+   <p class="small">${sid==="s4"?"One hint (a straight-line ray diagram) and one guiding question. Tomoé escalated to you rather than giving the answer.":sid==="s2"?"Re-served the Grade 5 refresher card and one worked example.":sid==="s3"?"Inline glossary lookups (image, inverted, screen) — 4 uses this session.":"None needed this session."}</p>
+   <div class="card flat" style="background:var(--accent-soft);border-color:transparent">
+    <div class="eyebrow" style="color:var(--accent-ink)">Suggested teacher action</div>
+    <p class="small" style="margin-top:6px">${rec}</p>
+    <p class="tiny" style="margin-top:6px">Suggestions are editable and never applied automatically — you decide.</p>
+   </div>
+   <div class="hstack">
+    <button class="btn primary sm" data-action="assign-support" data-s="${sid}">Record this intervention</button>
+    <button class="btn sm" data-action="assign-practice" data-s="${sid}">Assign extra practice</button>
+    <button class="btn sm subtle" data-action="preview-student" data-s="${sid}">Open student view</button>
+   </div>
+   <hr>
+   <div class="eyebrow">Learning Map</div>
+   ${learningMapHTML(sid,true)}
+  </div>
+ </aside>`;
+}
+
+/* ============================= STUDENT VIEWS ============================= */
+function sFrame(inner){
+ const sid=state.activeStudent,S=STUDENTS[sid];
+ const tabs=[["home","Today"],["block","Concept Block"],["mastery","Mastery Check"],["map","My Learning Map"]];
+ return `
+ <header class="stu-top">
+  <div class="row1"><span class="brand">Tomo</span><span class="small">Grade 6 · Science</span>
+   <span style="margin-left:auto" class="hstack">${avatar(sid)}<b>${S.name}</b></span></div>
+  <div class="stu-tabs">${tabs.map(([k,l])=>`<button class="stu-tab" data-action="sview" data-v="${k}" aria-current="${state.studentView===k||(state.studentView==="mcrun"&&k==="mastery")}">${l}</button>`).join("")}</div>
+ </header>
+ <main class="stu-canvas"><div class="stu-inner">${inner}</div></main>`;
+}
+function sHome(){
+ const sid=state.activeStudent,S=STUDENTS[sid],s=state.students[sid];
+ const cur=currentSubtopic(sid),done=subtopicsDone(sid);
+ const m=s.mastery;
+ const daysLeft=WINDOW_DAYS-state.day;
+ return `
+  <div class="eyebrow">Day ${state.day} · ${daysLeft} school days left in this topic window</div>
+  <h1>Hi ${S.name.split(" ")[0]} 👋</h1>
+  <div class="card" style="margin-top:14px">
+   <div class="spread"><h3>Today's Concept Block · 09:30</h3>${pill(topicStatus(sid))}</div>
+   <p class="small" style="margin:8px 0 4px"><b>Light</b> — ${cur?`Subtopic ${cur.n}: ${cur.title}`:"all subtopics complete"} ${cur&&subStatus(s.sub[cur.id])==="in_progress"?"· you have saved progress — pick up where you stopped":""}</p>
+   <div class="hstack" style="margin:10px 0">${progressBar(done*20,done===5?"green":"")}<span class="small num">${done} of 5 subtopics complete</span></div>
+   ${cur?`<button class="btn primary" data-action="sview" data-v="block">${subStatus(s.sub[cur.id])==="in_progress"?"Resume Concept Block":"Start Concept Block"}</button>`:
+    m.status==="window"?`<button class="btn primary" data-action="sview" data-v="mastery">Prepare for your Mastery Check</button>`:
+    `<button class="btn primary" data-action="sview" data-v="map">See what you unlocked</button>`}
+  </div>
+  ${m.status==="window"?`<div class="card" style="border-color:var(--accent)">
+   <div class="spread"><h3>Mastery Check pending</h3>${pill("ready_mc")}</div>
+   <p class="small">Light (Grade 6) · attempt by <b>day ${m.deadlineDay}</b> (${m.deadlineDay-state.day} days left) · in class, with your teacher. You own this — pick your moment inside the window.</p>
+   <button class="btn subtle sm" data-action="sview" data-v="mastery">Open Mastery Check area</button></div>`:""}
+  ${m.status==="passed"?`<div class="card unlockcard"><h3>★ Grade 7 unlocked</h3>
+   <p class="small">You mastered Light at Grade 6 — advanced resources from <b>Grade 7 · Light: Reflection and images</b> are now open on your Learning Map.</p></div>`:""}
+  <div class="grid2">
+   <div class="card"><h3>Pending tasks</h3><ul class="small" style="padding-left:18px;margin-top:8px;display:flex;flex-direction:column;gap:6px">
+    ${cur?`<li>${subStatus(s.sub[cur.id])==="in_progress"?"Finish":"Start"} Subtopic ${cur.n}: ${cur.title}</li>`:""}
+    ${cur&&cur.n>1?`<li><span class="revtag">Revision</span> Subtopic ${cur.n-1} retrieval is inside your practice</li>`:""}
+    ${m.status==="window"?`<li>Mastery Check — attempt by day ${m.deadlineDay}</li><li>Suggested revision: Subtopics 2 & 4 (your slowest checks)</li>`:""}
+    ${!cur&&m.status==="passed"?`<li>Grade 7 investigation: build & trace a periscope</li>`:""}
+    ${s.extraClasses.length?`<li>Additional class with Ms. Iyer — day ${s.extraClasses[0].day}</li>`:""}
+   </ul></div>
+   <div class="card"><h3>Need a hand?</h3>
+    <p class="small" style="margin:6px 0 10px">Tomoé can hint and question — it won't just give answers. Your teacher sees when you ask.</p>
+    <div class="hstack"><button class="btn sm" data-action="toast" data-msg="Tomoé: “Tell me what you tried first — then I'll give you a nudge, not the answer.”">Ask Tomoé</button>
+    <button class="btn sm" data-action="toast" data-msg="Ms. Iyer has been notified that you'd like help. She can see exactly where you are.">Ask my teacher</button></div>
+   </div>
+  </div>
+  <div class="card">
+   <div class="spread"><h3>My map at a glance</h3><button class="linkbtn" data-action="sview" data-v="map">Full map →</button></div>
+   <div class="hstack" style="margin-top:10px">
+    ${SUBTOPICS.map(st=>{const stat=subStatus(s.sub[st.id]);return `<span class="pill plain ${stat==="completed"?"p-done":stat==="in_progress"?"p-prog":"p-idle"}">${st.n}. ${st.title.split(":")[0]}</span>`}).join("")}
+    <span class="pill plain ${m.status==="passed"?"p-mast":m.status==="window"?"p-ready":"p-idle"}">Mastery Check</span>
+    <span class="pill plain ${s.unlocked.length?"p-accel":"p-idle"}">${s.unlocked.length?"★ Grade 7 open":"Grade 7 🔒"}</span>
+   </div>
+  </div>`;
+}
+function sBlock(){
+ const sid=state.activeStudent,S=STUDENTS[sid];
+ const P=playerState(sid);save();
+ const st=SUBTOPICS.find(x=>x.id===P.st);
+ if(!st)return `<h1>All subtopics complete 🎉</h1><p class="small">Head to the Mastery Check area.</p>`;
+ const L=lessonFor(sid,st);
+ const stages=["revision","learn","practice","cfu"];
+ const stageNames={revision:"Revision",learn:"Learning",practice:"Practice",cfu:"Check"};
+ const idx=P.stage==="done"?4:stages.indexOf(P.stage);
+ let body="";
+ if(P.stage==="revision"){
+  const prev=st.n>1?SUBTOPICS[st.n-2]:null;
+  const rq=QB.rev[st.id];
+  body=`<span class="revtag">Revision first · ${prev?`Subtopic ${prev.n}`:"Grade 5"}</span>
+   <h2 style="margin-top:4px">${esc(rq.q.replace(/^\(.*?\)\s*/,""))}</h2>
+   ${rq.opts.map((o,i)=>`<button class="qopt ${P.answered!=null?(i===rq.a?"correct":i===P.answered?"wrong":""):""}" data-action="ans" data-i="${i}" ${P.answered!=null?"disabled":""}>${esc(o)}</button>`).join("")}
+   ${P.answered!=null?`<div class="feedback ${P.answered===rq.a?"good":"bad"}">${P.answered===rq.a?"✓ ":"Not quite — "}${esc(rq.fb)}</div>
+   <div style="margin-top:14px"><button class="btn primary" data-action="player-advance">Start today's learning →</button></div>`:""}`;
+ }else if(P.stage==="learn"){
+  const chunks=L.chunked?splitChunks(st.core):[st.core];
+  const stepTxt=chunks[Math.min(P.learnStep,chunks.length-1)];
+  body=`
+   <div class="whybox"><b>Why this version?</b> ${esc(L.why)}</div>
+   <div class="lesson-prose" style="margin-top:14px">
+    ${L.diagramFirst?diagramFor(st.id):""}
+    ${L.prereq&&st.n<=3?`<div class="card flat" style="background:var(--amber-soft);border-color:transparent;margin-bottom:12px"><span class="revtag" style="color:var(--amber);background:transparent;padding:0">Quick repair · Grade 5</span><p class="small" style="margin-top:4px"><b>Transparent</b> lets all light through (glass). <b>Translucent</b> lets some through, scattered (butter paper). <b>Opaque</b> blocks it (wood). Only opaque objects make dark, sharp shadows.</p></div>`:""}
+    <p>${L.gloss?glossify(stepTxt):stepTxt}</p>
+    ${!L.diagramFirst?diagramFor(st.id):""}
+    ${L.extra?`<div class="card flat" style="background:var(--panel2);border-color:transparent"><p class="small">${esc(L.extra)}</p></div>`:""}
+   </div>
+   ${L.chunked?`<p class="tiny" style="margin-top:10px">Step ${P.learnStep+1} of ${chunks.length} — one idea at a time. Sentence starter for your notebook: <i>“The image is upside-down because light…”</i></p>`:""}
+   <div class="hstack" style="margin-top:14px">
+    <button class="btn primary" data-action="player-advance">${L.chunked&&P.learnStep<chunks.length-1?"Got it — next step":"Done — go to practice"}</button>
+    <button class="btn" data-action="toast" data-msg="Tomoé: “Look at the diagram — follow ONE straight line from the top of the tree through the hole. Where does it land?”">Ask Tomoé for a hint</button>
+    <button class="btn" data-action="toast" data-msg="Ms. Iyer has been notified — she can see exactly which step you're on.">Request help</button>
+   </div>`;
+ }else if(P.stage==="practice"||P.stage==="cfu"){
+  const kind=P.stage,qs=playerQuestions(sid,P.st,kind);
+  const qi=kind==="practice"?P.practiceIdx:P.cfuIdx;
+  const q=qs[qi];
+  body=`
+   ${kind==="cfu"?`<p class="tiny" style="margin-bottom:8px">This check is saved to your Learning Map. ${sid==="s3"?"Key words are glossed for you — the questions are the same as everyone's.":""}</p>`:""}
+   ${q.rev?`<span class="revtag">Revision item</span>`:""}
+   <div class="tiny num" style="margin-bottom:4px">${kind==="practice"?"Practice":"Check for Understanding"} · question ${qi+1} of ${qs.length}</div>
+   <h2>${esc(q.q.replace(/^\(.*?\)\s*/,""))}</h2>
+   ${q.opts.map((o,i)=>`<button class="qopt ${P.answered!=null?(i===q.a?"correct":i===P.answered?"wrong":""):""}" data-action="ans" data-i="${i}" ${P.answered!=null?"disabled":""}>${esc(o)}</button>`).join("")}
+   ${P.answered!=null?`<div class="feedback ${P.answered===q.a?"good":"bad"}">${P.answered===q.a?"✓ ":"Not quite — "}${esc(q.fb||"Check the idea and try the next one.")}</div>
+   <div style="margin-top:14px"><button class="btn primary" data-action="nextq" data-kind="${kind}">${qi+1>=qs.length?(kind==="practice"?"Finish practice →":"Finish check →"):"Next question →"}</button></div>`:""}`;
+ }else{ /* done */
+  const score=P.score;
+  body=`<h2>${score>=60?"Subtopic complete ✓":"Saved — let's revisit this one"}</h2>
+   <p class="small" style="margin:8px 0">Check for Understanding: <b class="num">${score}%</b>. ${score>=60?"Your Learning Map has been updated and the next subtopic is open.":"Below 60% — a revision recommendation was added to your map and your teacher can see it."}</p>
+   <div class="hstack">
+    ${currentSubtopic(sid)?`<button class="btn primary" data-action="next-subtopic">Continue to the next subtopic</button>`:`<button class="btn primary" data-action="sview" data-v="mastery">Mastery Check is unlocked →</button>`}
+    <button class="btn" data-action="sview" data-v="map">See my Learning Map</button>
+   </div>`;
+ }
+ return `
+  <div class="eyebrow">Concept Block · Light</div>
+  <h1>Subtopic ${st.n}: ${st.title}</h1>
+  <div class="stage-steps">${stages.map((sg,i)=>`<div class="stage-step ${i===idx?"cur":i<idx?"done":""}">${stageNames[sg]}${sg==="practice"||sg==="cfu"?" ·incl. revision":""}</div>`).join("")}</div>
+  <p class="tiny" style="margin:2px 0 12px">Your progress is saved automatically — leave any time and resume here.</p>
+  <div class="card">${body}</div>`;
+}
+function splitChunks(txt){
+ const parts=txt.split(". ");
+ const per=Math.ceil(parts.length/3);
+ const out=[];for(let i=0;i<parts.length;i+=per)out.push(parts.slice(i,i+per).join(". ")+(i+per<parts.length?".":""));
+ return out.slice(0,3);
+}
+function glossify(txt){
+ const G={luminous:"gives out its own light",opaque:"blocks light completely",translucent:"lets some light through, blurred",transparent:"lets all light through",inverted:"upside-down",image:"a picture made by light",reflection:"light bouncing off and changing direction",shadow:"dark shape where light is blocked",screen:"surface the light lands on"};
+ let out=txt;
+ for(const[w,d]of Object.entries(G))out=out.replace(new RegExp(`\\b(${w})\\b`,"i"),`<span class="gloss" title="${d}">$1</span>`);
+ return out+`<span class="tiny" style="display:block;margin-top:8px">Dotted words have plain-language meanings — hover or tap them.</span>`;
+}
+function diagramFor(stId){
+ const svgs={
+  st4:`<div class="diagram"><svg viewBox="0 0 320 120" width="100%" style="max-width:360px" role="img" aria-label="Pinhole camera ray diagram"><line x1="40" y1="20" x2="250" y2="95" stroke="var(--amber)" stroke-width="2"/><line x1="40" y1="95" x2="250" y2="25" stroke="var(--blue)" stroke-width="2"/><rect x="140" y="10" width="6" height="42" fill="var(--ink3)"/><rect x="140" y="66" width="6" height="44" fill="var(--ink3)"/><line x1="40" y1="20" x2="40" y2="95" stroke="var(--green)" stroke-width="5"/><line x1="250" y1="25" x2="250" y2="95" stroke="var(--line2)" stroke-width="3"/><text x="28" y="112" font-size="11" fill="var(--ink2)">object</text><text x="128" y="118" font-size="11" fill="var(--ink2)">pinhole</text><text x="232" y="118" font-size="11" fill="var(--ink2)">screen</text></svg><div class="tiny">Two straight lines cross at the hole — top lands at the bottom. That's why the image is inverted.</div></div>`,
+  st3:`<div class="diagram"><svg viewBox="0 0 320 110" width="100%" style="max-width:360px" role="img" aria-label="Shadow formation"><circle cx="30" cy="55" r="14" fill="var(--amber)"/><rect x="150" y="35" width="10" height="40" rx="2" fill="var(--ink3)"/><line x1="42" y1="45" x2="150" y2="37" stroke="var(--amber)" stroke-width="1.5"/><line x1="42" y1="65" x2="150" y2="73" stroke="var(--amber)" stroke-width="1.5"/><rect x="270" y="10" width="6" height="90" fill="var(--line2)"/><rect x="270" y="32" width="6" height="48" fill="var(--ink)"/><text x="14" y="95" font-size="11" fill="var(--ink2)">source</text><text x="138" y="95" font-size="11" fill="var(--ink2)">opaque object</text><text x="252" y="108" font-size="11" fill="var(--ink2)">screen + shadow</text></svg></div>`
+ };
+ return svgs[stId]||svgs.st3;
+}
+function sMastery(){
+ const sid=state.activeStudent,s=state.students[sid],m=s.mastery;
+ const eligible=m.status!=="locked";
+ const last=m.attempts&&m.attempts.length?m.attempts[m.attempts.length-1]:null;
+ return `
+  <div class="eyebrow">Mastery Check · Light (Grade 6)</div>
+  <h1>Show what you've mastered</h1>
+  <div class="card" style="margin-top:14px">
+   <div class="spread"><h3>Eligibility</h3>${eligible?pill(m.status==="passed"?"mastered":"ready_mc"):pill("not_started")}</div>
+   <p class="small" style="margin-top:6px">${eligible?
+     m.status==="passed"?`Passed on day ${m.passedDay} with <b class="num">${last.score}%</b>. Grade 7 resources are unlocked on your Learning Map.`:
+     `All five subtopics are complete. Your window opened on day ${m.openedDay} and closes on <b>day ${m.deadlineDay}</b> — ${m.deadlineDay-state.day} days left. The check happens in class, supervised by Ms. Iyer (today's slot: 11:30).`:
+     `Complete all five subtopics first — you're at ${subtopicsDone(sid)} of 5. The check unlocks automatically, then you get a 7–10 day window to prepare and attempt it.`}</p>
+  </div>
+  <div class="card">
+   <h3>What it assesses — objectives × Bloom's levels</h3>
+   <div class="vstack" style="margin-top:10px">
+   ${OBJECTIVES.map(o=>`<div class="spread"><span class="small" style="max-width:56ch">${o.text}</span><span class="bloom hit">${o.bloom}</span></div>`).join("")}
+   </div>
+  </div>
+  ${eligible&&m.status!=="passed"?`<div class="card">
+   <h3>Prepare, then attempt</h3>
+   <p class="small" style="margin:6px 0 10px">Suggested revision from your map: <b>Subtopic 2</b> (straight lines — your slowest check) and <b>Subtopic 4</b> (images vs shadows). You can reopen any learning or practice material, and ask Tomoé or Ms. Iyer while preparing — the check itself is done on your own.</p>
+   <div class="hstack">
+    <button class="btn" data-action="sview" data-v="block">Revisit material</button>
+    <button class="btn" data-action="toast" data-msg="Tomoé: “Let's warm up — explain to me in one sentence why a shadow has no colour.”">Prepare with Tomoé</button>
+    <button class="btn primary" data-action="start-mc">Begin supervised attempt</button>
+   </div>
+   ${last&&!last.pass?`<hr><p class="small">Previous attempt: day ${last.day} · <b class="num">${last.score}%</b> — revision plan assigned; the window stays open.</p>`:""}
+  </div>`:""}
+  ${m.status==="passed"?`<div class="card unlockcard">
+   <h3>★ Unlocked: Grade 7 · ${ADV[0].title}</h3>
+   <ul class="small" style="padding-left:18px;margin-top:8px;display:flex;flex-direction:column;gap:5px">${ADV[0].items.map(i=>`<li>${i}</li>`).join("")}</ul>
+   <p class="tiny" style="margin-top:10px">Grade 8 (Refraction & the eye) unlocks after the Grade 7 strand.</p>
+  </div>`:""}`;
+}
+function sMCRun(){
+ const R=state.mcRun;if(!R)return sMastery();
+ if(R.idx>=MC_ITEMS.length){
+  return `<div class="card" style="margin-top:20px;text-align:center;padding:34px">
+   <div class="eyebrow">Mastery Check · result</div>
+   <h1 style="margin:10px 0">${R.doneScore}%</h1>
+   ${R.donePass?`<p class="small" style="max-width:46ch;margin:0 auto">Mastered. Your Learning Map now shows this topic complete — and <b>Grade 7: Light — Reflection and images</b> is unlocked.</p>`:`<p class="small" style="max-width:46ch;margin:0 auto">Below the 80% mastery bar. A targeted revision plan was added to your map; your window is still open for another attempt.</p>`}
+   <div class="hstack" style="justify-content:center;margin-top:16px">
+    <button class="btn primary" data-action="mc-close">${R.donePass?"See my Learning Map":"Back to preparation"}</button>
+   </div></div>`;
+ }
+ const item=MC_ITEMS[R.idx];
+ return `
+  <div class="eyebrow">Supervised Mastery Check · in class · Ms. Iyer present</div>
+  <h1>Light — Grade 6</h1>
+  <p class="tiny" style="margin:4px 0 12px">Question ${R.idx+1} of ${MC_ITEMS.length} · assessing <b>${item.bloom}</b>. Tomoé is unavailable during the check.</p>
+  <div class="card">
+   <h2>${esc(item.q)}</h2>
+   ${item.opts.map((o,i)=>`<button class="qopt ${i===R.answered?"sel":""}" data-action="mc-ans" data-i="${i}">${esc(o)}</button>`).join("")}
+   ${R.answered!=null?`<div style="margin-top:14px"><button class="btn primary" data-action="mc-next">${R.idx+1>=MC_ITEMS.length?"Submit check":"Next →"}</button></div>`:""}
+   <p class="tiny" style="margin-top:12px">No per-question feedback during a Mastery Check — results come at the end.</p>
+  </div>`;
+}
+
+/* ============================= APP SHELL ============================= */
+function demoBar(){
+ return `<div class="demobar">
+  <span class="lbl">Demo · view as</span>
+  <button class="rolebtn" data-action="role-teacher" aria-current="${state.role==="teacher"}">Ms. Iyer (teacher)</button>
+  ${ROSTER.map(sid=>`<button class="rolebtn" data-action="role-student" data-s="${sid}" aria-current="${state.role==="student"&&state.activeStudent===sid}">${STUDENTS[sid].name.split(" ")[0]}</button>`).join("")}
+  <span style="flex:1"></span>
+  <span class="tiny num">Topic window · day ${state.day}/${WINDOW_DAYS}</span>
+  <button class="btn sm" data-action="advance-day">Next day →</button>
+  <button class="btn sm" data-action="reset">Reset demo</button>
+ </div>`;
+}
+function render(){
+ const app=document.getElementById("app");
+ let html="";
+ if(state.role==="teacher"){
+  const view={home:tHome,class:tClass,live:tLive,progress:tProgress}[state.teacherView]||tHome;
+  html=`<div class="frame">${tNav()}<main class="canvas">${view()}</main></div>${tDrawer()}`;
+ }else{
+  const view={home:sHome,block:sBlock,mastery:sMastery,map:()=> `<div>${learningMapHTML(state.activeStudent,false)}</div>`,mcrun:sMCRun}[state.studentView]||sHome;
+  html=`<div class="frame" style="flex-direction:column">${sFrame(view())}</div>`;
+ }
+ app.innerHTML=html+demoBar();
+}
+
+/* ============================= EVENTS ============================= */
+document.addEventListener("click",e=>{
+ const el=e.target.closest("[data-action]");if(!el)return;
+ const a=el.dataset.action,sid=el.dataset.s;
+ switch(a){
+  case"tview":mutate(s=>{s.teacherView=el.dataset.v});break;
+  case"schview":mutate(s=>{s.schedView=el.dataset.v});break;
+  case"sview":mutate(s=>{s.studentView=el.dataset.v});break;
+  case"drawer":mutate(s=>{s.drawer=sid});break;
+  case"drawer-close":mutate(s=>{s.drawer=null});break;
+  case"role-teacher":setRole("teacher");break;
+  case"role-student":mutate(s=>{s.role="student";s.activeStudent=sid;s.studentView="home"});break;
+  case"preview-student":mutate(s=>{s.role="student";s.activeStudent=sid;s.studentView="home";s.drawer=null});toast(`Viewing as ${STUDENTS[sid].name} — use the demo bar to return to the teacher view.`);break;
+  case"live-start":startLive();break;
+  case"live-pause":pauseLive();break;
+  case"live-tick":liveTickOnce();break;
+  case"live-reset":stopLive(true);break;
+  case"assign-support":assignSupport(sid,{s4:"2-minute ray-diagram walk-through at the pinhole step; retry unaided",s2:"Materials tray sort (transparent/translucent/opaque) before retrying practice",s3:"Confirmed glossary term; no further action needed",s1:"Stretch prompt: annotate diagram with crossing rays",s5:"Confirmed 11:30 supervised Mastery Check slot"}[sid]||"Teacher check-in");break;
+  case"assign-practice":mutate(s=>{s.students[sid].supports.push({day:s.day,by:"Ms. Iyer",what:"Assigned extra practice set (3 scaffolded items) on the current subtopic"})});toast(`Extra practice assigned to ${STUDENTS[sid].name}.`);break;
+  case"extra-class":scheduleExtraClass(sid);break;
+  case"advance-day":advanceDay();break;
+  case"reset":resetAll();break;
+  case"toast":toast(el.dataset.msg);break;
+  case"ans":answerQ(state.activeStudent,null,parseInt(el.dataset.i));break;
+  case"nextq":nextQ(state.activeStudent,el.dataset.kind);break;
+  case"player-advance":playerAdvance(state.activeStudent);break;
+  case"next-subtopic":startNextSubtopic(state.activeStudent);break;
+  case"start-mc":startMC(state.activeStudent);break;
+  case"mc-ans":answerMC(parseInt(el.dataset.i));break;
+  case"mc-next":nextMC();break;
+ }
+});
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape"&&state.drawer)mutate(s=>{s.drawer=null});
+ if((e.key==="Enter"||e.key===" ")&&e.target.matches('[role="button"][data-action]')){e.preventDefault();e.target.click()}
+});
+if(state.live.running){liveTimer=setInterval(liveTickOnce,1500)}
+render();
+
+</script>
