@@ -59,6 +59,7 @@
 [data-persona="teacher"] { --accent: #0f7a6b; --accent-ink: #0a5a4e; --accent-soft: #e2f4f0; }
 [data-persona="map"]     { --accent: #b4531f; --accent-ink: #8f3f16; --accent-soft: #fbeadd; }
 [data-persona="mathlab"] { --accent: #1f5fb4; --accent-ink: #17488a; --accent-soft: #e3edfb; }
+[data-persona="level1"]  { --accent: #7a3fb4; --accent-ink: #5c2f8a; --accent-soft: #f0e6fb; }
 
 * { box-sizing: border-box; }
 html, body, #root { height: 100%; }

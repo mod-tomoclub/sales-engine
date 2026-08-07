@@ -6,6 +6,7 @@ import { LearningMap } from "./ui/map/LearningMap";
 import { CurriculumExplorer } from "./ui/curriculum/CurriculumExplorer";
 import { SchoolStudio } from "./ui/school/SchoolStudio";
 import { MathLab } from "./ui/mathlab/MathLab";
+import { Level1Lab } from "./ui/level1/Level1Lab";
 
 const PERSONA_OPTS: { value: Persona; label: string }[] = [
   { value: "student", label: "🎒 Student" },
@@ -14,6 +15,7 @@ const PERSONA_OPTS: { value: Persona; label: string }[] = [
   { value: "curriculum", label: "📚 Curriculum" },
   { value: "school", label: "🏫 School" },
   { value: "mathlab", label: "🧮 Math G4" },
+  { value: "level1", label: "🧲 Level 1" },
 ];
 
 export function App() {
@@ -68,6 +70,7 @@ export function App() {
         {persona === "curriculum" && <CurriculumExplorer />}
         {persona === "school" && <SchoolStudio />}
         {persona === "mathlab" && <MathLab />}
+        {persona === "level1" && <Level1Lab />}
       </main>
 
       {/* Toast layer */}
