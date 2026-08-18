@@ -2,16 +2,48 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "alpha-math-frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "/Users/avinashbansal/Downloads/alpha-math-showcase/frontend"
+      ],
+      "port": 3000
+    },
+    {
       "name": "tomo-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
       "port": 5173
     },
     {
       "name": "mathlab-dist",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["vite", "preview", "--config", "vite.mathlab.config.ts", "--port", "4173"],
+      "runtimeArgs": [
+        "vite",
+        "preview",
+        "--config",
+        "vite.mathlab.config.ts",
+        "--port",
+        "4173"
+      ],
       "port": 4173
+    },
+    {
+      "name": "tomo-context",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--prefix",
+        "apps/tomo-context"
+      ],
+      "port": 3400
     }
   ]
 }

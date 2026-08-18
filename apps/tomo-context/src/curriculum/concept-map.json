@@ -1,0 +1,768 @@
+{
+  "$schema": "tomo/concept-map@1",
+  "source": {
+    "book": "Learning Elementary Physics, Class 7",
+    "board": "ICSE",
+    "publisher_series": "VK / Learning Elementary Physics",
+    "chapter": "2 — Force and Pressure : Motion",
+    "pages_extracted": "29–42",
+    "units_in_chapter": [
+      "Unit 1 — Rest and Motion – Kinds of Motion (pp. 29–34)",
+      "Unit 2 — Speed and Velocity (pp. 35–40), including Mass and Weight (pp. 38–40)"
+    ],
+    "extraction_note": "All definitions marked verbatim are lifted word-for-word from the chapter. All examples, figure references, worked numbers and exercise items are the book's own. No external physics has been introduced."
+  },
+  "theme": {
+    "theme_id": "g7-force-and-pressure",
+    "title": "Force and Pressure : Motion",
+    "grade": 7,
+    "subject": "Physics",
+    "learning_outcomes_verbatim": [
+      "define motion;",
+      "identify objects in motion and at rest;",
+      "describe different types of motion, with examples from daily life;",
+      "define uniform and non-uniform motion with examples from daily life;",
+      "define concept of speed (average speed);",
+      "calculate average speed of objects based on data provided;",
+      "define weight;",
+      "relate weight of an object with its mass."
+    ]
+  },
+  "notation_and_conventions": {
+    "symbols": {
+      "S": "distance covered by an object",
+      "t": "time in which the distance is covered",
+      "v": "speed (also used by the book for velocity)"
+    },
+    "formulae_verbatim": [
+      "Speed = Distance covered by an object / Time in which the distance is covered by the object",
+      "v = S / t",
+      "Average speed = Total distance covered / Total time taken to cover the distance",
+      "Average velocity = Total displacement / Total time"
+    ],
+    "units": {
+      "speed_si": "metre/second, written as m/s or ms⁻¹",
+      "speed_small_distances": "cm/s or cms⁻¹",
+      "speed_large_distances": "km/h or km h⁻¹",
+      "velocity": "same unit as speed in CGS as well as SI system; direction must be stated",
+      "mass_si": "kilogram (kg)",
+      "weight_si": "newton (N)",
+      "weight_gravitational": "kilogram-force (kgf), gram-force (gf)"
+    },
+    "book_specific_vocabulary": [
+      "translatory motion",
+      "rectilinear motion",
+      "curvilinear motion",
+      "circulatory motion (also called rotatory motion)",
+      "simultaneous motion",
+      "oscillatory motion ('to and fro' / 'back and forth')",
+      "vibratory motion",
+      "periodic motion",
+      "non-periodic motion",
+      "random motion",
+      "uniform motion / non-uniform motion",
+      "uniform speed / non-uniform speed (variable speed)",
+      "uniform velocity / variable velocity",
+      "average speed / average velocity",
+      "physical balance / beam balance",
+      "spring balance"
+    ],
+    "house_rules_for_generated_content": [
+      "Use the book's term 'circulatory motion' with 'rotatory motion' as the stated synonym — never 'circular motion' alone.",
+      "Write units as the book does: m/s or ms⁻¹, km/h or km h⁻¹, cm/s or cms⁻¹.",
+      "Speed is defined as 'the rate of change of motion'; velocity as 'the rate of change of motion in a specified direction'. Do not substitute the standard 'distance/time' phrasing for the definition itself.",
+      "Weight is 'the force with which the earth pulls a body towards its centre'.",
+      "Keep every worked context inside the book's own repertoire: ants, cars, trains, aeroplanes, carrom coins, potter's wheel, charkha, swing, sitar, drum, sewing machine, power drill, spring balance."
+    ]
+  },
+  "classrooms": [
+    {
+      "concept_id": "c1-motion-and-types-of-motion",
+      "title": "Motion & Types of Motion",
+      "book_unit": "Unit 1 — Rest and Motion – Kinds of Motion",
+      "pages": "29–34",
+      "prerequisite_concept_ids": [],
+      "external_prerequisites": [
+        "Force as a push or a pull (earlier chapter)",
+        "Reading a simple distance–time table"
+      ],
+      "sequence_index": 1,
+      "sub_concepts": [
+        {
+          "id": "c1.s1",
+          "title": "Rest, defined with respect to surroundings",
+          "tier": "foundational",
+          "book_definition_verbatim": "When the position of a body with respect to its surroundings, does not change with time, the body is said to be at rest.",
+          "book_examples": ["A table at rest", "A book lying on a table"],
+          "page": 29
+        },
+        {
+          "id": "c1.s2",
+          "title": "Motion, defined with respect to surroundings",
+          "tier": "foundational",
+          "book_definition_verbatim": "When the position of a body with respect to its surroundings, changes with time, the body is said to be in motion.",
+          "book_examples": ["A running train", "Flowing water"],
+          "page": 29
+        },
+        {
+          "id": "c1.s3",
+          "title": "Rest and motion are relative terms",
+          "tier": "stretch",
+          "book_definition_verbatim": "Rest and Motion are relative terms.",
+          "book_examples": [
+            "Travelling by bus: compared to trees, fields and houses outside you are in motion; compared to the passengers, walls and roof inside the bus you are at rest."
+          ],
+          "page": 30,
+          "why_it_matters": "The whole of Unit 1 depends on naming the reference before naming the state."
+        },
+        {
+          "id": "c1.s4",
+          "title": "Translatory motion",
+          "tier": "standard",
+          "book_definition_verbatim": "The motion in which all the particles of a body move through the same distance in the same time is called translatory motion.",
+          "book_examples": ["A car or train moving along a road", "A ball rolling on the ground", "A girl sliding down a slope", "Pulling out a drawer of a table", "Firing a bullet from a gun", "A stone hurled from a catapult"],
+          "page": 30
+        },
+        {
+          "id": "c1.s5",
+          "title": "Rectilinear motion (a kind of translatory motion)",
+          "tier": "foundational",
+          "book_definition_verbatim": "When a body moves along a straight line, the motion described by the body is rectilinear motion.",
+          "book_examples": ["A train moving on a straight rail track", "A car moving on a straight road (Fig. 2.1)", "A freely falling stone", "A coin moving over a carrom board (Fig. 2.2)"],
+          "page": 30
+        },
+        {
+          "id": "c1.s6",
+          "title": "Curvilinear motion (a kind of translatory motion)",
+          "tier": "standard",
+          "book_definition_verbatim": "When a body moves along a curved line, the motion described by the body is called curvilinear motion.",
+          "book_examples": ["A ball thrown upwards at an angle (Fig. 2.3)", "A car or train moving along a curved road or track (Fig. 2.4)", "A car passing over a curved flyover bridge"],
+          "page": 30
+        },
+        {
+          "id": "c1.s7",
+          "title": "Circulatory (rotatory) motion",
+          "tier": "standard",
+          "book_definition_verbatim": "A motion in which a body moves about a fixed axis without changing its position is called the circulatory motion.",
+          "book_examples": ["A table fan / ceiling fan (Fig. 2.8)", "A spinning wheel or charkha (Fig. 2.5)", "A spinning top (Fig. 2.6)", "A potter's wheel (Fig. 2.7)", "The Earth revolving around the Sun (Fig. 2.9)"],
+          "page": 31
+        },
+        {
+          "id": "c1.s8",
+          "title": "Simultaneous motion",
+          "tier": "stretch",
+          "book_definition_verbatim": "When an object possesses two or more types of motions at the same time, then that motion is called simultaneous motion.",
+          "book_examples": ["A drill cutting through a metal piece (Fig. 2.10) — translation and rotation together", "A ball delivered by a spin bowler", "Wheels of a moving bicycle, scooter, car or train"],
+          "page": 31
+        },
+        {
+          "id": "c1.s9",
+          "title": "Oscillatory motion",
+          "tier": "standard",
+          "book_definition_verbatim": "The 'to and fro' or 'back and forth' motion described by an object as a whole, along the same path, without any change in the shape of the object is called oscillatory motion.",
+          "book_examples": ["A boy on a swing (Fig. 2.11)", "The pendulum of a clock moving to and fro (Fig. 2.12)", "The needle of a sewing machine moving up and down (Fig. 2.13)", "The piston of a motor car", "The pressing cylinder of a juice machine", "The piston of a spray pump"],
+          "page": 32,
+          "discriminator": "The object moves AS A WHOLE and its shape does not change."
+        },
+        {
+          "id": "c1.s10",
+          "title": "Vibratory motion",
+          "tier": "stretch",
+          "book_definition_verbatim": "The vibratory motion is a kind of oscillatory motion in which the moving object undergoes change in shape or size.",
+          "book_examples": ["A metallic wire stretched between A and B, plucked from the middle (Fig. 2.14)", "Guitar, violin, sitar (Fig. 2.15), drums (Fig. 2.16)", "The chest expanding and contracting during breathing"],
+          "page": 32,
+          "discriminator": "The body does NOT move as a whole; a change in shape and size takes place."
+        },
+        {
+          "id": "c1.s11",
+          "title": "Periodic motion",
+          "tier": "standard",
+          "book_definition_verbatim": "A repetitive motion, which repeats itself after a fixed interval (or regular interval) of time is called the periodic motion.",
+          "book_examples": ["The piston of a motor car engine running at a constant speed", "The swinging pendulum of a wall clock", "The needle of a sewing machine running at constant speed", "Heart of a normal resting person beats 72 times a minute", "The motion of a swing", "The movement of the lungs during breathing"],
+          "page": 32
+        },
+        {
+          "id": "c1.s12",
+          "title": "Non-periodic motion",
+          "tier": "standard",
+          "book_definition_verbatim": "A repetitive motion, which repeats itself, but not at fixed intervals of time, is called non-periodic motion.",
+          "book_examples": ["A football player running in the field up and down", "The wheels of a vehicle when the brakes are applied", "A cricket ball rolling down the ground, gradually slowing and finally stopping"],
+          "page": 33
+        },
+        {
+          "id": "c1.s13",
+          "title": "Random motion",
+          "tier": "standard",
+          "book_definition_verbatim": "An object which suddenly changes its motion from one kind to another kind is said to have a random motion.",
+          "book_examples": ["A balloon filled with air, as the air expels from it", "A flying mosquito", "A flying kite", "A football or hockey player on the ground"],
+          "page": 33
+        },
+        {
+          "id": "c1.s14",
+          "title": "Uniform motion",
+          "tier": "standard",
+          "book_definition_verbatim": "When a body covers equal distances in equal intervals of time along the same straight line, the body is said to be describing uniform motion.",
+          "book_examples": ["An ant covering AB = BC = CD = DE = 2 cm in every one second towards East (Fig. 2.17)", "A flying aeroplane in a particular direction at a constant speed", "A train moving straight in a particular direction at a constant speed"],
+          "page": 33,
+          "discriminator": "Both conditions matter: equal distances in equal times AND along the same straight line."
+        },
+        {
+          "id": "c1.s15",
+          "title": "Non-uniform motion",
+          "tier": "standard",
+          "book_definition_verbatim": "When a body covers unequal distances in equal intervals of time along the same straight line, the body is said to be describing a non-uniform motion.",
+          "book_examples": ["An ant covering AB = 3 cm, BC = 2 cm, CD = 5 cm in successive seconds (Fig. 2.18)", "A cyclist cycling on a busy street", "Brakes applied to a fast moving car"],
+          "page": 33
+        }
+      ],
+      "misconceptions": [
+        {
+          "id": "M-C1-01",
+          "name": "Rest and motion are absolute states",
+          "student_model": "A body is either 'moving' or 'not moving', full stop — no reference frame needed.",
+          "book_evidence": "p.29 'Rest and Motion are relative terms'; Exercise 2.1 B.3 gives the incorrect statement 'A person sitting in moving train is at rest with respect to surroundings outside the train.'",
+          "probe": "A passenger sits still in a moving train. With respect to what is she at rest, and with respect to what is she in motion?",
+          "targets": ["c1.s3"]
+        },
+        {
+          "id": "M-C1-02",
+          "name": "Any curved path is circulatory/rotatory motion",
+          "student_model": "If the path bends, it must be rotation.",
+          "book_evidence": "Exercise 2.1 C.2 'A car moving on a straight road describes rotatory motion' (false); Theme Assignment D.(i) 'The motion of a bus going around a traffic round about is a rotatory motion' (incorrect — it is curvilinear).",
+          "probe": "A bus goes around a traffic roundabout. Is that curvilinear or circulatory motion? Why?",
+          "targets": ["c1.s6", "c1.s7"]
+        },
+        {
+          "id": "M-C1-03",
+          "name": "Oscillatory and vibratory are swapped",
+          "student_model": "Anything that goes back and forth quickly is vibratory; anything that makes sound is oscillatory.",
+          "book_evidence": "Exercise 2.1 C.4 'A freely suspended pendulum oscillating about its mean position performs vibratory motion' (false); B.4 'The skin of a drum on hammering produces oscillatory motion' (incorrect — vibratory).",
+          "probe": "A pendulum swings and a drum skin buzzes. Which is oscillatory, which is vibratory, and what is the single test that separates them?",
+          "targets": ["c1.s9", "c1.s10"]
+        },
+        {
+          "id": "M-C1-04",
+          "name": "Any repeating motion is periodic",
+          "student_model": "Repetition alone makes a motion periodic; the fixed interval is ignored.",
+          "book_evidence": "Exercise 2.1 B.5 'A hockey player running up and down in the hockey ground describes a periodic motion' (incorrect — non-periodic).",
+          "probe": "A hockey player runs up and down the field again and again. Periodic or non-periodic?",
+          "targets": ["c1.s11", "c1.s12"]
+        },
+        {
+          "id": "M-C1-05",
+          "name": "Uniform motion drops the straight-line condition",
+          "student_model": "Equal distances in equal times is enough — direction does not matter.",
+          "book_evidence": "p.33 definition insists on 'along the same straight line'; contrasted on p.37 by the car on a circular road.",
+          "probe": "A car covers 5 m every second around a circular track. Is it in uniform motion?",
+          "targets": ["c1.s14"]
+        },
+        {
+          "id": "M-C1-06",
+          "name": "A body can only have one kind of motion at a time",
+          "student_model": "Simultaneous motion is not considered; a drill is 'just rotating'.",
+          "book_evidence": "p.31 Note on simultaneous motion; Exercise 2.1 D.1 'When a power drill bores a hole in a piece of wood, it describes: (d) rotatory and translatory motion'.",
+          "probe": "A power drill bores into wood. Name every kind of motion it has at that moment.",
+          "targets": ["c1.s8"]
+        },
+        {
+          "id": "M-C1-07",
+          "name": "A thrown object travels in a straight line",
+          "student_model": "A stone thrown upward at an angle describes rectilinear motion.",
+          "book_evidence": "Exercise 2.1 B.2 'A stone thrown upward at an angle describes rectilinear motion' (incorrect — curvilinear).",
+          "probe": "Draw the path of a ball thrown upward at an angle. What kind of motion is it?",
+          "targets": ["c1.s5", "c1.s6"]
+        },
+        {
+          "id": "M-C1-08",
+          "name": "Random and simultaneous motion are swapped",
+          "student_model": "'Changes suddenly' and 'two motions at once' are treated as the same label.",
+          "book_evidence": "Theme Assignment D.(ii) 'When an object suddenly changes its motion from one kind to another kind is said to have a simultaneous motion' (incorrect — random).",
+          "probe": "An inflated balloon is released and darts about. Random or simultaneous motion?",
+          "targets": ["c1.s8", "c1.s13"]
+        },
+        {
+          "id": "M-C1-09",
+          "name": "The motion of a part is taken for the motion of the body",
+          "student_model": "A car on a straight road is 'rotatory' because its wheels rotate.",
+          "book_evidence": "Exercise 2.1 C.2 (false); p.31 Note names the wheels as an example of simultaneous motion.",
+          "probe": "A car drives down a straight road. What kind of motion does the car describe, and what kind do its wheels describe?",
+          "targets": ["c1.s5", "c1.s8"]
+        }
+      ],
+      "worked_examples": [
+        {
+          "id": "WE-C1-01",
+          "source": "p.30, bus example",
+          "prompt": "You are travelling by bus. Are you at rest or in motion?",
+          "book_working": "Compared with trees, fields and houses outside the bus, your position is changing — you are in motion. Compared with the passengers, walls and roof inside the bus, your position is not changing — you are at rest."
+        },
+        {
+          "id": "WE-C1-02",
+          "source": "Fig. 2.17, p.33",
+          "prompt": "An ant moves towards East covering AB = BC = CD = DE = 2 cm, each in 1 s. What kind of motion?",
+          "book_working": "Equal distances (2 cm) in equal intervals (1 s) along the same straight line ⇒ uniform motion."
+        },
+        {
+          "id": "WE-C1-03",
+          "source": "Fig. 2.18, p.33",
+          "prompt": "An ant moves towards East covering AB = 3 cm, BC = 2 cm, CD = 5 cm in successive seconds. What kind of motion?",
+          "book_working": "Unequal distances in equal intervals along the same straight line ⇒ non-uniform motion."
+        }
+      ],
+      "textbook_items_verbatim": [
+        "Exercise 2.1 A.1 — The motion described by a freely falling stone is ______ motion. (rectilinear)",
+        "Exercise 2.1 A.3 — A power drill making a hole in a wooden piece describes rotatory and ______ motion. (translatory)",
+        "Exercise 2.1 A.5 — A string of a sitar on being plucked describes ______ motion. (vibratory)",
+        "Exercise 2.1 D.5 — An aeroplane flying straight at a speed of 200 km/h describes: (c) rectilinear motion",
+        "Exercise 2.1 E — Match: 'A motion described by a car on a circular road' → (c) Curvilinear motion; 'A motion described by a table fan' → (a) Circulatory motion"
+      ]
+    },
+    {
+      "concept_id": "c2-speed-and-velocity",
+      "title": "Speed & Velocity",
+      "book_unit": "Unit 2 — Speed and Velocity",
+      "pages": "35–38",
+      "prerequisite_concept_ids": ["c1-motion-and-types-of-motion"],
+      "prerequisite_sub_concept_ids": ["c1.s14", "c1.s15", "c1.s5"],
+      "external_prerequisites": [
+        "Division with decimals",
+        "Reading a distance–time diagram",
+        "Unit conversion: km ↔ m, h ↔ s"
+      ],
+      "sequence_index": 2,
+      "sub_concepts": [
+        {
+          "id": "c2.s1",
+          "title": "Speed and the formula v = S/t",
+          "tier": "foundational",
+          "book_definition_verbatim": "The rate of change of motion is called speed.",
+          "book_working_verbatim": "Speed = Distance covered by an object / Time in which the distance is covered by the object. If S is the distance covered by the object in time t, such that v is its speed, then v = S/t.",
+          "page": 35
+        },
+        {
+          "id": "c2.s2",
+          "title": "Units of speed",
+          "tier": "foundational",
+          "book_definition_verbatim": "In the Standard International (SI) System, the unit of speed is metre/second. In abbreviated form, it is written as m/s or ms⁻¹.",
+          "book_examples": ["Very small distances — cm/s or cms⁻¹ (an ant, an earthworm)", "Fairly large distances — km/h or km h⁻¹"],
+          "page": 35
+        },
+        {
+          "id": "c2.s3",
+          "title": "Uniform speed",
+          "tier": "standard",
+          "book_definition_verbatim": "When a body covers equal distances in equal intervals of time (howsoever small the time intervals may be), the body is said to be moving with a uniform speed.",
+          "book_examples": ["A car covering 30 km in an hour (Fig. 2.19)", "An aeroplane flying at 200 km/h", "A train running at 90 km/h"],
+          "page": 36
+        },
+        {
+          "id": "c2.s4",
+          "title": "Non-uniform (variable) speed",
+          "tier": "standard",
+          "book_definition_verbatim": "When a body covers unequal distances in equal intervals of time, the body is said to be moving with a non-uniform or variable speed.",
+          "book_examples": ["A car covering 40 km from 6 a.m. to 7 a.m., 20 km from 7 a.m. to 8 a.m. and 30 km from 8 a.m. to 9 a.m. (Fig. 2.20)"],
+          "page": 36
+        },
+        {
+          "id": "c2.s5",
+          "title": "Average speed",
+          "tier": "standard",
+          "book_definition_verbatim": "The average distance covered by a moving body per unit time, when the body is moving with a variable speed, is called its average speed. / The quotient of the total distance travelled by a body divided by the total time taken by the body to cover the distance, is called its average speed.",
+          "book_working_verbatim": "Average speed = Total distance covered / Total time taken to cover the distance",
+          "page": 36
+        },
+        {
+          "id": "c2.s6",
+          "title": "Velocity",
+          "tier": "standard",
+          "book_definition_verbatim": "Velocity is the rate of change of motion in a specified direction.",
+          "book_working_verbatim": "Velocity has same unit as speed in CGS as well as in SI system. However, in case of velocity, the direction is specified.",
+          "book_examples": ["'Speed of machine M is 10 m/s' is incomplete; 'machine M is moving at 10 m/s towards east' states the velocity."],
+          "page": 37
+        },
+        {
+          "id": "c2.s7",
+          "title": "Speed vs velocity — the direction is the difference",
+          "tier": "standard",
+          "book_definition_verbatim": "Thus, in a way the velocity is speed, but with a specified direction.",
+          "page": 37,
+          "why_it_matters": "This is the single most-tested discrimination in Unit 2 and the seat of the most persistent Grade 7 misconception."
+        },
+        {
+          "id": "c2.s8",
+          "title": "Uniform velocity and its two conditions",
+          "tier": "stretch",
+          "book_definition_verbatim": "When a body covers equal distances in equal intervals of time in a specified direction (howsoever short the time intervals may be), the body is said to be moving with a uniform velocity.",
+          "book_working_verbatim": "A body will have a uniform velocity only if: (i) It covers equal distances in equal intervals of time, i.e., the magnitude does not change. (ii) Its direction remains the same. If any of the two conditions is not fulfilled, then the body will not be moving with a uniform velocity, but with a variable velocity.",
+          "book_examples": ["A car covering 5 m every second towards east on a straight road — uniform velocity 5 m/s east (Fig. 2.21)", "The same car on a circular path covering 5 m every second — uniform speed 5 m/s but variable velocity (Fig. 2.22)"],
+          "page": 37
+        },
+        {
+          "id": "c2.s9",
+          "title": "Variable velocity",
+          "tier": "standard",
+          "book_definition_verbatim": "When a body covers unequal distances in equal intervals of time in a specified direction or equal distances in equal intervals of time, but its direction changes, then the body is said to be moving with a variable velocity.",
+          "book_examples": ["A body covering 3 m, 4 m, 2 m and 4 m in successive seconds towards east (Fig. 2.23)"],
+          "page": 37
+        },
+        {
+          "id": "c2.s10",
+          "title": "Displacement vs distance",
+          "tier": "stretch",
+          "book_definition_verbatim": "In Fig. 2.23, the total displacement (total distance travelled) of a body towards east is 3 m + 4 m + 2 m + 4 m = 13 m.",
+          "book_working_verbatim": "Spotlight, p.38: a body going one complete round of a 120 m circular track in 10 s has returned to the starting point, therefore the net displacement of body is zero.",
+          "page": 38,
+          "note_for_content_generation": "The book only distinguishes distance from displacement through the circular-track Spotlight. Keep generated items inside that treatment; do not introduce vector notation."
+        },
+        {
+          "id": "c2.s11",
+          "title": "Average velocity",
+          "tier": "stretch",
+          "book_definition_verbatim": "The average displacement of a body per unit time, when the body is actually moving with variable velocity, is called average velocity.",
+          "book_working_verbatim": "Average velocity = Total displacement / Total time",
+          "page": 38
+        },
+        {
+          "id": "c2.s12",
+          "title": "Average velocity can be zero while average speed is not",
+          "tier": "stretch",
+          "book_definition_verbatim": "It is possible to have a body with average velocity zero but not with average speed zero.",
+          "page": 38
+        }
+      ],
+      "misconceptions": [
+        {
+          "id": "M-C2-01",
+          "name": "Speed and velocity are the same thing",
+          "student_model": "The words are interchangeable; direction is decoration, not part of the quantity.",
+          "book_evidence": "Exercise 2.2 B.1 gives the incorrect statement 'Distance covered by a body in unit time in a specified direction is called its speed' (correct: velocity); Study Question 1 asks to 'bring out clearly the difference'.",
+          "probe": "A machine moves at 10 m/s. Is that a speed or a velocity? What would you have to add to make it the other one?",
+          "targets": ["c2.s6", "c2.s7"]
+        },
+        {
+          "id": "M-C2-02",
+          "name": "Uniform speed implies uniform velocity",
+          "student_model": "If the number doesn't change, the velocity doesn't change.",
+          "book_evidence": "Fig. 2.22, p.37 — the car on the circular road has uniform speed 5 m/s but variable velocity because its direction changes continuously.",
+          "probe": "A car covers 5 m every second on a circular road. Uniform speed? Uniform velocity? Explain the difference in one sentence.",
+          "targets": ["c2.s8", "c2.s9"]
+        },
+        {
+          "id": "M-C2-03",
+          "name": "Average speed is the average of the speeds",
+          "student_model": "Add the hourly speeds and divide by how many there are, instead of total distance ÷ total time.",
+          "book_evidence": "Fig. 2.20, p.36 worked example — total distance 90 km, total time 3 h, average speed 30 km/h.",
+          "probe": "A car covers 40 km, then 20 km, then 30 km in three successive hours. Find its average speed, and show the two numbers you divided.",
+          "targets": ["c2.s5"]
+        },
+        {
+          "id": "M-C2-04",
+          "name": "Average velocity can never be zero if the body moved",
+          "student_model": "Movement happened, therefore both averages must be non-zero.",
+          "book_evidence": "Spotlight, p.38 — 120 m circular track in 10 s: average speed 12 m/s, average velocity = 0 m / 10 s = 0.",
+          "probe": "A runner completes one full lap of a 120 m circular track in 10 s. Find the average speed and the average velocity.",
+          "targets": ["c2.s10", "c2.s11", "c2.s12"]
+        },
+        {
+          "id": "M-C2-05",
+          "name": "Unit notation slip",
+          "student_model": "Writes ms⁻² for speed, or drops the index entirely (m/s written as 'ms').",
+          "book_evidence": "Exercise 2.2 D.3 'The SI unit of speed or velocity is: (d) ms⁻¹' with ms⁻² offered as a distractor; C.3 'The acceleration due to gravity is 981 cms⁻².'",
+          "probe": "Which of these is the SI unit of speed: cms⁻¹, ms⁻², ms⁻¹?",
+          "targets": ["c2.s2"],
+          "error_type": "notational"
+        },
+        {
+          "id": "M-C2-06",
+          "name": "Mixing km/h and m/s without converting",
+          "student_model": "Substitutes km and seconds into v = S/t and reports the number without checking units.",
+          "book_evidence": "Implied by the book's insistence on separate unit families (Spotlight, p.35) and by Exercise 2.2 C.4 ('A horse covering 50 m in 5 s in a straight line has a velocity of 10 ms⁻¹').",
+          "probe": "A horse covers 50 m in 5 s in a straight line. State its velocity with the correct unit.",
+          "targets": ["c2.s1", "c2.s2"],
+          "error_type": "computational"
+        },
+        {
+          "id": "M-C2-07",
+          "name": "A freely falling stone has uniform velocity",
+          "student_model": "It falls straight down, so its velocity must be uniform.",
+          "book_evidence": "Exercise 2.2 C.4 'A freely falling stone has uniform velocity' (false).",
+          "probe": "A stone is dropped from a roof. Is its velocity uniform? Which of the two conditions fails?",
+          "targets": ["c2.s8"]
+        },
+        {
+          "id": "M-C2-08",
+          "name": "Distance and displacement are always equal",
+          "student_model": "The path length is the displacement, whatever the shape of the path.",
+          "book_evidence": "Spotlight, p.38 (circular track); Fig. 2.23 where they happen to coincide because the motion is in one specified direction.",
+          "probe": "When is the total distance covered equal to the displacement, and when is it not?",
+          "targets": ["c2.s10"]
+        }
+      ],
+      "worked_examples": [
+        {
+          "id": "WE-C2-01",
+          "source": "Fig. 2.20, p.36",
+          "prompt": "A car covers 40 km from 6 a.m. to 7 a.m., 20 km from 7 a.m. to 8 a.m. and 30 km from 8 a.m. to 9 a.m. Find its average speed.",
+          "book_working": "Total distance covered = (40 + 20 + 30) km = 90 km. Total time taken = 3 hours. Average speed = Total distance covered / Total time taken = 90 km / 3 h = 30 km/h.",
+          "answer": "30 km/h"
+        },
+        {
+          "id": "WE-C2-02",
+          "source": "Fig. 2.23, p.38",
+          "prompt": "A body starts from A and reaches B, C, D and E straight toward east in successive intervals of 1 second, covering 3 m, 4 m, 2 m and 4 m. Find its average velocity.",
+          "book_working": "Total displacement = 3 m + 4 m + 2 m + 4 m = 13 m. Total time = 4 s. Average velocity = Total displacement / Total time = 13 m / 4 s = 3.25 m/s east.",
+          "answer": "3.25 m/s east"
+        },
+        {
+          "id": "WE-C2-03",
+          "source": "Spotlight, p.38",
+          "prompt": "A body moves along a circular track covering one complete round of 120 m in 10 s. Find its average speed and average velocity.",
+          "book_working": "Average speed = Distance / Time = 120 m / 10 s = 12 m/s. However, as the body has returned to the starting point after one complete round, the net displacement of body is zero. Average velocity = Displacement / Time = 0 m / 10 s = 0.",
+          "answer": "Average speed 12 m/s; average velocity 0"
+        },
+        {
+          "id": "WE-C2-04",
+          "source": "Figs. 2.21 and 2.22, p.37",
+          "prompt": "A car covers 5 m every second towards east on a straight road; the same car covers 5 m every second on a circular path. Compare.",
+          "book_working": "On the straight road the uniform velocity of the car is 5 m/s east. On the circular path the car has a uniform speed of 5 m/s, but its uniform velocity is not 5 m/s, because the direction of the car is changing continuously.",
+          "answer": "Uniform speed in both; uniform velocity only on the straight road"
+        }
+      ],
+      "textbook_items_verbatim": [
+        "Exercise 2.2 A.1 — The distance covered by a body in unit time in specified direction is called ______. (velocity)",
+        "Exercise 2.2 A.2 — The distance covered by a body in unit time is called ______. (speed)",
+        "Exercise 2.2 A.3 — When a body covers equal distances in equal intervals of ______ in a specified direction, it is said to be moving with uniform velocity. (time)",
+        "Exercise 2.2 B.2 — 'When a body covers unequal distances in equal intervals of time, it is said to be moving with variable velocity.' (incorrect as stated)",
+        "Exercise 2.2 C.1 — When a body starts from rest, its initial velocity is zero. (true)",
+        "Exercise 2.2 E — Match: 'Distance covered by a body in unit time' → (e) speed; 'Distance covered by a body in unit time, in specified direction' → (a) velocity; 'A body covering unequal distances in equal intervals of time, in a specified direction' → (c) variable velocity"
+      ]
+    },
+    {
+      "concept_id": "c3-weight",
+      "title": "Weight",
+      "book_unit": "Unit 2 — Mass and Weight",
+      "pages": "38–40",
+      "prerequisite_concept_ids": ["c1-motion-and-types-of-motion"],
+      "prerequisite_sub_concept_ids": [],
+      "external_prerequisites": [
+        "Force as a pull (chapter opener)",
+        "SI units and place value for multiples/sub-multiples"
+      ],
+      "sequence_index": 3,
+      "sequencing_note": "The book places Mass and Weight after Speed and Velocity inside Unit 2, so the classroom is delivered third. Conceptually it does not depend on c2 — the modelled prerequisite is c1 plus force from the chapter opener. Do not infer a mastery dependency on c2 from the ordering.",
+      "sub_concepts": [
+        {
+          "id": "c3.s1",
+          "title": "Mass",
+          "tier": "foundational",
+          "book_definition_verbatim": "Mass is the amount of matter contained in a body.",
+          "page": 38
+        },
+        {
+          "id": "c3.s2",
+          "title": "Mass is a constant quantity",
+          "tier": "standard",
+          "book_definition_verbatim": "It is a constant quantity for a given substance and does not change with the change in position or location.",
+          "book_working_verbatim": "Note, p.38: The term position means how far a body is from the centre of the earth. The term location means where a body is situated on the surface of the earth.",
+          "page": 38
+        },
+        {
+          "id": "c3.s3",
+          "title": "Measuring mass — beam or physical balance",
+          "tier": "foundational",
+          "book_definition_verbatim": "The mass is found by using a beam balance or a physical balance.",
+          "book_examples": ["Fig. 2.24 : Laboratory physical balance"],
+          "page": 38
+        },
+        {
+          "id": "c3.s4",
+          "title": "SI unit of mass, its multiples and sub-multiples",
+          "tier": "standard",
+          "book_definition_verbatim": "The SI unit of mass is kilogram (kg). Its sub-multiples are gram (g) and milligram (mg). The multiples of mass are quintal and metric-tonne.",
+          "book_working_verbatim": "Multiples: 100 kilogram (kg) = 1 quintal; 1000 kilogram (kg) = 10 quintals = 1 tonne. Sub-multiples: 1000 milligram (mg) = 1 gram (g); 1000 gram (g) = 1 kilogram (kg).",
+          "page": 38
+        },
+        {
+          "id": "c3.s5",
+          "title": "Weight",
+          "tier": "foundational",
+          "book_definition_verbatim": "Weight is the force with which the earth pulls a body towards its centre.",
+          "page": 38
+        },
+        {
+          "id": "c3.s6",
+          "title": "Weight is a variable quantity",
+          "tier": "standard",
+          "book_definition_verbatim": "The weight of a body is not a constant quantity, but depends upon the acceleration due to gravity acting on the body.",
+          "page": 38
+        },
+        {
+          "id": "c3.s7",
+          "title": "How acceleration due to gravity varies",
+          "tier": "stretch",
+          "book_definition_verbatim": "The acceleration due to gravity is not same at all the places on the surface of the earth, but changes from place to place.",
+          "book_working_verbatim": "Did You Know?, p.39: acceleration due to gravity is maximum at the poles of the earth and minimum at the equator. Thus, the weight of a body of a given mass shall be maximum at the poles of the earth and least at the equator of the earth. Furthermore, acceleration due to gravity decreases, if the body is taken to higher altitudes, such as hills. Thus, the weight of the body decreases at higher altitudes. Even inside the earth (such as mines), the acceleration due to gravity decreases and hence the weight of body decreases.",
+          "page": 39
+        },
+        {
+          "id": "c3.s8",
+          "title": "Measuring weight — spring balance",
+          "tier": "foundational",
+          "book_definition_verbatim": "The weight is generally measured in gravitational unit such as kilogram-force (kgf) or gram-force (gf) with the help of a spring balance.",
+          "book_examples": ["Fig. 2.25 : Spring balance"],
+          "page": 39
+        },
+        {
+          "id": "c3.s9",
+          "title": "Gravitational units of weight — kgf and gf",
+          "tier": "standard",
+          "book_definition_verbatim": "One kilogram force (kgf) is the force with which the earth attracts a mass of one kilogram and is known as gravitational unit of weight in SI system. Similarly, one gram force (gf) is the force with which the earth attracts a mass of 1 g and is known as gravitational unit of weight in CGS system.",
+          "page": 39
+        },
+        {
+          "id": "c3.s10",
+          "title": "SI unit of weight — the newton",
+          "tier": "standard",
+          "book_definition_verbatim": "The SI unit of weight is newton. The amount of force acting on a body, when the earth pulls a mass of 100 g (101.94 g to be exact) is equal to one newton.",
+          "page": 39
+        },
+        {
+          "id": "c3.s11",
+          "title": "Mass can never be zero; weight can be zero",
+          "tier": "stretch",
+          "book_definition_verbatim": "The mass of a body can never be zero. The weight of a body can be zero, if no acceleration due to gravity acts on the body.",
+          "page": 39
+        },
+        {
+          "id": "c3.s12",
+          "title": "Relating weight to mass",
+          "tier": "standard",
+          "book_definition_verbatim": "Weight is the force with which the earth attracts a body towards its centre.",
+          "book_working_verbatim": "A body of a given mass has a greater weight where the acceleration due to gravity is greater; the mass itself is unchanged. Exercise 2.2 D.5: a body weighing 2 kgf at the equator weighs more than 2 kgf at the poles.",
+          "page": 39,
+          "maps_to_learning_outcome": "relate weight of an object with its mass"
+        },
+        {
+          "id": "c3.s13",
+          "title": "The five differences between mass and weight",
+          "tier": "standard",
+          "book_working_verbatim": "1. Mass is the amount of matter contained in a body / Weight is the force with which the earth attracts a body towards its centre. 2. Mass is a constant quantity and does not change with the position or the surroundings of the body / Weight is a variable quantity and changes with the change in acceleration due to gravity of the earth. 3. Mass is found with the help of a physical balance or beam balance / Weight is found with the help of a spring balance. 4. The SI unit of mass is kilogram (kg) / The SI unit of weight is newton (N). 5. The mass of a body can never be zero / The weight of a body can be zero, if no acceleration due to gravity acts on the body.",
+          "page": 39
+        }
+      ],
+      "misconceptions": [
+        {
+          "id": "M-C3-01",
+          "name": "Mass and weight are the same quantity",
+          "student_model": "'Weight' is the everyday word for 'mass'; both are measured in kilograms on the same machine.",
+          "book_evidence": "Differences table, p.39; Study Question 5 'State four differences between mass and weight.'",
+          "probe": "A shopkeeper says the bag 'weighs 5 kg'. Which quantity is 5 kg really, and what would the weight be called?",
+          "targets": ["c3.s1", "c3.s5", "c3.s13"]
+        },
+        {
+          "id": "M-C3-02",
+          "name": "Weight is constant everywhere",
+          "student_model": "Weight is a fixed property of the object, like mass.",
+          "book_evidence": "p.38 'The weight of a body is not a constant quantity'; Exercise 2.1 C.5 'The weight of a body is not a constant quantity' (true).",
+          "probe": "The same steel block is weighed at the equator and at the North Pole. Same reading or different? Why?",
+          "targets": ["c3.s2", "c3.s6"]
+        },
+        {
+          "id": "M-C3-03",
+          "name": "Weight increases at higher altitudes",
+          "student_model": "Higher up means 'heavier' because you are further from the ground.",
+          "book_evidence": "Theme Assignment B.(iii) 'The weight of a body increases at higher altitudes' (incorrect); Did You Know?, p.39.",
+          "probe": "You carry a 2 kgf weight up a hill. Does its weight increase, decrease or stay the same?",
+          "targets": ["c3.s7"]
+        },
+        {
+          "id": "M-C3-04",
+          "name": "The kilogram is a unit of weight",
+          "student_model": "kg answers 'how heavy', so it must be the unit of weight; newton is unfamiliar.",
+          "book_evidence": "Exercise 2.2 D.1 'SI unit of weight is: (c) newton'; D.4 'The SI unit of mass is: (b) kilogram'.",
+          "probe": "State the SI unit of mass and the SI unit of weight, and one gravitational unit of weight.",
+          "targets": ["c3.s4", "c3.s9", "c3.s10"],
+          "error_type": "notational"
+        },
+        {
+          "id": "M-C3-05",
+          "name": "The two balances are swapped",
+          "student_model": "A spring balance measures mass; a beam balance measures weight.",
+          "book_evidence": "Exercise 2.2 D.2 'A beam balance is employed to measure (b) mass'; Theme Assignment C.(iii) 'The mass of a body is found by: (d) either (b) or (c)' — physical or beam balance; Keywords, p.40.",
+          "probe": "Which balance would you pick to find the mass of a stone, and which to find its weight?",
+          "targets": ["c3.s3", "c3.s8"]
+        },
+        {
+          "id": "M-C3-06",
+          "name": "Multiples and sub-multiples of the kilogram are confused",
+          "student_model": "Quintal is treated as a sub-multiple, milligram as a multiple.",
+          "book_evidence": "Exercise 2.2 C.2 'The submultiple of kilogram is quintal' (false); C.5 'Milligram is a multiple of kilogram' (false).",
+          "probe": "Sort these as multiples or sub-multiples of the kilogram: gram, quintal, milligram, tonne.",
+          "targets": ["c3.s4"],
+          "error_type": "conceptual"
+        },
+        {
+          "id": "M-C3-07",
+          "name": "Weight can never be zero",
+          "student_model": "Everything has weight, always.",
+          "book_evidence": "Exercise 2.2 C.5 'The weight of a body can never be zero' (false); Exercise 2.2 A.5 'The weight of a body can be ______ but not the mass.' (zero)",
+          "probe": "Can the weight of a body ever be zero? Can its mass? Give the condition.",
+          "targets": ["c3.s11"]
+        },
+        {
+          "id": "M-C3-08",
+          "name": "A body weighs the same at the poles as at the equator",
+          "student_model": "g is treated as one fixed number over the whole earth.",
+          "book_evidence": "Exercise 2.2 D.5 'A body weighs 2 kgf at equator. Its weight at the poles will be (b) more than 2 kgf.'",
+          "probe": "A body weighs 2 kgf at the equator. What can you say about its weight at the poles?",
+          "targets": ["c3.s7", "c3.s12"]
+        }
+      ],
+      "worked_examples": [
+        {
+          "id": "WE-C3-01",
+          "source": "p.38, multiples and sub-multiples",
+          "prompt": "Express 1 tonne in kilograms and in quintals.",
+          "book_working": "1000 kilogram (kg) = 10 quintals = 1 tonne.",
+          "answer": "1 tonne = 1000 kg = 10 quintals"
+        },
+        {
+          "id": "WE-C3-02",
+          "source": "p.39, the newton",
+          "prompt": "What mass does the earth pull with a force of one newton?",
+          "book_working": "The amount of force acting on a body, when the earth pulls a mass of 100 g (101.94 g to be exact) is equal to one newton.",
+          "answer": "About 100 g (101.94 g to be exact)"
+        },
+        {
+          "id": "WE-C3-03",
+          "source": "Exercise 2.2 D.5, p.40",
+          "prompt": "A body weighs 2 kgf at the equator. What is its weight at the poles?",
+          "book_working": "Acceleration due to gravity is maximum at the poles and minimum at the equator, so the weight of a body of a given mass is maximum at the poles.",
+          "answer": "More than 2 kgf"
+        }
+      ],
+      "textbook_items_verbatim": [
+        "Exercise 2.2 A.4 — The weight is found by a ______ balance. (spring)",
+        "Exercise 2.2 A.5 — The weight of a body can be ______ but not the mass. (zero)",
+        "Exercise 2.2 E — Match: 'The amount of matter contained in a body' → (d) mass; 'A physical quantity whose magnitude can be zero' → (b) weight",
+        "Study Question 3 — Define mass. State SI unit of mass.",
+        "Study Question 4 — (a) Define weight. (b) State and define SI unit of weight.",
+        "Keywords, p.40 — Physical balance: a device used to find the mass of a body. Spring balance: a device used to find the weight of a body."
+      ]
+    }
+  ],
+  "diagnostic_blueprint": {
+    "purpose": "5 adaptive items covering prerequisites and entry points for the theme, mixing conceptual and computational.",
+    "entry_item": "D-02",
+    "items": [
+      { "id": "D-01", "targets": ["c1.s5", "c1.s6"], "tier": "foundational", "type": "conceptual", "on_correct": "D-02", "on_wrong": "D-01e" },
+      { "id": "D-01e", "targets": ["c1.s1", "c1.s2"], "tier": "foundational", "type": "conceptual", "on_correct": "D-02", "on_wrong": "D-03" },
+      { "id": "D-02", "targets": ["c1.s14", "c1.s15"], "tier": "standard", "type": "conceptual", "on_correct": "D-04", "on_wrong": "D-01" },
+      { "id": "D-03", "targets": ["c2.s1", "c2.s2"], "tier": "foundational", "type": "computational", "on_correct": "D-04", "on_wrong": "D-05f" },
+      { "id": "D-04", "targets": ["c2.s5"], "tier": "standard", "type": "computational", "probes": ["M-C2-03"], "on_correct": "D-06", "on_wrong": "D-03" },
+      { "id": "D-05f", "targets": ["c3.s1", "c3.s5"], "tier": "foundational", "type": "conceptual", "probes": ["M-C3-01"] },
+      { "id": "D-06", "targets": ["c2.s7", "c2.s8"], "tier": "stretch", "type": "conceptual", "probes": ["M-C2-01", "M-C2-02"] }
+    ],
+    "note": "Item text is generated at runtime from the sub-concept and misconception records above, so wording stays anchored to the book. Routing is fixed and deterministic."
+  }
+}
