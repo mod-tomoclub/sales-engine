@@ -106,6 +106,28 @@ chapter mappings from titles.
 6. Every distractor carries a *specific* misconception tag; "careless" and "wrong
    answer" are banned strings.
 
+## Level 1 live tutor (`src/level1/live-tutor.ts`, `server/`, `functions/`)
+
+Subtopic 2 "Motion, speed & time" is taught **live by Claude** (`claude-opus-5`,
+structured output) behind the §15 seam. Voice in (Web Speech API, Chrome/Edge),
+voice out (speechSynthesis), plus a race/distance–time manipulative the tutor can
+summon. Code map:
+
+| Piece | Code |
+|---|---|
+| Lesson brief, misconception tags, `TutorTurn` schema, evidence mapping, prompt | `src/level1/live-tutor.ts` (pure, tested in `tests/live-tutor.test.ts`) |
+| One Claude call per turn (`messages.parse` + zod) | `server/tutor-handler.ts` |
+| Prod endpoint (Cloudflare Pages Function, `POST /api/tutor`) | `functions/api/tutor.ts` |
+| Dev endpoint (Vite middleware, same handler) | `vite.config.ts` `tutorDevApi` |
+| Student surface + Context Engine rail | `src/ui/level1/LiveTutor.tsx` |
+
+Key: `ANTHROPIC_API_KEY` in `.env.local` for dev, in the Pages project env for prod.
+The key never reaches the browser. Invariants: the model returns `say`/`tactic`/
+`doorway`/`evidence`/`learnComplete`; **the engine decides progression** (all goals
+must be on the list), unknown misconception tags and vague notes are dropped
+(`evidenceFromTurn`), failed doorways are passed back so the tutor never repeats
+one, and Check is never wired to this module.
+
 ## Swap-in points (keep these seams clean)
 
 - **Persistence**: implement `CampusStore` (`src/store/port.ts`) against Postgres/API.

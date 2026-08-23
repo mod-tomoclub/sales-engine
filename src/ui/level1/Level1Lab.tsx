@@ -23,7 +23,8 @@ import {
   type BlockState,
 } from "../../level1/engine";
 import { FORCE_EFFECTS, MEERA_SESSION1 } from "../../level1/content/force-effects";
-import { SectionTitle } from "../components";
+import { SectionTitle, SegmentedControl } from "../components";
+import { LiveTutor } from "./LiveTutor";
 
 const tutor = new ScriptedTutor();
 const STUDENT = "Meera";
@@ -69,7 +70,25 @@ function autoPlayMeera(): BlockState {
   return s;
 }
 
+type Subtopic = "s1" | "s2";
+const SUBTOPIC_OPTS: { value: Subtopic; label: string }[] = [
+  { value: "s2", label: "🎙️ ST2 · Motion, speed & time — live tutor" },
+  { value: "s1", label: "📜 ST1 · Force & its effects — scripted" },
+];
+
 export function Level1Lab() {
+  const [sub, setSub] = useState<Subtopic>("s2");
+  return (
+    <div className="stack gap-16" style={{ maxWidth: "var(--maxw)", margin: "0 auto", width: "100%" }}>
+      <div className="row" style={{ justifyContent: "center" }}>
+        <SegmentedControl value={sub} options={SUBTOPIC_OPTS} onChange={setSub} />
+      </div>
+      {sub === "s2" ? <LiveTutor /> : <ScriptedBlock />}
+    </div>
+  );
+}
+
+function ScriptedBlock() {
   const [s, setS] = useState<BlockState>(fresh);
 
   const model = useMemo(
