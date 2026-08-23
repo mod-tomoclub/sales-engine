@@ -101,3 +101,18 @@ describe("live tutor · prompt contract", () => {
     expect(TutorTurnSchema.safeParse(turn({})).success).toBe(true);
   });
 });
+
+describe("live tutor · tag folded into prediction", () => {
+  it("records both the prediction and the misconception", () => {
+    const t = turn({ evidence: [{ kind: "prediction", quality: "misconception", tag: "M-MST-01", status: "surfaced", note: "Said the cyclist is faster because he is ahead" }] });
+    const { records } = evidenceFromTurn(t, MOTION_SPEED_TIME, [], 0);
+    expect(records.map((r) => r.kind)).toEqual(["prediction", "misconception"]);
+  });
+});
+
+describe("live tutor · opening turn", () => {
+  it("produces no evidence before the student has spoken", () => {
+    const t = turn({ evidence: [{ kind: "doorway", doorway: "everyday-example", worked: true, note: "Opened with a bus example" }] });
+    expect(evidenceFromTurn(t, MOTION_SPEED_TIME, [], 0, false).records).toHaveLength(0);
+  });
+});

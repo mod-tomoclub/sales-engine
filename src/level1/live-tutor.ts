@@ -97,8 +97,8 @@ export const RaceVisualSchema = z.object({
   b: z.object({ label: z.string(), speedKmh: z.number(), startAtKm: z.number().optional() }),
   /** Total race distance in km. */
   distanceKm: z.number(),
-  /** If set, mover `b` stops for this many minutes at the given km mark. */
-  stopB: z.object({ atKm: z.number(), minutes: z.number() }).optional(),
+  /** If set, that mover stops for this many minutes at the given km mark. */
+  stop: z.object({ mover: z.enum(["a", "b"]), atKm: z.number(), minutes: z.number() }).nullable(),
 });
 export type RaceVisual = z.infer<typeof RaceVisualSchema>;
 
@@ -180,8 +180,11 @@ export function evidenceFromTurn(
   brief: LiveLessonBrief,
   existing: EvidenceRecord[],
   seq: number,
+  studentHasSpoken = true,
 ): { records: EvidenceRecord[]; seq: number } {
   const records: EvidenceRecord[] = [];
+  // No student reply yet (opening turn) → nothing can be evidence.
+  if (!studentHasSpoken) return { records, seq };
   const nextId = () => `E${String(++seq).padStart(2, "0")}`;
   const knownTags = new Set(brief.misconceptions.map((m) => m.tag));
   const hasPrediction = existing.some((e) => e.kind === "prediction");
@@ -192,13 +195,16 @@ export function evidenceFromTurn(
 
     if (ev.kind === "prediction" && ev.quality && !hasPrediction && !records.some((r) => r.kind === "prediction")) {
       records.push({ id: nextId(), phase: "learn", kind: "prediction", nodeId: "live", quality: ev.quality, note });
-    } else if (ev.kind === "misconception" && ev.tag && knownTags.has(ev.tag)) {
+    }
+    // A tag attached to any record (models often fold it into the prediction) still counts.
+    if (ev.tag && knownTags.has(ev.tag) && ev.kind !== "doorway") {
       const seen = [...existing, ...records].some((e) => e.kind === "misconception" && e.tag === ev.tag);
       let status = ev.status ?? (seen ? "persisting" : "surfaced");
       // A tag cannot "persist" before it has surfaced, and cannot be resolved unseen.
       if (!seen && status !== "surfaced") status = "surfaced";
       records.push({ id: nextId(), phase: "learn", kind: "misconception", tag: ev.tag, status, where: `Learn · ${turn.tactic}`, note });
-    } else if (ev.kind === "doorway" && ev.doorway && typeof ev.worked === "boolean") {
+    }
+    if (ev.kind === "doorway" && ev.doorway && typeof ev.worked === "boolean") {
       records.push({ id: nextId(), phase: "learn", kind: "doorway", doorway: ev.doorway, worked: ev.worked, note });
     }
   }
@@ -234,7 +240,7 @@ export function tutorSystemPrompt(brief: LiveLessonBrief): string {
     "- When the student is wrong, do not correct them. Give a contrasting case or a small experiment that makes the idea break, then ask again (tactic: repair). Name the misconception tag in evidence.",
     "- When the student is right, make them EXPLAIN-BACK in their own words, then APPLY to a new situation, then TRANSFER to a situation that looks different.",
     "- If a representation is not landing, switch doorway (everyday-example → diagram-contrast → act-it-out → thought-experiment). Never repeat a doorway listed as failed.",
-    "- Use the race manipulative when comparing movers or reading graphs: set `visual` to a race and ask the student to watch, change a speed, or read the graph. When the student changes it, react to what they did.",
+    "- Use the race manipulative when comparing movers or reading graphs: set `visual` to a race (mover a and b with speeds in km/h, a distance, and optionally one mover stopping — `stop.mover` must match the mover you describe) and ask the student to watch, change a speed, or read the graph. When the student changes it, react to what they did.",
     "- Keep every `say` under 60 words. Use the student's name sometimes, not every turn. Indian contexts (see below). Metric units only.",
     "- Stay inside the knowledge list below. Do not introduce acceleration, velocity as a vector, or equations of motion — those are later units.",
     "- You are not allowed to give a quiz, a score, or a grade. Learn has no marks. Check happens later without you.",
@@ -250,7 +256,7 @@ export function tutorSystemPrompt(brief: LiveLessonBrief): string {
     "",
     "PREFERRED CONTEXTS: " + brief.contexts.join("; ") + ".",
     "",
-    "EVIDENCE you return each turn is for the Student Context Engine, which decides what happens in the next session. Record only what the student actually said or did: their opening prediction (once, quality secure/partial/misconception), any misconception tag surfaced/persisting/resolved, and whether the doorway you used landed. Each note must be one specific sentence quoting or paraphrasing the student.",
+    "EVIDENCE you return each turn is for the Student Context Engine, which decides what happens in the next session. Evidence is about the student's most recent reply only — on the opening turn, before the student has spoken, return an empty evidence list. Record only what the student actually said or did: their opening prediction (once, quality secure/partial/misconception), any misconception tag surfaced/persisting/resolved, and whether the doorway you used landed. Each note must be one specific sentence quoting or paraphrasing the student.",
     "",
     "Set `learnComplete` true only when all goals are met by the student's own words. Then `say` is a one-sentence wrap-up with no question.",
   ].join("\n");

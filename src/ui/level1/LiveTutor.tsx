@@ -148,7 +148,7 @@ export function LiveTutor() {
         const data = (await res.json()) as TutorResponse | { error: string };
         if (!res.ok || "error" in data) throw new Error("error" in data ? data.error : `HTTP ${res.status}`);
         const { turn, usage } = data;
-        const { records, seq } = evidenceFromTurn(turn, BRIEF, session.evidence, session.seq);
+        const { records, seq } = evidenceFromTurn(turn, BRIEF, session.evidence, session.seq, session.transcript.some((l) => l.speaker === "student"));
         const goalsMet = [...new Set([...session.goalsMet, ...turn.goalsMet.filter((g) => BRIEF.goals.some((x) => x.id === g))])];
         const next: Session = {
           ...session,
@@ -456,7 +456,8 @@ function RaceLab({ v, onChange, disabled }: { v: RaceVisual; onChange: (v: RaceV
   useEffect(() => { setDraft(v); setT(0); setPlaying(false); }, [v]);
 
   // Positions in km at minute t.
-  const pos = (m: { speedKmh: number; startAtKm?: number }, stop: RaceVisual["stopB"] | undefined, minutes: number) => {
+  const stopFor = (k: "a" | "b") => (draft.stop?.mover === k ? draft.stop : undefined);
+  const pos = (m: { speedKmh: number; startAtKm?: number }, stop: { atKm: number; minutes: number } | undefined, minutes: number) => {
     const start = m.startAtKm ?? 0;
     const perMin = m.speedKmh / 60;
     if (!stop) return Math.min(draft.distanceKm, start + perMin * minutes);
@@ -467,7 +468,7 @@ function RaceLab({ v, onChange, disabled }: { v: RaceVisual; onChange: (v: RaceV
   };
   const maxMin = useMemo(() => {
     const need = (m: { speedKmh: number; startAtKm?: number }, extra = 0) => ((draft.distanceKm - (m.startAtKm ?? 0)) / Math.max(1, m.speedKmh)) * 60 + extra;
-    return Math.ceil(Math.max(need(draft.a), need(draft.b, draft.stopB?.minutes ?? 0)));
+    return Math.ceil(Math.max(need(draft.a, stopFor("a")?.minutes ?? 0), need(draft.b, stopFor("b")?.minutes ?? 0)));
   }, [draft]);
 
   useEffect(() => {
@@ -479,7 +480,7 @@ function RaceLab({ v, onChange, disabled }: { v: RaceVisual; onChange: (v: RaceV
   const W = 420, H = 150, PAD = 28;
   const gx = (m: number) => PAD + (m / maxMin) * (W - PAD - 8);
   const gy = (km: number) => H - PAD + 8 - (km / draft.distanceKm) * (H - PAD - 8);
-  const path = (m: RaceVisual["a"], stop?: RaceVisual["stopB"]) => {
+  const path = (m: RaceVisual["a"], stop?: { atKm: number; minutes: number }) => {
     const pts: string[] = [];
     for (let i = 0; i <= 60; i++) {
       const mm = (i / 60) * Math.min(t, maxMin);
@@ -487,7 +488,7 @@ function RaceLab({ v, onChange, disabled }: { v: RaceVisual; onChange: (v: RaceV
     }
     return "M" + pts.join(" L");
   };
-  const pa = pos(draft.a, undefined, t), pb = pos(draft.b, draft.stopB, t);
+  const pa = pos(draft.a, stopFor("a"), t), pb = pos(draft.b, stopFor("b"), t);
 
   const commit = (next: RaceVisual, what: string) => { setDraft(next); setT(0); setPlaying(false); onChange(next, what); };
 
@@ -516,8 +517,8 @@ function RaceLab({ v, onChange, disabled }: { v: RaceVisual; onChange: (v: RaceV
         <line x1={PAD} y1={gy(0)} x2={PAD} y2={8} stroke="var(--ink-3)" />
         <text x={W - 8} y={gy(0) + 12} fontSize={9} textAnchor="end" fill="var(--ink-3)">time (min) →</text>
         <text x={PAD + 4} y={14} fontSize={9} fill="var(--ink-3)">distance (km) ↑</text>
-        <path d={path(draft.a)} fill="none" stroke="var(--accent)" strokeWidth={2.5} />
-        <path d={path(draft.b, draft.stopB)} fill="none" stroke="var(--warn)" strokeWidth={2.5} />
+        <path d={path(draft.a, stopFor("a"))} fill="none" stroke="var(--accent)" strokeWidth={2.5} />
+        <path d={path(draft.b, stopFor("b"))} fill="none" stroke="var(--warn)" strokeWidth={2.5} />
       </svg>
       {/* Controls */}
       <div className="row gap-12 wrap small">
@@ -533,16 +534,20 @@ function RaceLab({ v, onChange, disabled }: { v: RaceVisual; onChange: (v: RaceV
             <span className="mono">{draft[k].speedKmh} km/h</span>
           </label>
         ))}
-        <button
-          className="btn sm ghost" disabled={disabled}
-          onClick={() =>
-            draft.stopB
-              ? commit({ ...draft, stopB: undefined }, `I removed ${draft.b.label}'s stop`)
-              : commit({ ...draft, stopB: { atKm: Math.round(draft.distanceKm / 2), minutes: 5 } }, `I made ${draft.b.label} stop for 5 minutes halfway`)
-          }
-        >
-          {draft.stopB ? `remove ${draft.b.label}'s stop` : `make ${draft.b.label} stop halfway`}
-        </button>
+        {draft.stop ? (
+          <button className="btn sm ghost" disabled={disabled} onClick={() => commit({ ...draft, stop: null }, `I removed ${draft[draft.stop!.mover].label}'s stop`)}>
+            remove {draft[draft.stop.mover].label}'s stop ({draft.stop.minutes} min at {draft.stop.atKm} km)
+          </button>
+        ) : (
+          (["a", "b"] as const).map((k) => (
+            <button
+              key={k} className="btn sm ghost" disabled={disabled}
+              onClick={() => commit({ ...draft, stop: { mover: k, atKm: Math.round(draft.distanceKm / 2), minutes: 5 } }, `I made ${draft[k].label} stop for 5 minutes halfway`)}
+            >
+              make {draft[k].label} stop halfway
+            </button>
+          ))
+        )}
       </div>
     </div>
   );

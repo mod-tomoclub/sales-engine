@@ -39,7 +39,9 @@ export async function handleTutor(body: unknown, apiKey: string | undefined): Pr
     const response = await client.messages.parse({
       model: TUTOR_MODEL,
       max_tokens: 2048,
-      // Voice tutoring is latency-sensitive; turns are short and grounded in the brief.
+      // Voice tutoring is latency-sensitive: turns are short, schema-constrained and
+      // grounded in the brief, so thinking is off and effort low.
+      thinking: { type: "disabled" },
       output_config: { effort: "low", format: zodOutputFormat(TutorTurnSchema) },
       system: [{ type: "text", text: tutorSystemPrompt(body.brief), cache_control: { type: "ephemeral" } }],
       messages: tutorMessages(body),
