@@ -17,3 +17,7 @@ dist-mathlab
 
 # prospect emails and inbox-derived drafts (never public)
 outreach/
+
+# mirrored from tomoclub.org for local preview only
+site/assets/team/
+site/assets/logos/
