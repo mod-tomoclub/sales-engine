@@ -19,7 +19,6 @@
  */
 
 var SHEET_ID = '1AMHDM6ZiPFvTaiKWG-BFfwkxshPgTTcW5618g_5EpZY';
-var SHEET_NAME = 'Sheet1';
 var NOTIFY_EMAIL = 'avinash@tomoclub.org'; // '' to disable
 
 function doPost(e) {
@@ -32,7 +31,7 @@ function doPost(e) {
     p.goal || '',
     p.page || 'build-with-us'
   ];
-  var sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
+  var sheet = SpreadsheetApp.openById(SHEET_ID).getSheets()[0]; // first tab, whatever it is named
   sheet.appendRow(row);
 
   if (NOTIFY_EMAIL) {
