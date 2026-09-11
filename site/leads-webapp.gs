@@ -1,7 +1,7 @@
 /**
  * TomoClub – Build With Us leads → Google Sheet
  *
- * Sheet: https://docs.google.com/spreadsheets/d/1AMHDM6ZiPFvTaiKWG-BFfwkxshPgTTcW5618g_5EpZY
+ * Sheet: https://docs.google.com/spreadsheets/d/1r2GdkJKA1lxnWiE_m3GiGvZwmTuAV7rV6jPuAOXqxT4
  *
  * One-time setup (about 3 minutes, needs your Google login):
  *   1. Open the sheet above → Extensions → Apps Script.
@@ -14,11 +14,10 @@
  *
  * The form sends four fields: name, district, email, goal.
  * Row layout matches the sheet headers: Timestamp, Name, District / School,
- * Email, What's on your mind, Source page. (If the sheet still has the older
- * 12-column header row, delete the unused columns or leave them blank.)
+ * Email, What's on your mind, Source page.
  */
 
-var SHEET_ID = '1AMHDM6ZiPFvTaiKWG-BFfwkxshPgTTcW5618g_5EpZY';
+var SHEET_ID = '1r2GdkJKA1lxnWiE_m3GiGvZwmTuAV7rV6jPuAOXqxT4';
 var NOTIFY_EMAIL = 'avinash@tomoclub.org'; // '' to disable
 
 function doPost(e) {
