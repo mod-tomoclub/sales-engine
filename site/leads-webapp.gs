@@ -9,11 +9,13 @@
  *   3. Deploy → New deployment → Type: Web app.
  *        Execute as: Me   ·   Who has access: Anyone
  *      Authorise when prompted. Copy the URL ending in /exec.
- *   4. In site/custom-projects.html set  SHEET_ENDPOINT = '<that /exec URL>'.
+ *   4. In build-with-us/index.html set  SHEET_ENDPOINT = '<that /exec URL>'.
  *   5. Optional: set NOTIFY_EMAIL below to get an email per lead.
  *
- * Every form submission appends one row (Timestamp … Source page) and,
- * if NOTIFY_EMAIL is set, sends you a short email with the lead.
+ * The form sends four fields: name, district, email, goal.
+ * Row layout matches the sheet headers: Timestamp, Name, District / School,
+ * Email, What's on your mind, Source page. (If the sheet still has the older
+ * 12-column header row, delete the unused columns or leave them blank.)
  */
 
 var SHEET_ID = '1AMHDM6ZiPFvTaiKWG-BFfwkxshPgTTcW5618g_5EpZY';
@@ -25,15 +27,9 @@ function doPost(e) {
   var row = [
     new Date(),
     p.name || '',
-    p.role || '',
     p.district || '',
     p.email || '',
-    p.phone || '',
-    p.size || '',
     p.goal || '',
-    p.areas || '',
-    p.next || '',
-    p.timing || '',
     p.page || 'build-with-us'
   ];
   var sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
@@ -44,11 +40,8 @@ function doPost(e) {
       to: NOTIFY_EMAIL,
       subject: 'New lead: ' + (p.district || p.name || 'Build With Us'),
       body:
-        'Name: ' + p.name + '\nRole: ' + p.role + '\nDistrict/School: ' + p.district +
-        '\nEmail: ' + p.email + '\nPhone: ' + (p.phone || '-') + '\nStudents: ' + (p.size || '-') +
-        '\n\nWhat they need:\n' + p.goal +
-        '\n\nTouches: ' + (p.areas || '-') + '\nCome back as: ' + p.next +
-        '\nCalendar: ' + (p.timing || '-') +
+        'Name: ' + p.name + '\nDistrict/School: ' + p.district + '\nEmail: ' + p.email +
+        '\n\nWhat\'s on their mind:\n' + p.goal +
         '\n\nSheet: https://docs.google.com/spreadsheets/d/' + SHEET_ID
     });
   }
