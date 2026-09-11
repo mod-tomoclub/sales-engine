@@ -1,4 +1,4 @@
-<title>TomoClub Custom Projects</title>
+<title>Build With TomoClub</title>
 <meta name="description" content="Tell TomoClub what your district is trying to improve or build. You get a custom project outline within 24 hours, or a 20-minute call. Built by psychologists, education researchers, game designers, curriculum designers and engineers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Oswald:wght@600;700&display=swap">
@@ -343,17 +343,83 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
 @media (prefers-reduced-motion:reduce){.ticker-track{animation:none}.glass-card:hover,.btn:hover{transform:none}}
 </style>
 
+<style>
+/* ── Additions for the warmer layout ─────────────────────────────────── */
+.hero{padding:5rem 0 3rem}
+.hero .container{max-width:900px}
+.hello{display:inline-flex;align-items:center;gap:.75rem;background:var(--surface);border:1px solid var(--border-color);border-radius:999px;padding:.4rem 1rem .4rem .4rem;box-shadow:var(--shadow-sm);margin-bottom:1.75rem;font-size:.95rem;color:var(--text-muted);font-weight:500}
+.faces{display:flex}
+.face{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;border:2px solid var(--surface);letter-spacing:-.02em}
+.face+.face{margin-left:-10px}
+.face.a{background:linear-gradient(135deg,var(--teal),#1a8f93)}.face.m{background:linear-gradient(135deg,var(--crimson),#8a2f45)}.face.c{background:linear-gradient(135deg,#e0ac00,var(--gold));color:#3b2e00}
+.hello b{color:var(--navy);font-weight:700}
+.hero-cta{margin:2rem 0 .75rem}
+.proof{margin-top:3.5rem}
+
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.tile{display:flex;gap:.9rem;align-items:flex-start;background:var(--surface);border:1px solid var(--border-color);border-radius:20px;padding:1.1rem 1.2rem;box-shadow:var(--shadow-sm);transition:var(--transition)}
+.tile:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:rgba(42,180,184,.35)}
+.tile .dot{flex:none;width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.tile .dot svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.dot.teal{background:rgba(42,180,184,.12);color:var(--teal)}.dot.gold{background:rgba(253,198,45,.2);color:#8a6a00}.dot.crimson{background:rgba(179,65,88,.1);color:var(--crimson)}.dot.slate{background:rgba(148,163,184,.18);color:var(--text-muted)}
+:root[data-theme="dark"] .dot.gold{color:var(--gold)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .dot.gold{color:var(--gold)}}
+.tile b{display:block;color:var(--navy);font-size:1rem;letter-spacing:-.02em;line-height:1.25}
+.tile span{display:block;font-size:.88rem;color:var(--text-muted);margin-top:.15rem}
+.tile a{color:var(--teal);font-weight:600;font-size:.85rem}
+.tiles.new .tile{border-left:3px solid var(--teal)}
+.tiles.new .tile:nth-child(2){border-left-color:var(--gold)}.tiles.new .tile:nth-child(3){border-left-color:var(--crimson)}.tiles.new .tile:nth-child(4){border-left-color:var(--text-light)}
+.mini-header{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.mini-header h2{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:0}
+.mini-header p{margin:0;font-size:1rem;max-width:520px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+@media (max-width:900px){.two-col{grid-template-columns:1fr}}
+.section-tight{padding:3.5rem 0}
+
+.founders{display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center;background:var(--surface);border:1px solid var(--border-color);border-radius:var(--radius-card);padding:2.5rem;box-shadow:var(--shadow-md);margin-bottom:2.5rem}
+@media (max-width:820px){.founders{grid-template-columns:1fr}}
+.founders h2{font-size:clamp(1.7rem,3.2vw,2.3rem)}
+.founders p{font-size:1.08rem;margin-bottom:1rem}
+.founders p:last-child{margin-bottom:0}
+.founder-cards{display:flex;flex-direction:column;gap:.9rem}
+.fc{display:flex;gap:1rem;align-items:center;background:var(--surface-hover);border:1px solid var(--border-color);border-radius:20px;padding:1rem 1.1rem}
+.fc .face{width:48px;height:48px;font-size:1rem;border:0}
+.fc b{display:block;color:var(--navy)}
+.fc span{font-size:.9rem;color:var(--text-muted)}
+
+.steps{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.chat{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}
+.bubble{max-width:88%;padding:1.1rem 1.35rem;border-radius:22px;font-size:1.08rem;line-height:1.55;box-shadow:var(--shadow-sm)}
+.bubble.them{align-self:flex-start;background:var(--surface);border:1px solid var(--border-color);color:var(--text-main);border-bottom-left-radius:6px}
+.bubble.us{align-self:flex-end;background:var(--navy);color:#F8FAFC;border-bottom-right-radius:6px}
+:root[data-theme="dark"] .bubble.us{background:#1E293B}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bubble.us{background:#1E293B}}
+.bubble small{display:block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;font-weight:800;opacity:.6;margin-bottom:.35rem}
+
+.note{max-width:820px;margin:0 auto 2.5rem}
+.note p{font-size:1.15rem;color:var(--text-main);line-height:1.65}
+.note .sig{display:flex;align-items:center;gap:1rem;margin-top:1.25rem}
+.note .sig b{display:block;color:var(--navy)}.note .sig span{font-size:.9rem;color:var(--text-muted)}
+.form-card h3{font-size:1.5rem}
+.form-label{font-weight:600}
+.side-card .faces{margin-bottom:1rem}
+.quotes{margin-top:0}
+.cred-row{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-top:2rem}
+.cred-row span{display:inline-flex;align-items:center;gap:.5rem;background:var(--surface);border:1px solid var(--border-color);border-radius:999px;padding:.5rem 1rem;font-size:.9rem;font-weight:600;color:var(--text-main);box-shadow:var(--shadow-sm)}
+.cred-row i{width:8px;height:8px;border-radius:50%;background:var(--teal);display:inline-block}
+.cred-row span:nth-child(2n) i{background:var(--gold)}.cred-row span:nth-child(3n) i{background:var(--crimson)}
+</style>
+
 <!-- Ticker -->
 <div class="ticker" aria-label="Announcement">
   <a href="#interest-form">
     <div class="ticker-track" id="ticker-track">
       <div class="ticker-chunk">
-        <span>Custom projects</span><span class="st">★</span>
-        <span>Built around your district, not a catalogue</span><span class="st">★</span>
-        <span>Project outline in 24 hours</span><span class="st">★</span>
-        <span>Or a 20-minute call</span><span class="st">★</span>
+        <span>Custom projects for districts</span><span class="st">★</span>
+        <span>Tell us the goal, we'll do the rest</span><span class="st">★</span>
+        <span>Project outline within 24 hours</span><span class="st">★</span>
+        <span>Or a 20-minute conversation</span><span class="st">★</span>
         <span>STEM.org accredited</span><span class="st">★</span>
-        <span>Tell us what you need</span><span class="st">★</span>
       </div>
     </div>
   </a>
@@ -368,7 +434,7 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
       <a href="https://tomoclub.org/parents">For Parents</a>
       <a href="https://tomoclub.org/#about">About Us</a>
       <a href="https://tomoclub.org/#results">Results</a>
-      <a href="#" class="active" aria-current="page">Custom Projects</a>
+      <a href="#" class="active" aria-current="page">Build With Us</a>
       <a href="https://tomoclub.org/taicy/">TAICY</a>
     </div>
     <div class="nav-actions">
@@ -376,7 +442,7 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
         <svg id="ic-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <svg id="ic-sun" viewBox="0 0 24 24" hidden><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
       </button>
-      <a href="#interest-form" class="btn btn-primary">Start a project <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+      <a href="#interest-form" class="btn btn-primary">Talk to us <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
     </div>
   </div>
 </nav>
@@ -384,107 +450,59 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
 <!-- Hero -->
 <header class="hero">
   <div class="container reveal">
-    <span class="badge">For school and district leaders</span>
-    <h1>Tell us what you're trying to build.<br><span class="highlight-gold">We'll build it with you.</span></h1>
-    <p class="lead">Not a predefined program. A practical solution designed around your district.</p>
-    <p>Most of what TomoClub is known for started as a school leader describing a problem. Teacher retention, staff workload, reporting, communication with families, an AI policy nobody has time to write. Share the goal, and within 24 hours you get a custom project outline. Or skip the form and talk to a co-founder for 20 minutes.</p>
+    <div class="hello"><div class="faces"><span class="face a">AB</span><span class="face m">MM</span><span class="face c">CD</span></div><span><b>Avinash, Manik and Chelsea</b> read every message on this page</span></div>
+    <h1>Let's start with what's <span class="highlight-gold">on your desk.</span></h1>
+    <p class="lead">Not our programs. Your priorities.</p>
+    <p>You know your district better than any vendor ever will. So before we tell you what we've built, we'd like to hear what you're trying to improve this year. Then we go away, think about it properly, and come back within a day with something practical. If one of our existing programs fits, we'll say so. If it needs building, we'll build it with you.</p>
     <div class="hero-cta">
-      <a href="#interest-form" class="btn btn-primary">Share your challenge <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
-      <a href="#interest-form" class="btn btn-secondary" data-choose="call">Book a 20-minute call <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+      <a href="#interest-form" class="btn btn-primary">Tell us what you need <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+      <a href="#interest-form" class="btn btn-secondary" data-choose="call">Or just talk to us, 20 minutes <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
     </div>
-    <p class="hero-note">No cost for the outline. No obligation to run an existing TomoClub program.</p>
+    <p class="hero-note">No cost, no deck, no obligation. A co-founder replies, usually the same day.</p>
 
     <div class="proof">
-      <div class="label">Trusted by schools<br>across the US and<br>beyond</div>
+      <div class="label">In good company<br>across the US and<br>beyond</div>
       <div class="proof-figs">
         <div><b>10,000+</b><span>students</span></div>
         <div><b>5,000+</b><span>teachers trained</span></div>
         <div><b>12+</b><span>US states</span></div>
-        <div><b>150+</b><span>podcast conversations with school leaders</span></div>
-        <div><b>STEM.org</b><span>Accredited · Best in STEM · Certified trainers</span></div>
+        <div><b>150+</b><span>conversations with school leaders on our podcast</span></div>
+        <div><b>STEM.org</b><span>Accredited · Best in STEM</span></div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- The shift -->
-<section class="bg-slate">
+<!-- What exists + what's new -->
+<section class="bg-slate section-tight">
   <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">Why this page exists</span>
-      <h2>We set out to build three programs.<br>We ended up with a team that can build almost anything a school needs.</h2>
-      <p>TomoClub's focus has been narrow on purpose: teach students social and emotional intelligence through game-based curriculum, teach them to create original ideas and then use AI to build on them without losing critical thinking, and educate educators to use AI well for themselves. Doing that properly meant hiring psychologists, education researchers, game designers, curriculum and instructional designers, and software engineers. That combination turns out to be rare, and school leaders started asking us for things that were not on our menu.</p>
-    </div>
-    <div class="grid-3">
-      <article class="glass-card program-card teal">
-        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3v2M12 19v2M5 12H3M21 12h-2"/><circle cx="12" cy="12" r="5"/></svg></div>
-        <div class="meta">Program 1 · Grades 3–12</div>
-        <h3>Social-emotional intelligence, taught through games</h3>
-        <p>Multiplayer strategic gameplay with guided reflection. Students practise communication, collaboration, empathy and leadership because the game demands it, not because a worksheet asked.</p>
-        <ul><li>12 original multiplayer games, CASEL-aligned</li><li>Teacher and admin reporting, attendance, exit tickets</li><li>93% increase in leadership and EI competency at a charter network</li></ul>
-        <a class="link-arrow" href="https://tomoclub.org/#future-ready">Explore Future-Ready Skills <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </article>
-      <article class="glass-card program-card gold">
-        <div class="icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></div>
-        <div class="meta">Program 2 · Grades 6–12</div>
-        <h3>Original ideas first, then AI to build on them</h3>
-        <p>Standards-aligned AI literacy in two tracks. Students learn how AI works, form their own idea before they open a tool, and use AI with judgment while critical thinking stays intact.</p>
-        <ul><li>Semester or full-year, middle and high school tracks</li><li>Ethics, bias, wellbeing and academic-integrity modules</li><li>94% pass rate on the ethics debate assessment</li></ul>
-        <a class="link-arrow" href="https://tomoclub.org/#ai-literacy">Explore AI Literacy <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </article>
-      <article class="glass-card program-card crimson">
-        <div class="icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div class="meta">Program 3 · For educators</div>
-        <h3>Educators who use AI well, for themselves</h3>
-        <p>Hands-on, instructor-led professional development, now also fully asynchronous. Level 1 builds awareness and efficiency. Level 2 builds real workflows, automations and classroom-ready systems.</p>
-        <ul><li>Live cohorts or self-paced platform with AI-based assessment</li><li>Ethics, academic integrity, practical use cases</li><li>80% of educators report stronger AI understanding after Level 1</li></ul>
-        <a class="link-arrow" href="https://tomoclub.org/#pd">Explore AI Fundamentals PD <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </article>
-    </div>
-    <div class="built-strip">
-      <div><b>Async AI PD platform</b><span>Micro-lessons, games, quick checks, reporting. Not a click-next course.</span></div>
-      <div><b>Game engine + 12 titles</b><span>Built in-house, so new mechanics for new populations are a design task, not a procurement.</span></div>
-      <div><b>Curriculum pipeline</b><span>Standards mapping, lesson plans, teacher guides, assessments, review cycles.</span></div>
-      <div><b>Leaders of Tomorrow</b><span>An ebook co-written with 15 practising superintendents.</span></div>
-      <div><b>The Learning Shift podcast</b><span>150+ episodes listening to superintendents, principals and curriculum directors.</span></div>
-      <div><b>TAICY</b><span>A global AI innovation challenge for ages 8–15.</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- Custom projects -->
-<section>
-  <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">Custom projects · 2026–27</span>
-      <h2>What we're building for partners this year.</h2>
-      <p>None of these were on our website when the conversation started. Each began with a leader describing a problem, and a first outline from us within a day.</p>
-    </div>
-    <div class="grid-2">
-      <article class="glass-card case">
-        <span class="tag teal">Curriculum framework · State-level partner</span>
-        <div><h3>AI Literacy in Green Career Pathways: K–12 Curriculum Framework</h3><div class="who">For a state workforce and education partnership</div>
-        <p>A career-readiness curriculum that connects AI skills to green-economy jobs, from elementary awareness to high-school pathways, with teacher-training resources itemised for grant funding.</p></div>
-        <dl><dt>Team</dt><dd>Curriculum designers, education researcher, AI literacy lead</dd><dt>Output</dt><dd>Framework, scope and sequence, teacher PD, grant-ready budget lines</dd></dl>
-      </article>
-      <article class="glass-card case">
-        <span class="tag gold">Game design · Special education</span>
-        <div><h3>Life-skills games for students with special needs</h3><div class="who">For a Pennsylvania school district</div>
-        <p>The district had a vision for everyday-hero life skills for students in multiple-disabilities and life-skills-support classrooms. We are co-designing a game-based app that serves the full range of needs, disabilities and abilities, across ages.</p></div>
-        <dl><dt>Team</dt><dd>Psychologists, game designers, special-education advisors, engineers</dd><dt>Output</dt><dd>Concept note, playable prototypes, teacher-facing progress tracking</dd></dl>
-      </article>
-      <article class="glass-card case">
-        <span class="tag crimson">Policy + communications · District</span>
-        <div><h3>District AI policy and a parent-first awareness campaign</h3><div class="who">For a Massachusetts public school district</div>
-        <p>A living AI policy rather than a static document, paired with a short explainer video series so families hear the district's position before the rumours do. Parents first, staff next, students after.</p></div>
-        <dl><dt>Team</dt><dd>Instructional designers, policy research, video production</dd><dt>Output</dt><dd>Policy compass, superintendent-to-camera explainer, staff and family rollout plan</dd></dl>
-      </article>
-      <article class="glass-card case">
-        <span class="tag slate">Software · Funding</span>
-        <div><h3>Grant-writing product for schools</h3><div class="who">Built from what districts kept asking us for</div>
-        <p>Leaders told us the idea was never the problem, the grant narrative was. We are building a product that turns a district's priorities and evidence into fundable proposals, with the budget itemisation funders expect.</p></div>
-        <dl><dt>Team</dt><dd>Engineers, education researchers, grant advisors</dd><dt>Output</dt><dd>Draft narratives, budget templates, evidence library</dd></dl>
-      </article>
+    <div class="two-col">
+      <div>
+        <div class="mini-header">
+          <h2>Already built, ready to use</h2>
+        </div>
+        <p style="font-size:1rem;margin-bottom:1.25rem">So you never pay us to reinvent something that exists.</p>
+        <div class="tiles">
+          <div class="tile"><div class="dot teal"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 3v2M12 19v2M5 12H3M21 12h-2"/></svg></div><div><b>Future-Ready Skills, Grades 3–12</b><span>SEL and leadership through 12 multiplayer games. <a href="https://tomoclub.org/#future-ready">See it</a></span></div></div>
+          <div class="tile"><div class="dot gold"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></div><div><b>AI Literacy, Grades 6–12</b><span>Original thinking first, then AI with judgment. <a href="https://tomoclub.org/#ai-literacy">See it</a></span></div></div>
+          <div class="tile"><div class="dot crimson"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><b>AI Fundamentals PD, Levels 1 &amp; 2</b><span>Live cohorts for educators, ethics and real workflows. <a href="https://tomoclub.org/#pd">See it</a></span></div></div>
+          <div class="tile"><div class="dot crimson"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M8 21h8M12 18v3M7 9l3 2-3 2"/></svg></div><div><b>Async AI PD platform</b><span>Self-paced Level 1, micro-lessons and reporting. Fits any calendar.</span></div></div>
+          <div class="tile"><div class="dot slate"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/></svg></div><div><b>Leaders of Tomorrow</b><span>An ebook co-written with 15 practising superintendents. <a href="https://tomoclub.org/leaders-of-tomorrow/">Read it</a></span></div></div>
+          <div class="tile"><div class="dot teal"><svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></div><div><b>The Learning Shift podcast</b><span>150+ episodes of listening to people in your seat.</span></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="mini-header">
+          <h2>New this year, built with partners</h2>
+        </div>
+        <p style="font-size:1rem;margin-bottom:1.25rem">None of these were on our website when the conversation started.</p>
+        <div class="tiles new" style="grid-template-columns:1fr">
+          <div class="tile"><div><b>AI Literacy in Green Career Pathways: a K–12 curriculum framework</b><span>For a state workforce partnership in New Mexico, grant-itemised.</span></div></div>
+          <div class="tile"><div><b>Life-skills games for students with special needs</b><span>Co-designed with a Pennsylvania district, across the full range of abilities.</span></div></div>
+          <div class="tile"><div><b>A district AI policy and a parent-first awareness campaign</b><span>Explainer videos and a living policy for a Massachusetts district.</span></div></div>
+          <div class="tile"><div><b>A grant-writing product for schools</b><span>Turns your priorities and evidence into fundable proposals.</span></div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -492,103 +510,86 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
 <!-- Team -->
 <section class="bg-teal">
   <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">Why we can build this</span>
-      <h2>Six disciplines, one team.</h2>
-      <p>Most education vendors have one of these. The combination is what lets us take a vague, important problem and turn it into something teachers actually use.</p>
+    <div class="founders">
+      <div>
+        <span class="eyebrow">Who you'd be talking to</span>
+        <h2>We came to this as parents, and we stayed because of the people we met.</h2>
+        <p>We're Avinash and Manik. Before TomoClub we spent years building startups (Manik's earlier company won the $1 million Women's Safety XPRIZE). Then we became parents, started talking to superintendents and principals, and didn't stop. A hundred and fifty of those conversations later, we'd hired psychologists, education researchers, game designers, curriculum and instructional designers and engineers, mostly because the things leaders asked for kept needing all of them at once.</p>
+        <p>That team is the real reason to write to us. Not the programs. The people who can take an important, half-formed problem and turn it into something teachers actually use.</p>
+      </div>
+      <div class="founder-cards">
+        <div class="fc"><span class="face a">AB</span><div><b>Avinash Bansal</b><span>Co-Founder &amp; COO. Gets things done, answers his own email.</span></div></div>
+        <div class="fc"><span class="face m">MM</span><div><b>Manik Mehta</b><span>Co-Founder &amp; CEO. Educator, engineer, XPRIZE winner, marathoner.</span></div></div>
+        <div class="fc"><span class="face c">CD</span><div><b>Chelsea Dean</b><span>Director of Curriculum. Former educator and counsellor. The one who makes it fit your schedule.</span></div></div>
+      </div>
+    </div>
+    <div class="section-header" style="margin-bottom:2rem">
+      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">Six disciplines under one roof.</h2>
+      <p style="font-size:1rem">Most education vendors have one of these. Having all six is what lets us say yes to problems that don't come with a product category.</p>
     </div>
     <div class="grid-3">
-      <div class="disc"><div class="n" style="background:rgba(42,180,184,.12);color:var(--teal)">Ps</div><div><b>Psychologists</b><span>Behaviour, motivation and wellbeing design. The reason our games change how students handle conflict, not just how they score.</span></div></div>
-      <div class="disc"><div class="n" style="background:rgba(253,198,45,.2);color:#8a6a00">Ed</div><div><b>Education researchers</b><span>Evidence, standards alignment and measurement. Outcome reports administrators can put in front of a board.</span></div></div>
-      <div class="disc"><div class="n" style="background:rgba(179,65,88,.1);color:var(--crimson)">Sw</div><div><b>Software developers</b><span>Our own platform, game engine and AI tooling. GDPR and SOC 2 compliant. We ship, we don't outsource.</span></div></div>
-      <div class="disc"><div class="n" style="background:rgba(42,180,184,.12);color:var(--teal)">Gd</div><div><b>Game designers</b><span>Mechanics that make collaboration, decision-making and self-regulation unavoidable, for ages 8 to adult.</span></div></div>
+      <div class="disc"><div class="n" style="background:rgba(42,180,184,.12);color:var(--teal)">Ps</div><div><b>Psychologists</b><span>Behaviour, motivation and wellbeing. Why our games change how students handle conflict, not just how they score.</span></div></div>
+      <div class="disc"><div class="n" style="background:rgba(253,198,45,.2);color:#8a6a00">Ed</div><div><b>Education researchers</b><span>Evidence, standards alignment, measurement. Reports you can put in front of a board.</span></div></div>
+      <div class="disc"><div class="n" style="background:rgba(179,65,88,.1);color:var(--crimson)">Sw</div><div><b>Software developers</b><span>Our own platform, game engine and AI tooling. GDPR and SOC 2. We ship it ourselves.</span></div></div>
+      <div class="disc"><div class="n" style="background:rgba(42,180,184,.12);color:var(--teal)">Gd</div><div><b>Game designers</b><span>Mechanics that make collaboration and self-regulation unavoidable, for ages 8 to adult.</span></div></div>
       <div class="disc"><div class="n" style="background:rgba(253,198,45,.2);color:#8a6a00">Cd</div><div><b>Curriculum designers</b><span>Scope and sequence, lesson plans, teacher guides, assessments. Built for real bell schedules.</span></div></div>
-      <div class="disc"><div class="n" style="background:rgba(179,65,88,.1);color:var(--crimson)">Id</div><div><b>Instructional designers</b><span>Live, async and blended delivery. Micro-lessons, checks for understanding, and PD that teachers finish.</span></div></div>
-    </div>
-    <div class="combo">
-      <div>
-        <h3>Led by seasoned entrepreneurs who came to education as parents.</h3>
-        <p>Co-founders Avinash Bansal and Manik Mehta spent years building startups before TomoClub. Manik's previous company won the $1 million Women's Safety XPRIZE. Both have shipped products used by thousands of people and have sat through enough school board meetings to know that implementation, not the idea, is what fails.</p>
-      </div>
-      <div class="stack">
-        <span>XPRIZE-winning founder</span><span>STEM.org Accredited</span><span>Best in STEM, top 5%</span><span>STEM.org Certified trainers</span><span>Aligned to CASEL and AI4K12</span><span>Public, charter, private, rural, tribal</span><span>GDPR &amp; SOC 2</span>
-      </div>
+      <div class="disc"><div class="n" style="background:rgba(179,65,88,.1);color:var(--crimson)">Id</div><div><b>Instructional designers</b><span>Live, async and blended. Micro-lessons and checks for understanding that teachers finish.</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- Process -->
-<section>
+<!-- What a conversation looks like -->
+<section class="section-tight">
   <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">How it works</span>
-      <h2>Listen first. Outline in a day. Build together.</h2>
-      <p>Rather than asking your district to adapt to a predefined program, we start with what you are trying to improve.</p>
+    <div class="section-header" style="margin-bottom:2.5rem">
+      <span class="eyebrow">What a conversation with us looks like</span>
+      <h2>You talk. We listen. Then we do the work.</h2>
     </div>
-    <div class="steps">
-      <div class="step"><b>You describe the goal</b><span>Two minutes in the form below, or a 20-minute call with a co-founder. Plain language is fine. You don't need a spec.</span><span class="time">Day 0</span></div>
-      <div class="step"><b>We send a custom project outline</b><span>Scope, approach, who on our team would work on it, a rough timeline and a budget range. Often it maps to something we've already built; sometimes it's new.</span><span class="time">Within 24 hours</span></div>
-      <div class="step"><b>We co-design a first phase</b><span>A small, funded first phase with a clear outcome. Grant language and budget itemisation included if you need them.</span><span class="time">Week 1–3</span></div>
-      <div class="step"><b>We stay in it with you</b><span>Training before launch, live support during, outcome reporting after. The same team that designed it implements it.</span><span class="time">Ongoing</span></div>
+    <div class="chat">
+      <div class="bubble them"><small>A superintendent, this spring</small>We've lost three teachers to burnout this year and I can't tell the board which part of the job is breaking them. I don't need another program.</div>
+      <div class="bubble us"><small>Us, next morning</small>Understood. Here's a one-page outline: a two-week listening study run by our psychologists, an anonymised workload map for the board, and three changes your team could make without new spend. If you want us for the third part, that's a separate conversation.</div>
+      <div class="bubble them"><small>A district office, in August</small>We want a life-skills program for our MDS and LSS classrooms, and nothing off the shelf fits our students.</div>
+      <div class="bubble us"><small>Us, four days later</small>Concept note attached, written with a special-education advisor. Three everyday-hero scenarios, adjustable inputs, progress views mapped to IEP goals. First playable in eight weeks if you'd like to build it with us.</div>
+    </div>
+    <div class="steps" style="margin-top:3rem">
+      <div class="step"><b>You write to us</b><span>Two minutes in the form below, in plain words. Or a 20-minute call.</span><span class="time">Whenever you're ready</span></div>
+      <div class="step"><b>We come back with an outline</b><span>Your problem in your words, our approach, who'd do it, timeline, budget range, funding routes.</span><span class="time">Within 24 hours</span></div>
+      <div class="step"><b>We shape a first phase together</b><span>Small and funded, with a clear outcome. Grant language included if you need it.</span><span class="time">Weeks 1–3</span></div>
+      <div class="step"><b>We stay</b><span>Training before launch, support during, honest reporting after. Same people throughout.</span><span class="time">For as long as it's useful</span></div>
     </div>
   </div>
 </section>
 
-<!-- Problem areas -->
-<section class="bg-slate">
+<!-- Note + form -->
+<section id="interest-form" class="bg-slate">
   <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">Where it could start</span>
-      <h2>It doesn't have to be about AI.</h2>
-      <p>These are the kinds of problems leaders have brought us. Once we understand the goal, we work out whether AI, professional learning, student support, software, or something else is the right tool.</p>
+    <div class="note">
+      <span class="eyebrow">A note from Avinash</span>
+      <p>I would genuinely love to understand your vision, the priorities you're working to advance, and the challenges you're facing in your district. It could be teacher retention, staff workload, reporting, internal processes, communication with families, planning, data, or something completely different. Once we understand the goal, we'll work out together whether AI, professional learning, student support, or something we haven't built yet is the right answer.</p>
+      <p>Our aim is simple: listen to what you need and build something meaningful for your district. Would you be open to a quick conversation?</p>
+      <div class="sig"><span class="face a" style="width:48px;height:48px;font-size:1rem;border:0">AB</span><div><b>Avinash Bansal</b><span>Co-Founder, TomoClub</span></div></div>
     </div>
-    <div class="chips">
-      <span>Teacher retention</span><span>Staff workload</span><span>Board and state reporting</span><span>Internal processes</span><span>Family communication</span><span>Strategic planning</span><span>Data workflows</span><span>AI policy and guardrails</span><span>Parent awareness campaigns</span><span>Special education supports</span><span>Career readiness pathways</span><span>Alumni and outcomes tracking</span><span>Grant narratives</span><span>Async staff training</span><span>Student behaviour and belonging</span><span class="more">Something completely different</span>
-    </div>
-  </div>
-</section>
 
-<!-- Letter -->
-<section class="bg-slate-out">
-  <div class="container">
-    <div class="letter">
-      <p>I would love to understand your vision, the priorities you are working to advance, and the challenges you are addressing within your district.</p>
-      <p>Rather than asking your district to adapt to a predefined program, we want to listen to you first. We want to understand what you are trying to improve or build, and then create a practical solution specifically around the needs of your district.</p>
-      <p>It could involve teacher retention, staff workload, reporting, internal processes, communication, planning, data workflows, or something completely different. Once we understand the goal, we can explore how AI, professional learning, student support, or another customised approach could help achieve it.</p>
-      <p>Our goal is simple: listen to what you need and build something meaningful for your district. Would you be open to a quick conversation?</p>
-      <div class="sig"><div class="av">AB</div><div><b>Avinash Bansal</b><span>Co-Founder, TomoClub · avinash@tomoclub.org · +1 650 547-8082</span></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- Interest form -->
-<section id="interest-form">
-  <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">Interest form</span>
-      <h2>Tell us what you need.</h2>
-      <p>You will hear back from a co-founder, not a sales sequence.</p>
-    </div>
     <div class="form-wrap">
       <form class="form-card" id="project-form" novalidate>
-        <h3>Your district, your goal</h3>
-        <p style="font-size:1rem">Two minutes. We'll take it from here.</p>
+        <h3>Tell us about your district</h3>
+        <p style="font-size:1rem">Plain language is perfect. We'll take it from here.</p>
         <div class="form-grid">
-          <div class="form-group"><label class="form-label" for="f-name">Your name</label><input class="form-control" id="f-name" name="name" required autocomplete="name"></div>
-          <div class="form-group"><label class="form-label" for="f-role">Role</label><input class="form-control" id="f-role" name="role" placeholder="Superintendent, Principal, Director of T&amp;L…" required autocomplete="organization-title"></div>
-          <div class="form-group"><label class="form-label" for="f-org">District or school</label><input class="form-control" id="f-org" name="district" required autocomplete="organization"></div>
-          <div class="form-group"><label class="form-label" for="f-email">Work email</label><input class="form-control" id="f-email" name="email" type="email" required autocomplete="email"></div>
-          <div class="form-group"><label class="form-label" for="f-phone">Phone <small>(optional)</small></label><input class="form-control" id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
-          <div class="form-group"><label class="form-label" for="f-size">Students served <small>(approx.)</small></label>
+          <div class="form-group"><label class="form-label" for="f-name">What should we call you?</label><input class="form-control" id="f-name" name="name" required autocomplete="name"></div>
+          <div class="form-group"><label class="form-label" for="f-role">Your role</label><input class="form-control" id="f-role" name="role" placeholder="Superintendent, Principal, Director of T&amp;L…" required autocomplete="organization-title"></div>
+          <div class="form-group"><label class="form-label" for="f-org">Where do you lead?</label><input class="form-control" id="f-org" name="district" placeholder="District or school" required autocomplete="organization"></div>
+          <div class="form-group"><label class="form-label" for="f-email">Where should we reply?</label><input class="form-control" id="f-email" name="email" type="email" placeholder="Work email" required autocomplete="email"></div>
+          <div class="form-group"><label class="form-label" for="f-phone">Phone <small>(only if you'd rather talk)</small></label><input class="form-control" id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+          <div class="form-group"><label class="form-label" for="f-size">Students served <small>(roughly)</small></label>
             <select class="form-control" id="f-size" name="size"><option value="">Select</option><option>Under 500</option><option>500–2,000</option><option>2,000–10,000</option><option>10,000–50,000</option><option>50,000+</option><option>State or regional agency</option></select></div>
-          <div class="form-group full"><label class="form-label" for="f-goal">What are you trying to improve or build?</label><textarea class="form-control" id="f-goal" name="goal" required placeholder="Describe the goal, the people it affects, and what's been tried. Plain language is perfect."></textarea></div>
-          <div class="form-group full"><span class="form-label">Areas it touches <small>(pick any)</small></span>
+          <div class="form-group full"><label class="form-label" for="f-goal">What's on your mind this year?</label><textarea class="form-control" id="f-goal" name="goal" required placeholder="The goal, who it affects, what's been tried. Half-formed is fine, that's usually where the good projects start."></textarea></div>
+          <div class="form-group full"><span class="form-label">It touches… <small>(pick any, or none)</small></span>
             <div class="area-chips" id="areas">
               <label><input type="checkbox" name="areas" value="Teacher retention"><span>Teacher retention</span></label>
               <label><input type="checkbox" name="areas" value="Staff workload"><span>Staff workload</span></label>
               <label><input type="checkbox" name="areas" value="Reporting"><span>Reporting</span></label>
               <label><input type="checkbox" name="areas" value="Internal processes"><span>Internal processes</span></label>
-              <label><input type="checkbox" name="areas" value="Communication"><span>Communication</span></label>
+              <label><input type="checkbox" name="areas" value="Communication"><span>Family communication</span></label>
               <label><input type="checkbox" name="areas" value="Planning"><span>Planning</span></label>
               <label><input type="checkbox" name="areas" value="Data workflows"><span>Data workflows</span></label>
               <label><input type="checkbox" name="areas" value="AI policy"><span>AI policy</span></label>
@@ -601,58 +602,54 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
               <label><input type="checkbox" name="areas" value="Other"><span>Something else</span></label>
             </div>
           </div>
-          <div class="form-group full"><span class="form-label">What would you like next?</span>
+          <div class="form-group full"><span class="form-label">How would you like us to come back?</span>
             <div class="next-step">
-              <label><input type="radio" name="next" value="Custom project outline within 24 hours" checked><div class="opt"><b>Send me a custom project outline</b><span>Within 24 hours, by email. Scope, approach, timeline, budget range.</span></div></label>
-              <label><input type="radio" name="next" value="20-minute call" id="opt-call"><div class="opt"><b>Book a 20-minute call</b><span>Explain it out loud to a co-founder. We'll propose times that fit your calendar.</span></div></label>
+              <label><input type="radio" name="next" value="Custom project outline within 24 hours" checked><div class="opt"><b>Send me a written outline</b><span>Within 24 hours, by email. Scope, approach, timeline, budget range.</span></div></label>
+              <label><input type="radio" name="next" value="20-minute call" id="opt-call"><div class="opt"><b>Let's talk for 20 minutes</b><span>With Avinash or Manik. No slides unless you ask.</span></div></label>
             </div>
           </div>
-          <div class="form-group full"><label class="form-label" for="f-timing">Timing <small>(optional)</small></label><input class="form-control" id="f-timing" name="timing" placeholder="e.g. Board meeting in October, summer PD planning, grant deadline Nov 15"></div>
+          <div class="form-group full"><label class="form-label" for="f-timing">Anything on the calendar we should know about? <small>(optional)</small></label><input class="form-control" id="f-timing" name="timing" placeholder="Board meeting in October, summer PD planning, a grant deadline…"></div>
         </div>
         <div class="form-foot">
-          <button type="submit" class="btn btn-primary">Send to TomoClub <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></button>
-          <small>We read every submission ourselves and never share it. No newsletter sign-up hidden in here.</small>
+          <button type="submit" class="btn btn-primary">Send it over <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></button>
+          <small>A person reads this, not a sequence. We never share it, and there's no newsletter hiding in here.</small>
         </div>
         <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
       </form>
 
       <aside class="side-card">
-        <h3>What you get back</h3>
-        <p>The same team that would build it writes the outline. That's why it takes a day, not a quarter.</p>
+        <div class="faces"><span class="face a">AB</span><span class="face m">MM</span></div>
+        <h3>Or skip the form and just talk to us</h3>
+        <p>Some things are easier to say out loud. Call or email either of us directly.</p>
         <div class="promise">
-          <div><div class="k"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><div><b>A custom project outline in 24 hours</b><span>Problem restated in your words, proposed approach, team, timeline, budget range, and funding routes.</span></div></div>
-          <div><div class="k"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><div><b>Or a 20-minute call</b><span>With Avinash or Manik. No slides unless you ask for them.</span></div></div>
-          <div><div class="k"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><div><b>No obligation</b><span>If an existing program fits, we'll say so. If nothing fits, we'll say that too.</span></div></div>
+          <div><div class="k"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><div><b>Same-day reply</b><span>From a co-founder, not an inbox rule.</span></div></div>
+          <div><div class="k"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><div><b>Written outline in 24 hours</b><span>Yours to keep, whether or not we work together.</span></div></div>
+          <div><div class="k"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><div><b>An honest "not us" if that's the answer</b><span>We'd rather point you elsewhere than sell you the wrong thing.</span></div></div>
         </div>
         <div class="contact">
-          <span>Prefer email or phone?</span>
-          <a href="mailto:avinash@tomoclub.org?subject=Custom%20project%20for%20our%20district">avinash@tomoclub.org</a>
+          <a href="mailto:avinash@tomoclub.org?subject=Something%20on%20my%20desk">avinash@tomoclub.org</a>
           <a href="tel:+16505478082">+1 650 547-8082</a>
+          <span>Dublin, Ohio · working across US time zones</span>
         </div>
-        <a class="btn btn-white" href="https://tomoclub.org/contact-us">Go to the contact page</a>
       </aside>
     </div>
   </div>
 </section>
 
-<!-- Credibility -->
-<section class="bg-slate">
+<!-- Voices + credibility -->
+<section class="section-tight">
   <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">Why leaders trust us with the undefined work</span>
-      <h2>Real impact in real school communities.</h2>
-    </div>
-    <div class="grid-4">
-      <div class="cred"><div class="seal teal">STEM<br>.org</div><b>STEM.org Accredited™</b><span>All TomoClub programs are formally accredited by STEM.org, the independent authority on STEM education quality.</span></div>
-      <div class="cred"><div class="seal gold">Top<br>5%</div><b>Best In STEM™ Distinction</b><span>Award seal for scoring 95+ on the official STEM.org rubric.</span></div>
-      <div class="cred"><div class="seal crimson">Cert</div><b>STEM.org Certified™ Master Trainers</b><span>Our facilitators are STEM.org Certified Educational Instructors.</span></div>
-      <div class="cred"><div class="seal navy">X<br>PRIZE</div><b>XPRIZE-winning founder</b><span>Co-founder Manik Mehta's previous company won the $1M Anu &amp; Naveen Jain Women's Safety XPRIZE.</span></div>
+    <div class="section-header" style="margin-bottom:2rem">
+      <span class="eyebrow">From leaders we've worked with</span>
+      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">What it's like once we're in it together.</h2>
     </div>
     <div class="quotes">
       <div class="quote"><span class="cat">Superintendent</span><p>Thanks for being here. My teachers and our students will benefit from this PD.</p><div class="who"><b>Jeff Clark</b><span>Superintendent, Amity School District</span></div></div>
-      <div class="quote"><span class="cat">Administrator</span><p>Since implementing TomoClub, our school climate surveys show a significant rise in Sense of Belonging, which has led to a measurable drop in behavioral disruptions.</p><div class="who"><b>Cynthia Knight</b><span>CEO/Director, Choice Charter School</span></div></div>
-      <div class="quote"><span class="cat">Administrator</span><p>These sessions cover ELA standards and critical thinking so effectively that we've seen a positive effect on our reading and Math scores.</p><div class="who"><b>Brooke McGuire</b><span>Director of Teaching &amp; Learning, Waseca Public Schools</span></div></div>
-      <div class="quote"><span class="cat">Principal</span><p>Post Tomo AI Training, educators are sharing new AI tools or strategies with each other.</p><div class="who"><b>Mary Matocha</b><span>Principal, Amity School District</span></div></div>
+      <div class="quote"><span class="cat">Director</span><p>Since implementing TomoClub, our school climate surveys show a significant rise in Sense of Belonging, which has led to a measurable drop in behavioral disruptions.</p><div class="who"><b>Cynthia Knight</b><span>CEO/Director, Choice Charter School</span></div></div>
+      <div class="quote"><span class="cat">Teaching &amp; Learning</span><p>These sessions cover ELA standards and critical thinking so effectively that we've seen a positive effect on our reading and Math scores.</p><div class="who"><b>Brooke McGuire</b><span>Director of Teaching &amp; Learning, Waseca Public Schools</span></div></div>
+    </div>
+    <div class="cred-row">
+      <span><i></i>STEM.org Accredited™</span><span><i></i>Best In STEM™, top 5%</span><span><i></i>STEM.org Certified™ Master Trainers</span><span><i></i>XPRIZE-winning founder</span><span><i></i>Aligned to CASEL and AI4K12</span><span><i></i>GDPR &amp; SOC 2</span><span><i></i>Public, charter, private, rural and tribal schools</span>
     </div>
     <div class="partners">
       <div class="label">Partners include</div>
@@ -662,16 +659,15 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
 </section>
 
 <!-- FAQ -->
-<section>
+<section class="bg-slate section-tight">
   <div class="container">
-    <div class="section-header"><span class="eyebrow">Questions leaders ask</span><h2>Before you fill in the form.</h2></div>
+    <div class="section-header" style="margin-bottom:2rem"><span class="eyebrow">Things leaders ask before writing</span><h2 style="font-size:clamp(1.6rem,3vw,2.2rem)">Fair questions.</h2></div>
     <div class="faq">
-      <details><summary>Is there a cost for the project outline?</summary><p>No. The outline is free and yours to keep, whether or not you work with us. Budget ranges appear in the outline so there are no surprises later.</p></details>
-      <details><summary>Do we have to use one of your existing programs?</summary><p>No. If Future-Ready Skills, AI Literacy or AI PD fits the goal, we will say so because it's faster and cheaper for you. If not, we scope something new.</p></details>
-      <details><summary>What if the problem has nothing to do with AI or students?</summary><p>Bring it anyway. Staff workload, reporting, internal processes and communication are exactly the kinds of problems where a psychologist, an instructional designer and a software engineer in the same room produce something useful.</p></details>
-      <details><summary>How do districts usually fund this?</summary><p>Title II and Title IV, ESSER carry-over where it still exists, state workforce or career-readiness grants, foundation grants, and reallocation from PD or curriculum lines. The outline includes the funding routes we think apply, and we itemise curriculum and training separately because funders ask for it.</p></details>
-      <details><summary>Who actually does the work?</summary><p>The TomoClub team: psychologists, education researchers, curriculum and instructional designers, game designers and engineers, led by the co-founders. We don't hand projects to subcontractors.</p></details>
-      <details><summary>How is student and staff data handled?</summary><p>Our platform is GDPR and SOC 2 compliant. We sign your district's data privacy agreement and keep student data inside the scope you approve.</p></details>
+      <details><summary>Is there a cost for the outline?</summary><p>No. It's free and yours to keep. Budget ranges are in it so there are no surprises later.</p></details>
+      <details><summary>Do we have to use one of your programs?</summary><p>No. If one fits, we'll say so because it's faster and cheaper for you. If not, we scope something new.</p></details>
+      <details><summary>What if it has nothing to do with AI or students?</summary><p>Bring it anyway. Staff workload, reporting and internal processes are exactly where a psychologist, an instructional designer and an engineer in the same room earn their keep.</p></details>
+      <details><summary>How do districts usually fund this?</summary><p>Title II and IV, state career-readiness or workforce grants, foundation grants, IDEA for special-education work, and reallocation from PD or curriculum lines. The outline names the routes we think apply, and we itemise curriculum and training separately because funders ask for it.</p></details>
+      <details><summary>Who actually does the work?</summary><p>Our own team, led by the co-founders. We don't hand projects to subcontractors.</p></details>
     </div>
   </div>
 </section>
@@ -679,11 +675,11 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
 <!-- CTA -->
 <section class="cta-band bg-teal">
   <div class="container">
-    <h2>See what a custom project looks like for your district.</h2>
-    <p>The fastest way to find out is to tell us the goal. No pressure. No one-size-fits-all pitch.</p>
+    <h2>Whenever you're ready, we're here.</h2>
+    <p>One message is enough to start. We'll take it from there.</p>
     <div class="hero-cta">
-      <a href="#interest-form" class="btn btn-primary">Share your challenge <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
-      <a href="https://tomoclub.org/#results" class="btn btn-secondary">See results from partner districts</a>
+      <a href="#interest-form" class="btn btn-primary">Tell us what you need <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+      <a href="tel:+16505478082" class="btn btn-secondary">Call +1 650 547-8082</a>
     </div>
   </div>
 </section>
@@ -697,7 +693,7 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
       </div>
       <div class="footer-links"><h4>Contact Us</h4><ul><li><a href="tel:+16505478082">+1 650 547-8082</a></li><li><a href="mailto:info@tomoclub.org">info@tomoclub.org</a></li></ul></div>
       <div class="footer-links"><h4>Our Location</h4><ul><li><span>4197 Tuller Road, Dublin,<br>OHIO 43017, USA</span></li></ul></div>
-      <div class="footer-links"><h4>Programs</h4><ul><li><a href="https://tomoclub.org/#ai-literacy">AI Literacy (6-12)</a></li><li><a href="https://tomoclub.org/#future-ready">Future-Ready Skills (3-12)</a></li><li><a href="https://tomoclub.org/#pd">AI Fundamentals PD</a></li><li><a href="#interest-form">Custom Projects</a></li></ul></div>
+      <div class="footer-links"><h4>Programs</h4><ul><li><a href="https://tomoclub.org/#ai-literacy">AI Literacy (6-12)</a></li><li><a href="https://tomoclub.org/#future-ready">Future-Ready Skills (3-12)</a></li><li><a href="https://tomoclub.org/#pd">AI Fundamentals PD</a></li><li><a href="#interest-form">Build With Us</a></li></ul></div>
     </div>
     <div class="footer-bottom"><span>© 2026 TomoClub. All rights reserved.</span><a href="https://tomoclub.org/privacy-policy">Privacy Policy</a><a href="https://tomoclub.org/contact-us">Contact Us</a><a href="https://tomoclub.org/terms-and-conditions">Terms and Conditions</a></div>
   </div>
@@ -705,11 +701,9 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
 
 <script>
 (function(){
-  // Ticker: duplicate chunk for a seamless loop
   var track=document.getElementById('ticker-track');
   if(track){track.appendChild(track.firstElementChild.cloneNode(true));}
 
-  // Theme toggle (mirrors the site's moon/sun button)
   var root=document.documentElement,btn=document.getElementById('theme-toggle'),moon=document.getElementById('ic-moon'),sun=document.getElementById('ic-sun');
   function isDark(){var t=root.getAttribute('data-theme');if(t)return t==='dark';return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;}
   function paint(){var d=isDark();moon.hidden=d;sun.hidden=!d;}
@@ -717,11 +711,10 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
   paint();
   btn.addEventListener('click',function(){var next=isDark()?'light':'dark';root.setAttribute('data-theme',next);try{localStorage.setItem('tomo-theme',next);}catch(e){}paint();});
 
-  // "Book a call" buttons pre-select the call option
   document.querySelectorAll('[data-choose="call"]').forEach(function(a){a.addEventListener('click',function(){var r=document.getElementById('opt-call');if(r)r.checked=true;});});
 
-  // Form: posts to FORM_ENDPOINT when set (HubSpot / Brevo / Formspree),
-  // otherwise falls back to a pre-filled email so nothing is ever lost.
+  // Form: posts to FORM_ENDPOINT when set (HubSpot / Brevo / Formspree);
+  // otherwise opens a pre-filled email so nothing is ever lost.
   var FORM_ENDPOINT='';
   var form=document.getElementById('project-form'),status=document.getElementById('form-status');
   form.addEventListener('submit',function(ev){
@@ -729,22 +722,21 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
     var req=['f-name','f-role','f-org','f-email','f-goal'],missing=req.filter(function(id){return !document.getElementById(id).value.trim();});
     var email=document.getElementById('f-email').value.trim();
     if(missing.length||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
-      status.className='form-status err';status.textContent='Please add your name, role, district, a valid work email, and what you are trying to build.';
+      status.className='form-status err';status.textContent='We just need your name, role, district, a work email, and what is on your mind.';
       document.getElementById(missing[0]||'f-email').focus();return;
     }
-    var fd=new FormData(form),data={};fd.forEach(function(v,k){if(data[k]){data[k]=[].concat(data[k],v);}else{data[k]=v;}});
-    data.areas=fd.getAll('areas');data.page='custom-projects';data.submitted=new Date().toISOString();
+    var fd=new FormData(form),data={};fd.forEach(function(v,k){if(!(k in data))data[k]=v;});
+    data.areas=fd.getAll('areas');data.page='build-with-us';data.submitted=new Date().toISOString();
     var btnEl=form.querySelector('button[type=submit]');btnEl.disabled=true;
     function done(ok,msg){status.className='form-status '+(ok?'ok':'err');status.textContent=msg;btnEl.disabled=false;if(ok){form.reset();}}
     if(FORM_ENDPOINT){
       fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
-        .then(function(r){if(!r.ok)throw new Error('bad status');done(true,'Thank you. Your custom project outline will reach '+email+' within 24 hours.'+(data.next==='20-minute call'?' We will also send call times.':''));})
-        .catch(function(){done(false,'Something went wrong sending the form. Please email avinash@tomoclub.org and we will reply the same day.');});
+        .then(function(r){if(!r.ok)throw new Error('bad status');done(true,'Thank you. You will hear from Avinash or Manik at '+email+' within 24 hours.');})
+        .catch(function(){done(false,'Something went wrong on our side. Please email avinash@tomoclub.org and we will reply the same day.');});
     }else{
-      var lines=['Name: '+data.name,'Role: '+data.role,'District/School: '+data.district,'Email: '+data.email,'Phone: '+(data.phone||'-'),'Students: '+(data.size||'-'),'','Goal:',data.goal,'','Areas: '+(data.areas.join(', ')||'-'),'Next step: '+data.next,'Timing: '+(data.timing||'-')];
-      var href='mailto:avinash@tomoclub.org?subject='+encodeURIComponent('Custom project: '+data.district)+'&body='+encodeURIComponent(lines.join('\n'));
-      window.location.href=href;
-      done(true,'Thank you. Your email client should open with the details filled in. Send it and you will have a custom project outline within 24 hours.');
+      var lines=['Name: '+data.name,'Role: '+data.role,'District/School: '+data.district,'Email: '+data.email,'Phone: '+(data.phone||'-'),'Students: '+(data.size||'-'),'','On my mind:',data.goal,'','Touches: '+(data.areas.join(', ')||'-'),'Come back as: '+data.next,'Calendar: '+(data.timing||'-')];
+      window.location.href='mailto:avinash@tomoclub.org?subject='+encodeURIComponent('Something on my desk: '+data.district)+'&body='+encodeURIComponent(lines.join('\n'));
+      done(true,'Thank you. Your email app should open with everything filled in. Send it, and you will have a written outline within 24 hours.');
     }
   });
 })();
