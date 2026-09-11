@@ -789,8 +789,9 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
         .catch(function(){done(false,'Something went wrong on our side. Please email avinash@tomoclub.org and we will reply within 24 hours.');});
     }else{
       var lines=['Name: '+data.name,'Role: '+data.role,'District/School: '+data.district,'Email: '+data.email,'Phone: '+(data.phone||'-'),'Students: '+(data.size||'-'),'','What we need:',data.goal,'','Touches: '+(data.areas||'-'),'Come back as: '+data.next,'Calendar: '+(data.timing||'-')];
-      window.location.href='mailto:avinash@tomoclub.org?subject='+encodeURIComponent('What our school needs: '+data.district)+'&body='+encodeURIComponent(lines.join('\n'));
-      done(true,'Thank you. Your email app should open with everything filled in. Send it, and you will have a written plan within 24 hours.');
+      var href='mailto:avinash@tomoclub.org?subject='+encodeURIComponent('What our school needs: '+data.district)+'&body='+encodeURIComponent(lines.join('\n'));
+      var opened=null;try{opened=window.open(href,'_blank','noopener');}catch(e){}
+      done(true,'Thank you. '+(opened?'Your email app should open with everything filled in. Send it, and you will have a written plan within 24 hours.':'Please email the details to avinash@tomoclub.org (or book a slot at calendly.com/avinashtomo/tomoclub-call) and you will have a written plan within 24 hours.'));
     }
   });
 })();
