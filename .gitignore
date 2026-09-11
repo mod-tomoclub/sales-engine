@@ -14,3 +14,6 @@ dist/
 # Test / coverage
 coverage/
 dist-mathlab
+
+# prospect emails and inbox-derived drafts (never public)
+outreach/
