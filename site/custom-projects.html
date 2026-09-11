@@ -754,7 +754,7 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
     var req=['f-name','f-org','f-email','f-goal'],missing=req.filter(function(id){return !document.getElementById(id).value.trim();});
     var email=document.getElementById('f-email').value.trim();
     if(missing.length||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
-      status.className='form-status err';status.textContent='We just need your name, school or district, a work email, and what's on your mind.';
+      status.className='form-status err';status.textContent='We just need your name, school or district, a work email, and what is on your mind.';
       document.getElementById(missing[0]||'f-email').focus();return;
     }
     var fd=new FormData(form),data={};fd.forEach(function(v,k){if(!(k in data))data[k]=v;});
