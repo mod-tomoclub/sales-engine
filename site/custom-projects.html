@@ -765,7 +765,7 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
     if(SHEET_ENDPOINT){
       // Apps Script web apps accept form-encoded POSTs; no-cors means we can't read the reply, but the row is written.
       fetch(SHEET_ENDPOINT,{method:'POST',mode:'no-cors',body:new URLSearchParams(data)})
-        .then(function(){done(true,thanks);})
+        .then(function(){location.href='thank-you.html?e='+encodeURIComponent(email);})
         .catch(function(){done(false,'Something went wrong on our side. Please email avinash@tomoclub.org and we will reply within 24 hours.');});
     }else{
       var lines=['Name: '+data.name,'District/School: '+data.district,'Email: '+data.email,'','What is on my mind:',data.goal];
