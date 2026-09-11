@@ -292,7 +292,10 @@ textarea.form-control{min-height:130px;resize:vertical}
 .form-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}
 .form-foot small{color:var(--text-light);font-size:.85rem;max-width:380px}
 .form-status{display:none;margin-top:1.25rem;padding:1rem 1.25rem;border-radius:14px;font-weight:600}
-.form-status.ok{display:block;background:rgba(42,180,184,.12);color:var(--teal)}
+.form-status.ok{display:block;background:rgba(42,180,184,.12);color:var(--text-main);font-weight:500;font-size:1.05rem;line-height:1.55;padding:1.5rem}
+.form-status.ok strong{color:var(--navy);font-size:1.2rem}
+.form-status.ok small{color:var(--text-muted)}
+[hidden]{display:none!important}
 .form-status.err{display:block;background:rgba(179,65,88,.1);color:var(--crimson)}
 .side-card{background:var(--navy);color:#F8FAFC;border-radius:var(--radius-card);padding:2.25rem;box-shadow:var(--shadow-md)}
 :root[data-theme="dark"] .side-card{background:#1E293B}
@@ -757,8 +760,8 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
     var fd=new FormData(form),data={};fd.forEach(function(v,k){if(!(k in data))data[k]=v;});
     data.page='build-with-us';data.submitted=new Date().toISOString();
     var btnEl=form.querySelector('button[type=submit]');btnEl.disabled=true;
-    function done(ok,msg){status.className='form-status '+(ok?'ok':'err');status.textContent=msg;btnEl.disabled=false;if(ok){form.reset();}}
-    var thanks='Thank you. You will hear from Avinash or Manik at '+email+' within 24 hours with an initial project outline.';
+    function done(ok,msg){status.className='form-status '+(ok?'ok':'err');if(ok){status.innerHTML=msg;form.reset();form.querySelector('.form-grid').hidden=true;form.querySelector('.form-foot').hidden=true;status.scrollIntoView({behavior:'smooth',block:'center'});}else{status.textContent=msg;}btnEl.disabled=false;}
+    var thanks='<strong>Thank you for sharing your story.</strong><br>Our team will send an initial project outline to '+email+' within 24 hours. If we need anything else to get it right, we\'ll ask for a short call.<br><br>If you\'d rather get on a call right away, pick a slot that suits you:<br><a class="btn btn-primary" style="margin-top:.9rem" href="https://calendly.com/avinashtomo/tomoclub-call" target="_blank" rel="noopener">Book 20 minutes with Avinash <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>';
     if(SHEET_ENDPOINT){
       // Apps Script web apps accept form-encoded POSTs; no-cors means we can't read the reply, but the row is written.
       fetch(SHEET_ENDPOINT,{method:'POST',mode:'no-cors',body:new URLSearchParams(data)})
@@ -768,7 +771,7 @@ footer{border-top:1px solid var(--border-color);padding:5rem 0 3rem;margin-top:2
       var lines=['Name: '+data.name,'District/School: '+data.district,'Email: '+data.email,'','What is on my mind:',data.goal];
       var href='mailto:avinash@tomoclub.org?subject='+encodeURIComponent('What our school needs: '+data.district)+'&body='+encodeURIComponent(lines.join('\n'));
       var opened=null;try{opened=window.open(href,'_blank','noopener');}catch(e){}
-      done(true,'Thank you. '+(opened?'Your email app should open with everything filled in. Send it, and you will have an initial project outline within 24 hours.':'Please email the details to avinash@tomoclub.org (or book a slot at calendly.com/avinashtomo/tomoclub-call) and you will have an initial project outline within 24 hours.'));
+      done(true,thanks+(opened?'':'<br><br><small>Your details are ready to send to avinash@tomoclub.org. If your email app did not open, please email us directly.</small>'));
     }
   });
 })();
