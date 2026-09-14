@@ -1,0 +1,195 @@
+<title>Build With Us Lead Report</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--bg:#FAFBFC;--surface:#FFFFFF;--surface2:#F4F6FB;--navy:#0F172A;--ink:#0F172A;--muted:#475569;--light:#94A3B8;--border:#E2E8F0;--teal:#2AB4B8;--teal-ink:#1A8F93;--gold:#FDC62D;--gold-ink:#8a6a00;--crimson:#B34158;--good:#2AB4B8;--warn:#B8860B;--crit:#B34158;--font:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#020617;--surface:#0F172A;--surface2:#1E293B;--navy:#F8FAFC;--ink:#F1F5F9;--muted:#94A3B8;--light:#64748B;--border:#334155;--teal-ink:#5CD3D6;--gold-ink:#FDC62D;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#020617;--surface:#0F172A;--surface2:#1E293B;--navy:#F8FAFC;--ink:#F1F5F9;--muted:#94A3B8;--light:#64748B;--border:#334155;--teal-ink:#5CD3D6;--gold-ink:#FDC62D;color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.5;font-size:16px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:980px;margin:0 auto;padding:3rem 1.5rem 5rem}
+h1{font-size:clamp(2rem,5vw,3rem);letter-spacing:-.04em;line-height:1.05;color:var(--navy);text-wrap:balance}
+h2{font-size:1.5rem;letter-spacing:-.03em;color:var(--navy);margin:3rem 0 1rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+h3{font-size:1.1rem;letter-spacing:-.02em;color:var(--navy);margin:1.5rem 0 .5rem}
+p{color:var(--muted);margin-bottom:.9rem;max-width:68ch}
+p.lead{font-size:1.15rem;color:var(--ink);max-width:70ch}
+strong{color:var(--navy)}
+.eyebrow{font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-ink);margin-bottom:.75rem}
+.meta{font-size:.9rem;color:var(--light);margin:.75rem 0 2rem}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.75rem;margin:1rem 0 1.5rem}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1rem 1.1rem}
+.tile b{display:block;font-size:1.7rem;font-weight:800;letter-spacing:-.03em;color:var(--navy);font-variant-numeric:tabular-nums;line-height:1.1}
+.tile span{display:block;font-size:.82rem;color:var(--muted);margin-top:.25rem}
+.tile small{display:block;font-size:.75rem;color:var(--light);margin-top:.3rem}
+.status{display:grid;gap:.6rem;margin:1rem 0}
+.status div{display:grid;grid-template-columns:auto 1fr;gap:.75rem;align-items:start;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:.85rem 1rem}
+.pill{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .6rem;border-radius:999px;white-space:nowrap}
+.pill.ok{background:rgba(42,180,184,.14);color:var(--teal-ink)}
+.pill.warn{background:rgba(253,198,45,.22);color:var(--gold-ink)}
+.pill.crit{background:rgba(179,65,88,.12);color:var(--crimson)}
+.pill::before{content:'';width:8px;height:8px;border-radius:50%;background:currentColor}
+.status b{display:block;color:var(--navy);font-size:.98rem}
+.status span{font-size:.92rem;color:var(--muted)}
+figure{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.1rem 1.25rem;margin:1rem 0}
+figcaption{font-size:.8rem;color:var(--light);margin-top:.6rem}
+.bars{display:grid;gap:.45rem}
+.bar{display:grid;grid-template-columns:150px 1fr 70px;gap:.75rem;align-items:center;font-size:.92rem}
+.bar .lbl{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .track{height:14px;background:var(--surface2);border-radius:4px;position:relative}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;background:var(--teal);border-radius:0 4px 4px 0}
+.bar .val{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.bar .fill.flag{background:var(--crimson)}
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin:.75rem 0 1rem}
+th{text-align:left;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--light);padding:.5rem .6rem;border-bottom:1px solid var(--border)}
+td{padding:.55rem .6rem;border-bottom:1px solid var(--border);vertical-align:top;color:var(--ink)}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+td.m{color:var(--muted)}
+.scroll{overflow-x:auto}
+ol,ul{margin:.5rem 0 1rem 1.25rem;color:var(--muted)}
+li{margin-bottom:.45rem}
+li b{color:var(--navy)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.1rem 1.25rem;margin:.75rem 0}
+.card h3{margin-top:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.75rem}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85em;background:var(--surface2);padding:.1rem .4rem;border-radius:6px;color:var(--ink)}
+pre{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:.9rem 1rem;overflow-x:auto;font-size:.85rem;margin:.5rem 0 1rem}
+.kpi{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.4fr;gap:.5rem;font-size:.9rem}
+.kpi>div{padding:.5rem .6rem;border-bottom:1px solid var(--border)}
+.kpi .h{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--light)}
+.ask{background:var(--navy);color:#F8FAFC;border-radius:16px;padding:1.25rem 1.4rem;margin-top:1.5rem}
+:root[data-theme="dark"] .ask{background:#1E293B}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ask{background:#1E293B}}
+.ask b{color:#fff;display:block;margin-bottom:.4rem}
+.ask p{color:#CBD5E1;margin:0}
+@media (max-width:640px){.bar{grid-template-columns:110px 1fr 60px}.kpi{grid-template-columns:1fr 1fr}}
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">TomoClub · tomoclub.org/build-with-us</div>
+  <h1>Build With Us Lead Report</h1>
+  <p class="meta">Prepared 15 September 2026 · Baseline period 17 Aug – 15 Sep 2026 (whole site) · Sources: GA4 property "TomoClub Website" (536894823), Microsoft Clarity, LinkedIn Campaign Manager, the leads sheet, and a live tag check on the site.</p>
+  <p class="lead">The page went live on 12 September and all three tracking tools started sending data on 15 September, so there is no lead history to analyse yet. What this report gives you is the honest baseline for the whole site, the five data-quality problems that will mislead you unless fixed first, the funnel and targets to measure against, a 30-minute weekly review routine with exact report locations, and a ranked list of things to try.</p>
+
+  <h2>1. Tracking status, verified live on 15 September</h2>
+  <div class="status">
+    <div><span class="pill ok">Working</span><div><b>Google Analytics 4</b><span>The site sends page views to property "TomoClub Website" (G-FEGGQ2ZDMT). Realtime showed the test visit, and section events fire on Build With Us. One caveat: the tag was missing from 76 of the 152 pages until 15 September, so older page-level numbers under-count article, blog and podcast pages.</span></div></div>
+    <div><span class="pill ok">Working</span><div><b>Microsoft Clarity</b><span>Tag loads and the collector accepted data (HTTP 204). Recordings and heatmaps appear within a few hours of real traffic. Project: yibamjl9lq.</span></div></div>
+    <div><span class="pill warn">Check tomorrow</span><div><b>LinkedIn Insight Tag</b><span>The tag loads on every page with partner ID 8364153, but during the test LinkedIn's collector answered with temporary errors (HTTP 503). That is usually LinkedIn-side and clears on its own. Open Campaign Manager → Measure → Signals manager tomorrow; the Insight Tag card should say Active.</span></div></div>
+    <div><span class="pill ok">Working</span><div><b>Lead form → Google Sheet</b><span>Submissions write to "TomoClub – Build With Us leads (v2)" and email avinash@tomoclub.org. Verified end to end on 12 September. The sheet is currently empty (test rows were removed).</span></div></div>
+    <div><span class="pill crit">Not configured</span><div><b>Key events in GA4</b><span>The property has never had a conversion defined. Every report shows "0 key events", so GA cannot yet tell you which channel or page produces leads. See section 3, item 3.</span></div></div>
+  </div>
+
+  <h2>2. Baseline: the whole site, last 30 days</h2>
+  <div class="tiles">
+    <div class="tile"><b>1,335</b><span>sessions</span><small>1,159 users, 1,138 of them new</small></div>
+    <div class="tile"><b>57%</b><span>engagement rate</span><small>share of sessions over 10 s or with 2+ pages</small></div>
+    <div class="tile"><b>17 s</b><span>average engagement per session</span><small>very short; see data quality</small></div>
+    <div class="tile"><b>0</b><span>key events tracked</span><small>no conversions defined</small></div>
+    <div class="tile"><b>55</b><span>views of /contact-us</span><small>6 s average engagement</small></div>
+  </div>
+
+  <h3>Where sessions came from</h3>
+  <figure>
+    <div class="bars">
+      <div class="bar"><span class="lbl">Direct</span><span class="track"><span class="fill flag" style="width:100%"></span></span><span class="val">1,029</span></div>
+      <div class="bar"><span class="lbl">Organic search</span><span class="track"><span class="fill" style="width:19.3%"></span></span><span class="val">199</span></div>
+      <div class="bar"><span class="lbl">Referral</span><span class="track"><span class="fill" style="width:4.2%"></span></span><span class="val">43</span></div>
+      <div class="bar"><span class="lbl">Organic social</span><span class="track"><span class="fill" style="width:4%"></span></span><span class="val">41</span></div>
+      <div class="bar"><span class="lbl">Unassigned</span><span class="track"><span class="fill" style="width:1.3%"></span></span><span class="val">13</span></div>
+      <div class="bar"><span class="lbl">AI assistant (ChatGPT)</span><span class="track"><span class="fill" style="width:.7%"></span></span><span class="val">7</span></div>
+      <div class="bar"><span class="lbl">Paid</span><span class="track"><span class="fill" style="width:.4%"></span></span><span class="val">4</span></div>
+      <div class="bar"><span class="lbl">Email</span><span class="track"><span class="fill" style="width:.2%"></span></span><span class="val">2</span></div>
+    </div>
+    <figcaption>Sessions by default channel group, 17 Aug – 15 Sep. Direct is highlighted because 77% is not believable for a K-12 vendor site: it is untagged links (email, LinkedIn app, WhatsApp, newsletter) plus bot traffic, all lumped together.</figcaption>
+  </figure>
+
+  <h3>Who the visitors are, by country</h3>
+  <div class="scroll"><table>
+    <tr><th>Country</th><th>Active users</th><th>Engagement rate</th><th>Avg engagement</th><th>Reading</th></tr>
+    <tr><td>United States</td><td class="n">775</td><td class="n">72%</td><td class="n">20 s</td><td class="m">Your real audience. Engagement is healthy.</td></tr>
+    <tr><td>India</td><td class="n">117</td><td class="n">47%</td><td class="n">51 s</td><td class="m">Mostly the TomoClub team (Bengaluru, Delhi). Should be excluded.</td></tr>
+    <tr><td>Singapore</td><td class="n">97</td><td class="n">21%</td><td class="n">1 s</td><td class="m">Bots. One-second visits from a data-centre region.</td></tr>
+    <tr><td>China, France, Brazil, Germany, UK, Hong Kong</td><td class="n">74</td><td class="n">0–30%</td><td class="n">0–5 s</td><td class="m">Scrapers and crawlers. Ignore.</td></tr>
+  </table></div>
+  <p>In the last seven days alone, 143 "users" came from Boardman, Oregon, which is an Amazon data-centre location, not a school district. Once bots and the team are removed, the site's real audience over 30 days is roughly 750 people, almost all in the US, and that is the number every conversion rate should be measured against.</p>
+
+  <h3>What they looked at</h3>
+  <div class="scroll"><table>
+    <tr><th>Page</th><th>Views</th><th>Users</th><th>Avg engagement</th><th>Reading</th></tr>
+    <tr><td>/ (homepage)</td><td class="n">1,340</td><td class="n">1,066</td><td class="n">20 s</td><td class="m">87% of all views. The homepage is the site.</td></tr>
+    <tr><td>/leaders-of-tomorrow</td><td class="n">88</td><td class="n">68</td><td class="n">18 s</td><td class="m">The ebook is your best-performing content page.</td></tr>
+    <tr><td>/contact-us</td><td class="n">55</td><td class="n">48</td><td class="n">6 s</td><td class="m">48 people reached the form page and left in six seconds. The embedded Brevo form is losing them.</td></tr>
+    <tr><td>/podcast-player.html</td><td class="n">29</td><td class="n">10</td><td class="n">4 s</td><td class="m">Low.</td></tr>
+    <tr><td>/build-with-us</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="m">Live since 12 Sep; first week of data arrives next Monday.</td></tr>
+  </table></div>
+  <p>Browser split: Chrome 82%, Safari 15%, Edge 1%. Nothing to act on.</p>
+
+  <h2>3. Fix these five things before trusting any number</h2>
+  <ol>
+    <li><b>Exclude bots and the team.</b> In GA4, Admin → Data collection → Data streams → Configure tag settings → Define internal traffic: add the office and home IP addresses as "internal", then in Admin → Data filters activate the Internal traffic filter. For the bot cities, create a saved comparison called "Real visitors" (Country = United States, City ≠ Boardman, City ≠ Ashburn) and apply it to every report you read.</li>
+    <li><b>Tag every link you send.</b> The 77% Direct figure means you cannot see which outreach works. Use this format on every email, LinkedIn post, newsletter and podcast note:
+      <pre>https://www.tomoclub.org/build-with-us/?utm_source=linkedin&amp;utm_medium=social&amp;utm_campaign=build-with-us-launch
+https://www.tomoclub.org/build-with-us/?utm_source=email&amp;utm_medium=outreach&amp;utm_campaign=custom-projects-sep26
+https://www.tomoclub.org/build-with-us/?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=weekly-insights</pre>
+      The 22 drafted outreach emails should all carry the second link.</li>
+    <li><b>Define key events.</b> Admin → Events → mark <code>lead_submitted</code> as a key event, and create a new event <code>calendly_click</code> from <code>cta_click</code> where <code>cta_href</code> contains "calendly", then mark it too. From then on every channel and page shows a lead rate.</li>
+    <li><b>Turn on Google signals and register the custom dimensions</b> (<code>section_name</code>, <code>engagement_ms</code>, <code>cta_text</code>). Without the dimensions the section events are collected but invisible in reports.</li>
+    <li><b>Retire the /contact-us iframe.</b> Point the "Contact Us" buttons on the homepage at /build-with-us/ (or embed the same four-field form there). Forty-eight people a month reach that page and almost none stay.</li>
+  </ol>
+
+  <h2>4. The funnel and what "good" looks like</h2>
+  <p>Measure the page as a funnel, not as a page. Targets are for a B2B education site with warm, mostly outreach-driven traffic; revisit them after four weeks of real data.</p>
+  <div class="kpi">
+    <div class="h">Stage</div><div class="h">Where to read it</div><div class="h">Target</div><div class="h">If it is low</div>
+    <div>Real visitors to /build-with-us</div><div>GA4 Pages, "Real visitors" comparison</div><div>150 per week by October</div><div>Outreach and LinkedIn posting volume, not the page.</div>
+    <div>Reached the form section</div><div>GA4 Events → section_view where section_name = form</div><div>45% of page visitors</div><div>Page is too long above the form, or the hook is weak. Check Clarity scroll map.</div>
+    <div>Started the form</div><div>Clarity recordings filtered to form clicks</div><div>25% of those who reached it</div><div>Ask fewer questions, restate the promise next to the form.</div>
+    <div>Submitted (lead)</div><div>Leads sheet; GA4 key event lead_submitted</div><div>3% of page visitors</div><div>Trust: add a named human, response-time promise, partner logos nearer the form.</div>
+    <div>Booked a call</div><div>Calendly; GA4 calendly_click</div><div>1% of page visitors</div><div>Move the Calendly button higher and into the thank-you page (done).</div>
+    <div>Outline sent within 24 h</div><div>Sheet, add a column "Outline sent"</div><div>100%</div><div>Process, not marketing.</div>
+    <div>Call held / pilot scoped</div><div>Sheet, add columns</div><div>50% of leads → call; 25% → scoped</div><div>Qualification of who you attract; adjust copy toward decision-makers.</div>
+  </div>
+  <p style="margin-top:1rem">Add four columns to the leads sheet now, so the bottom of the funnel is tracked from lead one: <strong>Source (from UTM)</strong>, <strong>Outline sent (date)</strong>, <strong>Call held (date)</strong>, <strong>Stage</strong> (new / outline sent / call / scoped / won / lost).</p>
+
+  <h2>5. Your weekly 30-minute review</h2>
+  <p>Every Monday. Same order, same tabs, write three lines of notes at the end.</p>
+  <div class="grid2">
+    <div class="card"><h3>GA4 (10 min)</h3><ul>
+      <li><b>Reports → Acquisition → Traffic acquisition</b>, comparison "Real visitors", last 7 days vs previous. Which source sent people to /build-with-us? Direct should be falling as UTMs spread.</li>
+      <li><b>Reports → Engagement → Pages and screens</b>, filter page path contains "build-with-us". Views, users, average engagement time. Compare with /contact-us.</li>
+      <li><b>Reports → Engagement → Events → section_view</b>, secondary dimension section_name. Read it top to bottom: hero → partners → how-it-works → programs → team → form. The biggest drop between two rows is next week's edit.</li>
+      <li><b>Key events</b>: lead_submitted and calendly_click counts, and which source they came from.</li>
+    </ul></div>
+    <div class="card"><h3>Clarity (10 min)</h3><ul>
+      <li><b>Heatmaps → Scroll</b> for /build-with-us: the line where 50% of visitors have left. Is the form above it?</li>
+      <li><b>Recordings</b>, filter URL contains build-with-us, sort by "Rage clicks" and "Dead clicks". Watch three. Dead clicks on the program tiles mean people expect them to open something.</li>
+      <li><b>Dashboard → Insights</b>: quick-backs (people who bounced within seconds) and JavaScript errors.</li>
+      <li><b>Filter: Clicked on "Send it over"</b> to watch how real submitters behaved before submitting. Those are the sessions to learn from.</li>
+    </ul></div>
+    <div class="card"><h3>LinkedIn (5 min)</h3><ul>
+      <li><b>Measure → Signals manager</b>: Insight Tag status. Must say Active.</li>
+      <li><b>Analyze / Measure → Website demographics</b>, filter to the build-with-us URL, last 30 days: Job title, Job seniority, Company. You want Superintendent, Principal, Director of Curriculum near the top. If it is Teacher or Student, the traffic is coming from the wrong posts.</li>
+      <li><b>Plan → Audiences → Matched audience</b>: once 300+ visitors have hit the page, create a "Build With Us visitors" audience for retargeting.</li>
+    </ul></div>
+    <div class="card"><h3>Leads sheet and Calendly (5 min)</h3><ul>
+      <li>New rows this week, and their Source column.</li>
+      <li>Every lead older than 24 hours has "Outline sent" filled in. If not, that is the only thing that matters this week.</li>
+      <li>Calendly bookings this week versus calendly_click in GA4: a big gap means people open Calendly and don't find a slot they like.</li>
+    </ul></div>
+  </div>
+
+  <h2>6. What to try, in order</h2>
+  <ol>
+    <li><b>Send traffic before touching the page.</b> The page cannot be optimised on 20 visits. The 22 personalised emails plus two founder LinkedIn posts a week, all with UTM links, should bring 100 to 150 school-leader visits in the first month. Everything below assumes that.</li>
+    <li><b>Make the homepage send people here.</b> The nav link exists; change the hero's "Contact Us" button and the closing CTA on the homepage to point at /build-with-us/. The homepage has 1,340 views a month and the form page has 55.</li>
+    <li><b>Shorten the path to the form.</b> The form is the sixth section. Test a compact version of the form directly under the hero (name, district, email, one line) with the full version left where it is. Compare form section_view rates and lead rate over two weeks.</li>
+    <li><b>Use the section data to cut, not add.</b> Whichever section has the steepest engagement drop in the section_view report gets shortened or moved below the form. Do one change per week so you can attribute the effect.</li>
+    <li><b>Qualify the traffic, then retarget.</b> When LinkedIn demographics show 100+ visitors with leadership titles, run a small retargeting campaign (US$10–15/day) to page visitors with the "initial project outline within 24 hours" promise. This is the "market to them again" step, and it needs no names.</li>
+    <li><b>Follow-up sequence for leads.</b> Every submission gets: outline within 24 h (already promised), a check-in at day 4, and a "still useful?" note at day 14. The Apps Script can push each row into HubSpot so this runs itself.</li>
+    <li><b>Watch for "wrong audience" signals.</b> If Clarity shows many mobile visits under 10 seconds from India, that is team or bot traffic and should be filtered, not "improved".</li>
+  </ol>
+
+  <div class="ask">
+    <b>Four settings I can switch on for you in GA4, with your go-ahead</b>
+    <p>Google signals · the three custom dimensions · lead_submitted and calendly_click as key events · the "Real visitors" comparison and internal-traffic filter. They change account settings, so I have not touched them. Say "go ahead" and I'll do all four and confirm each one.</p>
+  </div>
+</div>
