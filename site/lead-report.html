@@ -66,14 +66,14 @@ pre{background:var(--surface2);border:1px solid var(--border);border-radius:12px
 <div class="wrap">
   <div class="eyebrow">TomoClub · tomoclub.org/build-with-us</div>
   <h1>Build With Us Lead Report</h1>
-  <p class="meta">Prepared 15 September 2026 · Baseline period 17 Aug – 15 Sep 2026 (whole site) · Sources: GA4 property "TomoClub Website" (536894823), Microsoft Clarity, LinkedIn Campaign Manager, the leads sheet, and a live tag check on the site.</p>
+  <p class="meta">Prepared 15 September 2026, tracking status re-checked 16 September · Baseline period 17 Aug – 15 Sep 2026 (whole site) · Sources: GA4 property "TomoClub Website" (536894823), Microsoft Clarity, LinkedIn Campaign Manager, the leads sheet, and a live tag check on the site.</p>
   <p class="lead">The page went live on 12 September and all three tracking tools started sending data on 15 September, so there is no lead history to analyse yet. What this report gives you is the honest baseline for the whole site, the five data-quality problems that will mislead you unless fixed first, the funnel and targets to measure against, a 30-minute weekly review routine with exact report locations, and a ranked list of things to try.</p>
 
   <h2>1. Tracking status, verified live on 15 September</h2>
   <div class="status">
     <div><span class="pill ok">Working</span><div><b>Google Analytics 4</b><span>The site sends page views to property "TomoClub Website" (G-FEGGQ2ZDMT). Realtime showed the test visit, and section events fire on Build With Us. One caveat: the tag was missing from 76 of the 152 pages until 15 September, so older page-level numbers under-count article, blog and podcast pages.</span></div></div>
-    <div><span class="pill ok">Working</span><div><b>Microsoft Clarity</b><span>Tag loads and the collector accepted data (HTTP 204). Recordings and heatmaps appear within a few hours of real traffic. Project: yibamjl9lq.</span></div></div>
-    <div><span class="pill warn">Check tomorrow</span><div><b>LinkedIn Insight Tag</b><span>The tag loads on every page with partner ID 8364153, but during the test LinkedIn's collector answered with temporary errors (HTTP 503). That is usually LinkedIn-side and clears on its own. Open Campaign Manager → Measure → Signals manager tomorrow; the Insight Tag card should say Active.</span></div></div>
+    <div><span class="pill ok">Working</span><div><b>Microsoft Clarity</b><span>Tag loads and the collector accepted data (HTTP 204). As of 16 September the Clarity dashboard still shows no sessions for the last 3 days, which reflects the near-zero traffic to the site since the tag went live rather than a fault; recordings appear with the first real visits. Project: yibamjl9lq.</span></div></div>
+    <div><span class="pill ok">Active</span><div><b>LinkedIn Insight Tag</b><span>Confirmed 16 September: Campaign Manager → Signals manager shows the Insight Tag as <strong>Active</strong> (partner ID 8364153). The temporary collector errors seen during the first test have cleared. "Website actions" and demographics fill in as visits accumulate; there is nothing further to configure.</span></div></div>
     <div><span class="pill ok">Working</span><div><b>Lead form → Google Sheet</b><span>Submissions write to "TomoClub – Build With Us leads (v2)" and email avinash@tomoclub.org. Verified end to end on 12 September. The sheet is currently empty (test rows were removed).</span></div></div>
     <div><span class="pill crit">Not configured</span><div><b>Key events in GA4</b><span>The property has never had a conversion defined. Every report shows "0 key events", so GA cannot yet tell you which channel or page produces leads. See section 3, item 3.</span></div></div>
   </div>
@@ -85,6 +85,7 @@ pre{background:var(--surface2);border:1px solid var(--border);border-radius:12px
     <div class="tile"><b>17 s</b><span>average engagement per session</span><small>very short; see data quality</small></div>
     <div class="tile"><b>0</b><span>key events tracked</span><small>no conversions defined</small></div>
     <div class="tile"><b>55</b><span>views of /contact-us</span><small>6 s average engagement</small></div>
+    <div class="tile"><b>2</b><span>views of /build-with-us since 12 Sep</span><small>1 user, 0 leads: no traffic has been sent to it yet</small></div>
   </div>
 
   <h3>Where sessions came from</h3>
